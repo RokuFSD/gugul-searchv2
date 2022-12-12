@@ -6,6 +6,7 @@ import React, {
   useState,
   useCallback,
 } from "react";
+import { useSearchParams } from "react-router-dom";
 
 type ISearchContext = {
   query: string;
@@ -15,7 +16,10 @@ const searchContext = createContext<ISearchContext>({ query: "" });
 const searchContextAction = createContext<(newQuery: string) => void>(() => {});
 
 export function SearchContextProvider({ children }: { children: ReactNode }) {
-  const [query, setQuery] = useState<string>("");
+  const [searchParams] = useSearchParams();
+  const initialQuery = searchParams.get("q");
+
+  const [query, setQuery] = useState<string>(initialQuery || "");
 
   const valueQuery = useMemo(() => ({ query }), [query]);
   const setValueQuery = useCallback(
