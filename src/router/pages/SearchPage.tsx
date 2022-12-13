@@ -23,7 +23,6 @@ function SearchPage() {
         <Navbar />
       </Header>
       <Outlet />
-      <h1>Searched {context.query}</h1>
     </>
   );
 }

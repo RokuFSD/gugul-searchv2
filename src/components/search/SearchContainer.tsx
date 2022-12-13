@@ -1,11 +1,13 @@
 import React, { FormEvent } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { useSearchContextAction } from "../../context/SearchContext";
 
 function SearchContainer() {
-  const [, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const setQuery = useSearchContextAction();
+  const navigate = useNavigate();
+  const isRoot = location.pathname === "/";
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -14,7 +16,11 @@ function SearchContainer() {
     ) as { q: string };
     if (values.q === "") return;
     setQuery(values.q);
-    setSearchParams(values);
+    navigate(
+      isRoot
+        ? `/search/all?q=${values.q}`
+        : `${location.pathname}?q=${values.q}`
+    );
   }
 
   return (

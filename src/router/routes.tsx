@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import SearchPage from "./pages/SearchPage";
+import ResultsContainer from "../components/results/ResultsContainer";
 
 const routes = [
   {
@@ -18,7 +19,7 @@ const routes = [
         children: [
           {
             path: "/search/:type",
-            element: <h1>Con pulpa sin pulpa</h1>,
+            element: <ResultsContainer />,
           },
         ],
       },
