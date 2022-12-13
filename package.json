@@ -13,6 +13,7 @@
     "prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@tanstack/react-query": "^4.19.1",
     "@tanstack/react-query-devtools": "^4.19.1",
     "axios": "^1.2.1",
