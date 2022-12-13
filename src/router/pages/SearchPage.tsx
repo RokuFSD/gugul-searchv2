@@ -9,12 +9,12 @@ function SearchPage() {
   if (searchTriggered) {
     return (
       <>
-        <h1>Searched</h1>
-        <SearchContainer />
+        <SearchContainer triggeredSearch={searchTriggered} />
+        <h1>Searched {context.query}</h1>
       </>
     );
   }
-  return <SearchContainer />;
+  return <SearchContainer triggeredSearch={searchTriggered} />;
 }
 
 export default SearchPage;

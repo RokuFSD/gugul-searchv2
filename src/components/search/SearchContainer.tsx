@@ -3,7 +3,11 @@ import { useSearchParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { useSearchContextAction } from "../../context/SearchContext";
 
-function SearchContainer() {
+type SeachContainerProps = {
+  triggeredSearch: boolean;
+};
+
+function SearchContainer({ triggeredSearch }: SeachContainerProps) {
   const [, setSearchParams] = useSearchParams();
   const setQuery = useSearchContextAction();
 
@@ -17,7 +21,14 @@ function SearchContainer() {
   }
 
   return (
-    <div className="w-72 md:w-96 lg:w-full lg:max-w-xl">
+    <div
+      className={`w-72 md:w-96 lg:w-full lg:max-w-xl col-span-full  
+    ${
+      triggeredSearch
+        ? "mx-auto pt-10 lg:m-0 lg:pl-10"
+        : "place-self-center row-span-full"
+    }`}
+    >
       <form onSubmit={handleSubmit} name="search">
         <SearchBar />
       </form>
