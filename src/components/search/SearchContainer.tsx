@@ -22,10 +22,10 @@ function SearchContainer({ triggeredSearch }: SeachContainerProps) {
 
   return (
     <div
-      className={`w-72 md:w-96 lg:w-full lg:max-w-xl col-span-full  
+      className={`w-full px-4 h-36 col-span-full  
     ${
       triggeredSearch
-        ? "mx-auto pt-10 lg:m-0 lg:pl-10"
+        ? "mx-auto pt-10 lg:m-0 lg:pl-10 border-b border-b-neutral-400 shadow-md"
         : "place-self-center row-span-full"
     }`}
     >

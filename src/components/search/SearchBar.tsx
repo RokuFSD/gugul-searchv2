@@ -10,7 +10,7 @@ function SearchBar() {
       ref={inputRef}
       type="search"
       placeholder="Search something..."
-      className="w-full h-14 px-8 transition-shadow bg-transparent border rounded-full focus:outline-none focus:border-blue-200 focus:shadow-xl text-lg"
+      className="w-full max-w-xl h-14 px-8 transition-shadow bg-transparent border rounded-full focus:outline-none focus:border-blue-200 focus:shadow-xl text-lg"
       name="q"
       defaultValue={context.query}
       role="searchbox"
