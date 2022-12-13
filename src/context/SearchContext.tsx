@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   createContext,
   ReactNode,
@@ -5,6 +6,8 @@ import React, {
   useMemo,
   useState,
   useCallback,
+  useEffect,
+  MutableRefObject,
 } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -21,6 +24,11 @@ export function SearchContextProvider({ children }: { children: ReactNode }) {
 
   const [query, setQuery] = useState<string>(initialQuery || "");
 
+  useEffect(() => {
+    const newQuery = searchParams.get("q");
+    setQuery(newQuery || "");
+  }, [searchParams]);
+
   const valueQuery = useMemo(() => ({ query }), [query]);
   const setValueQuery = useCallback(
     (newQuery: string) => setQuery(newQuery),
@@ -36,5 +44,19 @@ export function SearchContextProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export const useSearchContext = () => useContext(searchContext);
+export const useSearchContext = (ref?: MutableRefObject<HTMLInputElement>) => {
+  const context = useContext(searchContext);
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    const newQuery = searchParams.get("q");
+    if (newQuery && ref) {
+      // eslint-disable-next-line no-param-reassign
+      ref.current.value = newQuery;
+    }
+  }, [searchParams]);
+
+  return {
+    context,
+  };
+};
 export const useSearchContextAction = () => useContext(searchContextAction);
