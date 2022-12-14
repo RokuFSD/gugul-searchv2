@@ -8,7 +8,7 @@ type MainSectionProps = {
 
 function MainSection({ data }: MainSectionProps) {
   return (
-    <div className="flex flex-col gap-10 w-full lg:max-w-xl">
+    <div className="order-2 flex flex-col gap-10 w-full max-w-xl">
       {data?.map((item, index) => (
         <ResultCard item={item} key={item.link} />
       ))}
