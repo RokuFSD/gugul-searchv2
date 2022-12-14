@@ -5,7 +5,7 @@ import { useSearchContextAction } from "../../context/SearchContext";
 
 function SearchContainer() {
   const location = useLocation();
-  const setQuery = useSearchContextAction();
+  const { setQuery } = useSearchContextAction();
   const navigate = useNavigate();
   const isRoot = location.pathname === "/";
 
@@ -18,8 +18,8 @@ function SearchContainer() {
     setQuery(values.q);
     navigate(
       isRoot
-        ? `/search/all?q=${values.q}`
-        : `${location.pathname}?q=${values.q}`
+        ? `/search/all?q=${values.q}&page=1`
+        : `${location.pathname}?q=${values.q}&page=1`
     );
   }
 
