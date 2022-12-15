@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ResponseType } from "../../types/api";
 import HeaderImagesCard from "../cards/HeaderImagesCard";
 import AsideDetails from "./AsideDetails";
@@ -17,13 +18,19 @@ const stateMachine = {
   }
 } as const;
 
+const variants = {
+  visible: { height: "auto", opacity: 1 },
+  hidden: { height: "0", opacity: 0 }
+};
+
+
 function AsideSection({ data }: AsideSectionProps) {
   const [dataState, setDataState] = useState<"closed" | "open">("closed");
   const { header_images: headerImages, title, description, type, source, ...rest } = data;
   const { link, name } = source as { link: string, name: string };
   return (
     <aside
-      className="relative md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-auto">
+      className="relative overflow-hidden md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-auto">
       {headerImages && <HeaderImagesCard data={headerImages} />}
       <div
         data-state={dataState}
@@ -35,7 +42,21 @@ function AsideSection({ data }: AsideSectionProps) {
         </a>
         <p className="italic text-gray-300">Source: {name}</p>
       </div>
-      <AsideDetails data={rest} />
+      <AnimatePresence>
+        {dataState !== "closed" && (
+          <motion.div
+            layout
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            transition={{duration: .4}}
+          >
+            <AsideDetails data={rest} />
+          </motion.div>
+        )
+        }
+      </AnimatePresence>
       <button className="w-full flex flex-col items-center md:top-full lg:hidden md:basis-full" type="button"
               onClick={() => setDataState((prev) => stateMachine[prev].next)}>
         {dataState === "closed" ? "Show more" : "Show less"}

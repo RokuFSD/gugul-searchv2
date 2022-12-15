@@ -19,7 +19,7 @@ function AsideDetails({ data }: AsideDetailsProps) {
   });
 
   return (
-    <table className="table-auto my-2 max-w-md md:max-w-full w-full md:relative">
+    <table className="table-auto max-w-md md:max-w-full w-full md:relative">
       <tbody>
       {details.map((detail, index) => (
         <tr key={detail} className={`flex justify-start ${index % 2 === 0 ? "bg-gray-600" : ""} md:px-10 lg:px-4`}>

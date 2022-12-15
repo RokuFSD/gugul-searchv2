@@ -3,39 +3,13 @@
 @tailwind utilities;
 
 @layer components {
+  /*noinspection ALL*/
   main {
     min-height: -webkit-fill-available;
     min-height: 100vh;
   }
 
-  [data-state="closed"] + table {
-    visibility: hidden;
-    position: absolute;
+  [data-visible="open"]{
+    height: auto;
   }
-
-  [data-state="open"] + table {
-    transform: translateX(-200%);
-    animation-name: appears;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0, 0.01, 0, 0.99)
-  }
-
-  @keyframes appears {
-    from {
-      transform: translateX(-200%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    [data-state="closed"] + table {
-      visibility: visible;
-      position: relative;
-      transform: translateX(0);
-    }
-  }
-
 }
