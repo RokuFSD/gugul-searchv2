@@ -12,11 +12,11 @@ const router = createMemoryRouter(
         <SearchContextProvider>
           <SearchBar />
         </SearchContextProvider>
-      ),
-    },
+      )
+    }
   ],
   {
-    initialEntries: ["/"],
+    initialEntries: ["/"]
   }
 );
 
@@ -28,8 +28,8 @@ const routerWithQuery = createMemoryRouter(
         <SearchContextProvider>
           <SearchBar />
         </SearchContextProvider>
-      ),
-    },
+      )
+    }
   ],
   { initialEntries: ["/?q=initial"] }
 );

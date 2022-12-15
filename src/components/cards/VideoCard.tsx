@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { VideoResult } from "../../types/api";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import VideoMobileCard from "./VideoMobileCard";
+import ThumbnailCard from "./ThumbnailCard";
 
 type VideoCardProps = {
   // eslint-disable-next-line react/require-default-props
@@ -18,6 +19,7 @@ function VideoCard({ item }: VideoCardProps) {
   }
 
   const { extensions } = item.rich_snippet.top;
+  const isYoutube = extensions[0].toLowerCase().includes("youtube");
   return (
     <div className="flex flex w-full items-center gap-4">
       <div className="w-full">
@@ -28,10 +30,7 @@ function VideoCard({ item }: VideoCardProps) {
           </a>
         </h2>
         <div className="flex relative gap-4 mt-2">
-          {item?.thumbnail ? (
-            <a href={item?.link} target="_blank" rel="noreferrer">
-              <img src={item?.thumbnail} alt={item.title}
-                   className="w-48 h-28 rounded-lg object-fit" /></a>) : null}
+          {item?.thumbnail ? (<ThumbnailCard isYoutube={isYoutube} item={item}/>) : null}
           <div className="max-w-md h-full flex flex-col gap-3">
             <p className="text-sm line-clamp-2">{item?.snippet}</p>
             <p className="text-sm text-gray-300">{extensions.map((extension) => `${extension} `)}</p>

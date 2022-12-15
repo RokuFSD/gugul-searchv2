@@ -9,7 +9,7 @@
     min-height: 100vh;
   }
 
-  [data-visible="open"]{
+  [data-visible="open"] {
     height: auto;
   }
 }

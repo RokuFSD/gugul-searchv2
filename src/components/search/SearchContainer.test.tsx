@@ -12,11 +12,11 @@ const router = createMemoryRouter(
         <SearchContextProvider>
           <SearchContainer />
         </SearchContextProvider>
-      ),
-    },
+      )
+    }
   ],
   {
-    initialEntries: ["/"],
+    initialEntries: ["/"]
   }
 );
 
