@@ -11,7 +11,7 @@ const links = [
 function Navbar() {
   return (
     <nav className="w-full max-w-xl">
-      <ul className="flex w-full justify-around lg:justify-between">
+      <ul className="flex w-full justify-between">
         {links.map((link) => (
           <NavbarItem key={link.name} name={link.name} path={link.path} />
         ))}

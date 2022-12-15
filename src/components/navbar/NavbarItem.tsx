@@ -26,7 +26,7 @@ function NavbarItem({ path, name }: NavbarItemProps) {
         {({ isActive }) =>
           isActive ? (
             <span
-              className="after:block after:w-1.5 after:h-1.5 after:bg-blue-400 after:rounded-full after:left-1/2 after:absolute after:-translate-x-1/2">
+              className="after:block after:px-8 after:w-4 after:h-full after:bg-blue-400 after:rounded-t-full after:left-1/2 after:absolute after:-translate-x-1/2">
               {name}
             </span>
           ) : (
