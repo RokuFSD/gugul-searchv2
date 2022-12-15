@@ -1,6 +1,6 @@
 import React, { cloneElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NewResult, Results, VideoResult } from "../../types/api";
+import { NewResult, Results, VideoResult } from "../../../types/api";
 
 type MainSectionProps = {
   data: Results[] | NewResult[] | VideoResult[];

@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchContext } from "../../context/SearchContext";
-import Search from "../../services/Search";
-import MainSection from "./MainSection";
-import LocalMap from "./LocalMap";
+import MainSection from "./sections/MainSection";
+import LocalMap from "./sections/LocalMap";
 import Paginator from "../paginator/Paginator";
-import AsideSection from "./AsideSection";
+import AsideSection from "./aside/AsideSection";
 import componentSelector from "../../utils/components";
+import useSearch from "../../hooks/useSearch";
 
 enum SearchKey {
   "all" = "organic_results",
@@ -16,25 +15,10 @@ enum SearchKey {
 }
 
 function ResultsContainer() {
-  const queryClient = useQueryClient();
   const { context } = useSearchContext();
   const { type } = useParams();
   const { query, page } = context;
-  const { data, isLoading } = useQuery({
-    queryKey: ["search", type, query, page],
-    queryFn: () => Search.search(query, type || "", page),
-    keepPreviousData: true,
-    staleTime: Infinity
-  });
-
-  // Prefetch next page
-  useEffect(() => {
-    queryClient.prefetchQuery({
-      queryKey: ["search", type, query, page + 1],
-      queryFn: () => Search.search(query, type || "", page + 1),
-      staleTime: Infinity
-    });
-  }, [queryClient, type, query, page]);
+  const { data, isLoading } = useSearch({ type, query, page });
 
   const results = data?.data[SearchKey[type as keyof typeof SearchKey] || "organic_results"];
   const element = componentSelector(type || "all");
@@ -44,7 +28,6 @@ function ResultsContainer() {
   }
 
   return (
-
     <section
       className="h-full flex flex-col gap-8 px-2 py-4 col-span-full w-full mx-auto lg:px-12 xl:px-52">
       {data?.data?.local_map && <LocalMap data={data.data.local_map} />}

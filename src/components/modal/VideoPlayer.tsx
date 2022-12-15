@@ -4,8 +4,6 @@ import React, { useCallback, useState } from "react";
 import Modal from "react-modal";
 import Spinner from "../svgs/Spinner";
 
-Modal.setAppElement("#modal-root");
-
 function VideoPlayer({ src, thumbnail, title }: { src: string, thumbnail: string, title: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

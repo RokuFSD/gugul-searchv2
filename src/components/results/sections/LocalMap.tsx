@@ -1,5 +1,5 @@
 import React from "react";
-import { ResponseType } from "../../types/api";
+import { ResponseType } from "../../../types/api";
 
 type LocalMapProps = {
   data: ResponseType["data"]["local_map"];

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ResponseType } from "../../types/api";
-import HeaderImagesCard from "../cards/HeaderImagesCard";
+import { ResponseType } from "../../../types/api";
+import HeaderImagesCard from "../../cards/HeaderImagesCard";
 import AsideDetails from "./AsideDetails";
-import ArrowSvg from "../svgs/ArrowSvg";
+import ArrowSvg from "../../svgs/ArrowSvg";
 
 type AsideSectionProps = {
   data: ResponseType["data"]["knowledge_graph"];
@@ -50,7 +50,7 @@ function AsideSection({ data }: AsideSectionProps) {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={{duration: .4}}
+            transition={{ duration: .4 }}
           >
             <AsideDetails data={rest} />
           </motion.div>

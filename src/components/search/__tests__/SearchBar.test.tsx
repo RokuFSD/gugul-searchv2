@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
-import SearchBar from "./SearchBar";
-import { SearchContextProvider } from "../../context/SearchContext";
+import SearchBar from "../SearchBar";
+import { SearchContextProvider } from "../../../context/SearchContext";
 
 const router = createMemoryRouter(
   [
