@@ -27,10 +27,10 @@ function AsideSection({ data }: AsideSectionProps) {
       {headerImages && <HeaderImagesCard data={headerImages} />}
       <div
         data-state={dataState}
-        className="md:w-96 lg:w-auto lg:max-w-lg relative md:basis-1/2 md:mx-5 lg:mx-0">
+        className="group md:w-96 lg:w-auto lg:max-w-lg relative md:basis-1/2 md:mx-5 lg:mx-0">
         <a href={link} target="_blank" rel="noreferrer">
-          <h1 className="text-2xl font-semibold xl:text-3xl">{title}</h1>
-          <h2 className="italic ">{type}</h2>
+          <h1 className="group-hover:underline text-2xl font-semibold xl:text-3xl">{title}</h1>
+          <h2 className="italic">{type}</h2>
           <p className="text-sm md:text-base xl:text-lg py-2">{description}</p>
         </a>
         <p className="italic text-gray-300">Source: {name}</p>

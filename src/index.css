@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
-  [data-state="closed"] {
+  main {
+    min-height: -webkit-fill-available;
+    min-height: 100vh;
   }
 
   [data-state="closed"] + table {
