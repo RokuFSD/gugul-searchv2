@@ -1,16 +1,16 @@
-import React from "react";
-import { ResponseType } from "../../types/api";
-import ResultCard from "../cards/ResultCard";
+import React, { cloneElement, ReactElement, ReactNode } from "react";
+import { NewResult, ResponseType, Results, VideoResult } from "../../types/api";
 
 type MainSectionProps = {
-  data: ResponseType["data"]["organic_results"];
+  data: Results[] | NewResult[] | VideoResult[];
+  element: JSX.Element
 }
 
-function MainSection({ data }: MainSectionProps) {
+function MainSection({ data, element }: MainSectionProps) {
   return (
     <div className="order-2 flex flex-col gap-10 w-full max-w-xl">
-      {data?.map((item, index) => (
-        <ResultCard item={item} key={item.link} />
+      {data?.map((item) => (
+        cloneElement(element, { item, key: item.link })
       ))}
     </div>
   );

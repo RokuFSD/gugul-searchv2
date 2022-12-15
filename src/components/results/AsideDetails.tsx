@@ -8,7 +8,15 @@ function AsideDetails({ data }: AsideDetailsProps) {
   const { list } = data;
 
   const toMap = (list || data) as { [key: string]: string };
-  const details = Object.keys(toMap).filter((key) => (typeof toMap[key] === "string" || Array.isArray(toMap[key]) && !key.includes("link") && !key.includes("links")));
+
+  // TODO: Move this logic to the backend
+  const details = Object.keys(toMap).filter((key) => {
+    if (Array.isArray(toMap[key])) {
+      return toMap[key].length < 2 && typeof toMap[key] === "string";
+    }
+    return (!key.match(/link/ig) && !key.match(/links/ig) && !key.match(/stick/ig) && typeof toMap[key] === "string");
+
+  });
   return (
     <table className="table-auto my-2 max-w-md md:max-w-full w-full md:relative">
       <tbody>
@@ -24,3 +32,4 @@ function AsideDetails({ data }: AsideDetailsProps) {
 }
 
 export default AsideDetails;
+

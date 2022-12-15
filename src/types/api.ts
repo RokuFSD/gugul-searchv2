@@ -15,6 +15,14 @@ export type Results = {
   "thumbnail": string,
 }
 
+export type VideoResult = Results & {
+  "duration": string,
+}
+
+export type NewResult = Results & {
+  "source": string,
+}
+
 export type HeaderImage = {
   image: string,
   source: string,
@@ -22,7 +30,10 @@ export type HeaderImage = {
 
 export type ResponseType = {
   "data": {
-    "organic_results": Results[],
+    "organic_results"?: Results[],
+    "news_results"?: NewResult[],
+    "image_results"?: Results[],
+    "video_results"?: VideoResult[],
     "top_stories": StoriesType[],
     "local_map": {
       "link": string,
@@ -47,5 +58,11 @@ export type ResponseType = {
       header_images?: HeaderImage[],
       [key: string]: unknown
     }
+  }
+}
+
+export type VideoResponseType = {
+  "data": {
+    "videos_results": VideoResult[],
   }
 }
