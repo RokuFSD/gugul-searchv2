@@ -17,10 +17,16 @@ export type Results = {
 
 export type VideoResult = Results & {
   "duration": string,
+  "rich_snippet": {
+    "top": {
+      "extensions": string[]
+    }
+  }
 }
 
 export type NewResult = Results & {
   "source": string,
+  "date": string
 }
 
 export type HeaderImage = {

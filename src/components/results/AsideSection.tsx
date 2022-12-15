@@ -30,7 +30,8 @@ function AsideSection({ data }: AsideSectionProps) {
         className="md:w-96 lg:w-auto lg:max-w-lg relative md:basis-1/2 md:mx-5 lg:mx-0">
         <a href={link} target="_blank" rel="noreferrer">
           <h1 className="text-2xl font-semibold xl:text-3xl">{title}</h1>
-          <p className="text-sm md:text-base xl:text-lg">{description}</p>
+          <h2 className="italic ">{type}</h2>
+          <p className="text-sm md:text-base xl:text-lg py-2">{description}</p>
         </a>
         <p className="italic text-gray-300">Source: {name}</p>
       </div>

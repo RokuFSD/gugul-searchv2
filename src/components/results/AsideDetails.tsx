@@ -12,11 +12,12 @@ function AsideDetails({ data }: AsideDetailsProps) {
   // TODO: Move this logic to the backend
   const details = Object.keys(toMap).filter((key) => {
     if (Array.isArray(toMap[key])) {
-      return toMap[key].length < 2 && typeof toMap[key] === "string";
+      return toMap[key].length < 2 && typeof toMap[key][0] === "string";
     }
     return (!key.match(/link/ig) && !key.match(/links/ig) && !key.match(/stick/ig) && typeof toMap[key] === "string");
 
   });
+
   return (
     <table className="table-auto my-2 max-w-md md:max-w-full w-full md:relative">
       <tbody>

@@ -43,9 +43,9 @@ function ResultsContainer() {
   }
 
   return (
-    <section className="flex flex-col gap-8 px-2 py-4 col-span-full w-full mx-auto lg:px-12 xl:px-52 2xl:px-64">
+    <section className="flex flex-col gap-8 px-2 py-4 col-span-full w-full mx-auto lg:px-12 xl:px-52">
       {data?.data?.local_map && <LocalMap data={data.data.local_map} />}
-      <div className="flex flex-col w-full gap-10 lg:flex-row lg:justify-between">
+      <div className="flex flex-col w-full gap-10 lg:flex-row ">
         <MainSection data={results || []} element={element} />
         {data?.data?.knowledge_graph && <AsideSection data={data?.data?.knowledge_graph} />}
       </div>
