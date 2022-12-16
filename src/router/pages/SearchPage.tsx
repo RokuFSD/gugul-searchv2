@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import SearchContainer from "../../components/search/SearchContainer";
 import Header from "../../components/header/Header";
-import { useSearchContext } from "../../context/SearchContext";
 import Navbar from "../../components/navbar/Navbar";
+import SearchContainer from "../../components/search/SearchContainer";
+import { useSearchContext } from "../../context/SearchContext";
 
 function SearchPage() {
   const { context } = useSearchContext();

@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import VideoCard from "../VideoCard";
 import { video } from "../../../mocks/responseMocks";
-import { matches, matchesAlwaysTrue } from "../../../utils/tests/windowsProperties";
+import { matches, matchesAlwaysTrue } from "../../../utils/testing/windowsProperties";
 
 beforeEach(() => {
   Object.defineProperty(window, "matchMedia", matches);

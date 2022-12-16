@@ -8,5 +8,7 @@
   "include": [
     "testSetup.ts",
     "vite.config.ts",
+    "src/utils/testing/restService.ts",
+    "src/mocks/responseMocks.ts"
   ]
 }

@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import useMediaQuery from "../useMediaQuery";
-import { matches } from "../../utils/tests/windowsProperties";
+import { matches } from "../../utils/testing/windowsProperties";
 
 beforeEach(() => {
   Object.defineProperty(window, "matchMedia", matches);

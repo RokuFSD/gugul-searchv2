@@ -10,7 +10,7 @@ type UseSearchProps = {
 
 function useSearch({ type, query, page }: UseSearchProps) {
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isSuccess } = useQuery({
     queryKey: ["search", type, query, page],
     queryFn: () => Search.search(query, type || "", page),
     keepPreviousData: true,
@@ -25,7 +25,7 @@ function useSearch({ type, query, page }: UseSearchProps) {
     });
   }, [queryClient, type, query, page]);
 
-  return { data, isLoading };
+  return { data, isLoading, isSuccess };
 }
 
 export default useSearch;
