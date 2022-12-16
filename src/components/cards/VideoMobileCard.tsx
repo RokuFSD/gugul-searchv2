@@ -3,11 +3,10 @@ import { VideoResult } from "../../types/api";
 
 type VideoCardProps = {
   // eslint-disable-next-line react/require-default-props
-  item?: VideoResult
+  item: VideoResult
 }
 
 function VideoMobileCard({ item }: VideoCardProps) {
-  if (!item) return null;
   const { extensions } = item.rich_snippet.top;
   return (
     <div className="flex relative gap-4">

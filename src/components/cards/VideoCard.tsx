@@ -30,7 +30,7 @@ function VideoCard({ item }: VideoCardProps) {
           </a>
         </h2>
         <div className="flex relative gap-4 mt-2">
-          {item?.thumbnail ? (<ThumbnailCard isYoutube={isYoutube} item={item}/>) : null}
+          {item?.thumbnail ? (<ThumbnailCard isYoutube={isYoutube} item={item} />) : null}
           <div className="max-w-md h-full flex flex-col gap-3">
             <p className="text-sm line-clamp-2">{item?.snippet}</p>
             <p className="text-sm text-gray-300">{extensions.map((extension) => `${extension} `)}</p>

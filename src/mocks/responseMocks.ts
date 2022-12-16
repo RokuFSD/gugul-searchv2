@@ -176,6 +176,68 @@ export const news = {
       "title": "Un 60% de los españoles asegura sentirse cansado y el 75 ...",
       "source": "Infosalus",
       "date": "hace 12 horas",
-      "snippet": "Quizá por ello más del 75% de los españoles que toman café lo hacen para \ntener más energía, según el 'Informe sobre los Hábitos de Consumo...",
+      "snippet": "Quizá por ello más del 75% de los españoles que toman café lo hacen para \ntener más energía, según el 'Informe sobre los Hábitos de Consumo..."
     }]
+};
+
+export const video = {
+  "video_results": [{
+    "position": 1,
+    "title": "ELEGIR CAFÉ: 5 PUNTOS a SABER - YouTube",
+    "link": "https://www.youtube.com/watch?v=QxCls8YJybk",
+    "displayed_link": "www.youtube.com › watch",
+    "thumbnail": "https://serpapi.com/searches/639a69c11c450a8fee7ce844/images/ecc695ae43cb8c23d9c7923ce375dc0837c607fa28f7664ca3dbc7ad38938635.jpeg",
+    "snippet": "En el video de hoy vamos a ver 5 puntos más importantes a tener en cuenta a la hora de elegir nuestro café.Siempre de especialidad.",
+    "duration": "12:08",
+    "rich_snippet": {
+      "top": {
+        "extensions": ["YouTube", "flat&white", "21 feb 2021"],
+        "detected_extensions": { "feb": 21 }
+      }
+    }
+  }, {
+    "position": 2,
+    "title": "El secreto de un buen café - YouTube",
+    "link": "https://www.youtube.com/watch?v=pvtyoCgn5oY",
+    "displayed_link": "www.youtube.com › watch",
+    "thumbnail": "https://serpapi.com/searches/639a69c11c450a8fee7ce844/images/ecc695ae43cb8c238e8276b61d5a3e9a8fdb8edef9868d609a0d85df09268864.jpeg",
+    "snippet": "Encontrá los ingredientes y procedimientos de la receta en www.cocinerosargentinos.comSuscribite aquí (es gratuito) ...",
+    "duration": "27:31",
+    "rich_snippet": {
+      "top": {
+        "extensions": ["YouTube", "Cocineros Argentinos", "25 ene 2017"],
+        "detected_extensions": { "ene": 25 }
+      }
+    },
+    "related_pages_link": "https://www.google.com/search?gl=ar&q=related:https://www.youtube.com/watch%3Fv%3DpvtyoCgn5oY+cafe&sa=X&ved=2ahUKEwjp6-3Brvr7AhWzl2oFHXezDa4QH3oECAwQCQ"
+  }, {
+    "position": 3,
+    "title": "CAFÉ COMERCIAL vs CAFÉ DE ESPECIALIDAD. Lo que ...",
+    "link": "https://www.youtube.com/watch?v=WjOcoRozozc",
+    "displayed_link": "www.youtube.com › watch",
+    "thumbnail": "https://serpapi.com/searches/639a69c11c450a8fee7ce844/images/ecc695ae43cb8c237e97d1a3c764bc3f546f415e7e46537e9b7fe0792e7a3d42.jpeg",
+    "snippet": "En este video vamos a analizar y comparar el café comercial con el café \"gourmet\" o \"premium\" con el café de especialidad y decirte toda la ...",
+    "duration": "6:47",
+    "rich_snippet": {
+      "top": {
+        "extensions": ["YouTube", "flat&white", "19 ago 2020"],
+        "detected_extensions": { "ago": 19 }
+      }
+    }
+  }, {
+    "position": 4,
+    "title": "7 Usos Del Cafe En El Huerto O Jardin || La Huertina De Toni",
+    "link": "https://www.youtube.com/watch?v=8bUSIWClmcQ",
+    "displayed_link": "www.youtube.com › watch",
+    "thumbnail": "https://serpapi.com/searches/639a69c11c450a8fee7ce844/images/ecc695ae43cb8c23d7a67a5e73fff8cba77f76c17c5e38f37ebb2e91ee09fa36.jpeg",
+    "snippet": "7 maneras de usar los posos del café en nuestro huerto , huerto urbano o jardín, nos aporta nutrientes como nitrógeno, nos ayuda a combatir ...",
+    "duration": "5:31",
+    "rich_snippet": {
+      "top": {
+        "extensions": ["Another", "La Huertina De Toni", "16 mar 2017"],
+        "detected_extensions": { "mar": 16 }
+      }
+    },
+    "related_pages_link": "https://www.google.com/search?gl=ar&q=related:https://www.youtube.com/watch%3Fv%3D8bUSIWClmcQ+cafe&sa=X&ved=2ahUKEwjp6-3Brvr7AhWzl2oFHXezDa4QH3oECAkQCQ"
+  }]
 };

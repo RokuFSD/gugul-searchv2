@@ -4,7 +4,8 @@ import React, { useCallback, useState } from "react";
 import Modal from "react-modal";
 import Spinner from "../svgs/Spinner";
 
-function VideoPlayer({ src, thumbnail, title }: { src: string, thumbnail: string, title: string }) {
+// eslint-disable-next-line react/require-default-props
+function VideoPlayer({ src, thumbnail, title }: { src: string, thumbnail?: string, title: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const onClose = useCallback(() => setIsOpen(false), []);
@@ -25,7 +26,7 @@ function VideoPlayer({ src, thumbnail, title }: { src: string, thumbnail: string
   };
   return (
     <>
-      <button onClick={() => setIsOpen(true)} type="button">
+      <button onClick={() => setIsOpen(true)} type="button" data-testid="player-button">
         <img src={thumbnail} alt={title}
              className="w-48 h-28 rounded-lg object-fit" />
       </button>

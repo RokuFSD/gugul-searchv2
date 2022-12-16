@@ -5,7 +5,7 @@ import { VideoResult } from "../../types/api";
 function ThumbnailCard({ isYoutube, item }: { isYoutube: boolean, item: VideoResult }) {
   if (isYoutube) {
     return (
-      <VideoPlayer src={item?.link} thumbnail={item?.thumbnail} title={item?.title} />
+      <VideoPlayer src={item.link} thumbnail={item.thumbnail} title={item.title} />
     );
   }
   return (

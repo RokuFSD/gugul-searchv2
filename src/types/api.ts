@@ -12,7 +12,7 @@ export type Results = {
   "link": string,
   "displayed_link": string,
   "snippet": string,
-  "thumbnail": string,
+  "thumbnail"?: string,
 }
 
 export type VideoResult = Results & {
