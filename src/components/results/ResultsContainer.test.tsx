@@ -1,5 +1,5 @@
-import { render, waitFor, renderHook, screen } from "@testing-library/react";
-import React, { ReactNode } from "react";
+import { render, screen } from "@testing-library/react";
+import React from "react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import ResultsContainer from "./ResultsContainer";
 import useSearch from "../../hooks/useSearch";
