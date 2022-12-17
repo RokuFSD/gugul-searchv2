@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import SearchPage from "./pages/SearchPage";
 import ResultsContainer from "../components/results/ResultsContainer";
+import GifsContainer from "../components/results/GifsContainer";
 
 const routes = [
   {
@@ -17,6 +18,10 @@ const routes = [
         path: "/search",
         element: <SearchPage />,
         children: [
+          {
+            path: "/search/gifs",
+            element: <GifsContainer />,
+          },
           {
             path: "/search/:type",
             element: <ResultsContainer />,
