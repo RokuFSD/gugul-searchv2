@@ -7,7 +7,7 @@ import React, {
   useState,
   useCallback,
   useEffect,
-  MutableRefObject
+  MutableRefObject,
 } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -19,10 +19,12 @@ type ISearchContext = {
 type ISearchContextActions = {
   setQuery: (query: string) => void;
   setPage: (page: number) => void;
-}
+};
 
 const searchContext = createContext<ISearchContext>({ query: "", page: 1 });
-const searchContextAction = createContext<ISearchContextActions>({} as ISearchContextActions);
+const searchContextAction = createContext<ISearchContextActions>(
+  {} as ISearchContextActions
+);
 
 export function SearchContextProvider({ children }: { children: ReactNode }) {
   const [searchParams] = useSearchParams();
@@ -45,7 +47,10 @@ export function SearchContextProvider({ children }: { children: ReactNode }) {
     []
   );
   const setValuePage = useCallback((newPage: number) => setPage(newPage), []);
-  const actions = useMemo(() => ({ setQuery: setValueQuery, setPage: setValuePage }), []);
+  const actions = useMemo(
+    () => ({ setQuery: setValueQuery, setPage: setValuePage }),
+    []
+  );
 
   return (
     <searchContext.Provider value={valueQuery}>
@@ -68,7 +73,7 @@ export const useSearchContext = (ref?: MutableRefObject<HTMLInputElement>) => {
   }, [searchParams]);
 
   return {
-    context
+    context,
   };
 };
 export const useSearchContextAction = () => useContext(searchContextAction);

@@ -23,7 +23,7 @@ function SearchContainer() {
     }
     setQueryParams((prev) => ({
       ...Object.fromEntries(prev.entries()),
-      q: values.q
+      q: values.q,
     }));
   }
 

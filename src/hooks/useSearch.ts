@@ -6,7 +6,7 @@ type UseSearchProps = {
   type?: string;
   query: string;
   page: number;
-}
+};
 
 function useSearch({ type, query, page }: UseSearchProps) {
   const queryClient = useQueryClient();
@@ -14,14 +14,14 @@ function useSearch({ type, query, page }: UseSearchProps) {
     queryKey: ["search", type, query, page],
     queryFn: () => Search.search(query, type || "", page),
     keepPreviousData: true,
-    staleTime: Infinity
+    staleTime: Infinity,
   });
 
   useEffect(() => {
     queryClient.prefetchQuery({
       queryKey: ["search", type, query, page + 1],
       queryFn: () => Search.search(query, type || "", page + 1),
-      staleTime: Infinity
+      staleTime: Infinity,
     });
   }, [queryClient, type, query, page]);
 

@@ -12,7 +12,7 @@ const router = createMemoryRouter(
         <SearchContextProvider>
           <SearchContainer />
         </SearchContextProvider>
-      )
+      ),
     },
     {
       path: "/search/:type",
@@ -23,11 +23,11 @@ const router = createMemoryRouter(
             <SearchContainer />
           </div>
         </SearchContextProvider>
-      )
-    }
+      ),
+    },
   ],
   {
-    initialEntries: ["/"]
+    initialEntries: ["/"],
   }
 );
 

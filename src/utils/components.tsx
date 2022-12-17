@@ -4,9 +4,9 @@ import NewsCard from "../components/cards/NewsCard";
 import VideoCard from "../components/cards/VideoCard";
 
 const WidgetComponents = {
-  "all": <ResultCard />,
-  "news": <NewsCard />,
-  "videos": <VideoCard />
+  all: <ResultCard />,
+  news: <NewsCard />,
+  videos: <VideoCard />,
 };
 
 export default function componentSelector(type: string) {

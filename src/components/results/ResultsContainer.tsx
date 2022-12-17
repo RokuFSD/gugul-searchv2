@@ -20,7 +20,8 @@ function ResultsContainer() {
   const { query, page } = context;
   const { data, isLoading } = useSearch({ type, query, page });
 
-  const results = data?.data[SearchKey[type as keyof typeof SearchKey] || "organic_results"];
+  const results =
+    data?.data[SearchKey[type as keyof typeof SearchKey] || "organic_results"];
   const element = componentSelector(type || "all");
 
   if (isLoading) {
@@ -28,15 +29,17 @@ function ResultsContainer() {
   }
 
   return (
-    <section
-      className="h-full flex flex-col gap-8 px-2 py-4 col-span-full w-full mx-auto lg:px-12 xl:px-52">
+    <section className="h-full flex flex-col gap-8 px-2 py-4 col-span-full w-full mx-auto lg:px-12 xl:px-52">
       {data?.data?.local_map && <LocalMap data={data.data.local_map} />}
-      <div
-        className="flex flex-col w-full gap-10 lg:flex-row ">
+      <div className="flex flex-col w-full gap-10 lg:flex-row ">
         <MainSection data={results || []} element={element} />
-        {data?.data?.knowledge_graph && <AsideSection data={data?.data?.knowledge_graph} />}
+        {data?.data?.knowledge_graph && (
+          <AsideSection data={data?.data?.knowledge_graph} />
+        )}
       </div>
-      {data?.data?.serpapi_pagination && <Paginator data={data?.data?.serpapi_pagination} />}
+      {data?.data?.serpapi_pagination && (
+        <Paginator data={data?.data?.serpapi_pagination} />
+      )}
     </section>
   );
 }

@@ -11,7 +11,6 @@ const mockedUseSearch = useSearch as jest.Mock<any>;
 
 vitest.mock("../../hooks/useSearch");
 
-
 const router = createMemoryRouter(
   [
     {
@@ -20,7 +19,7 @@ const router = createMemoryRouter(
         <SearchContextProvider>
           <ResultsContainer />
         </SearchContextProvider>
-      )
+      ),
     },
     {
       path: "/search/:type",
@@ -29,11 +28,11 @@ const router = createMemoryRouter(
           Successfull search
           <ResultsContainer />
         </div>
-      )
-    }
+      ),
+    },
   ],
   {
-    initialEntries: ["/"]
+    initialEntries: ["/"],
   }
 );
 
@@ -55,28 +54,44 @@ describe("Results container", () => {
   });
 
   it("Should render without crashing when there is no data", () => {
-    mockedUseSearch.mockImplementation(() => ({ isLoading: false, data: { data: [] } }));
+    mockedUseSearch.mockImplementation(() => ({
+      isLoading: false,
+      data: { data: [] },
+    }));
     render(<RouterProvider router={router} />);
   });
 
   it("Should render the 'all' data", () => {
-    mockedUseSearch.mockImplementation(() => ({ isLoading: false, data: { data: main } }));
+    mockedUseSearch.mockImplementation(() => ({
+      isLoading: false,
+      data: { data: main },
+    }));
     render(<RouterProvider router={router} />);
     expect(screen.queryByText("Loading...")).toBeFalsy();
     expect(screen.getByText(main.organic_results[0].title)).toBeInTheDocument();
   });
 
   it("Should render the 'news' data", () => {
-    mockedUseSearch.mockImplementation(() => ({ isLoading: false, data: { data: news } }));
+    mockedUseSearch.mockImplementation(() => ({
+      isLoading: false,
+      data: { data: news },
+    }));
     router.navigate("/search/news");
     render(<RouterProvider router={router} />);
     expect(screen.getByText(news.news_results[0].title)).toBeInTheDocument();
-    expect(screen.queryByAltText(news.news_results[news.news_results.length - 1].title)).toBeNull();
+    expect(
+      screen.queryByAltText(
+        news.news_results[news.news_results.length - 1].title
+      )
+    ).toBeNull();
   });
 
   it("Should render the 'video' data", () => {
     Object.defineProperty(window, "matchMedia", matches);
-    mockedUseSearch.mockImplementation(() => ({ isLoading: false, data: { data: video } }));
+    mockedUseSearch.mockImplementation(() => ({
+      isLoading: false,
+      data: { data: video },
+    }));
     router.navigate("/search/videos");
     render(<RouterProvider router={router} />);
     expect(screen.getByText(video.video_results[0].title)).toBeInTheDocument();

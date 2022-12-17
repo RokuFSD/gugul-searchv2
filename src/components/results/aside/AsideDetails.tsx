@@ -1,8 +1,8 @@
 import React from "react";
 
 type AsideDetailsProps = {
-  data: { [key: string]: unknown }
-}
+  data: { [key: string]: unknown };
+};
 
 function AsideDetails({ data }: AsideDetailsProps) {
   const { list } = data;
@@ -14,19 +14,28 @@ function AsideDetails({ data }: AsideDetailsProps) {
     if (Array.isArray(toMap[key])) {
       return toMap[key].length < 2 && typeof toMap[key][0] === "string";
     }
-    return (!key.match(/link/ig) && !key.match(/links/ig) && !key.match(/stick/ig) && typeof toMap[key] === "string");
-
+    return (
+      !key.match(/link/gi) &&
+      !key.match(/links/gi) &&
+      !key.match(/stick/gi) &&
+      typeof toMap[key] === "string"
+    );
   });
 
   return (
     <table className="table-auto max-w-md md:max-w-full w-full md:relative">
       <tbody>
-      {details.map((detail, index) => (
-        <tr key={detail} className={`flex justify-start ${index % 2 === 0 ? "bg-gray-600" : ""} md:px-10 lg:px-4`}>
-          <th className="basis-7/12 text-start">{detail}</th>
-          <td className="basis-5/12 text-end">{toMap[detail]}</td>
-        </tr>
-      ))}
+        {details.map((detail, index) => (
+          <tr
+            key={detail}
+            className={`flex justify-start ${
+              index % 2 === 0 ? "bg-gray-600" : ""
+            } md:px-10 lg:px-4`}
+          >
+            <th className="basis-7/12 text-start">{detail}</th>
+            <td className="basis-5/12 text-end">{toMap[detail]}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

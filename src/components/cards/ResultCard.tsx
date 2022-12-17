@@ -3,8 +3,8 @@ import { Results } from "../../types/api";
 
 type ResultCardProps = {
   // eslint-disable-next-line react/require-default-props
-  item?: Results
-}
+  item?: Results;
+};
 
 function ResultCard({ item }: ResultCardProps) {
   return (
@@ -16,10 +16,17 @@ function ResultCard({ item }: ResultCardProps) {
             {item?.title}
           </a>
         </h2>
-        <p className="text-md overflow-hidden overflow-ellipsis line-clamp-2 lg:line-clamp-5">{item?.snippet}</p>
+        <p className="text-md overflow-hidden overflow-ellipsis line-clamp-2 lg:line-clamp-5">
+          {item?.snippet}
+        </p>
       </div>
       {item?.thumbnail ? (
-        <img src={item?.thumbnail} alt={item.title} className="w-20 h-20 rounded-lg md:w-24 md:h-24" />) : null}
+        <img
+          src={item?.thumbnail}
+          alt={item.title}
+          className="w-20 h-20 rounded-lg md:w-24 md:h-24"
+        />
+      ) : null}
     </div>
   );
 }

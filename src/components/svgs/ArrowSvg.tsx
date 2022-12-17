@@ -1,6 +1,6 @@
 import React from "react";
 
-function ArrowSvg({rotate}: {rotate: number}) {
+function ArrowSvg({ rotate }: { rotate: number }) {
   return (
     <svg
       className="w-6 h-6"

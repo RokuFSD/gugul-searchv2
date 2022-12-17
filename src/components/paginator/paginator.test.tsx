@@ -8,10 +8,13 @@ import { main } from "../../mocks/responseMocks";
 const router = createMemoryRouter([
   {
     path: "/",
-    element: (<SearchContextProvider><Paginator data={main.serpapi_pagination} /></SearchContextProvider>)
-  }
+    element: (
+      <SearchContextProvider>
+        <Paginator data={main.serpapi_pagination} />
+      </SearchContextProvider>
+    ),
+  },
 ]);
-
 
 describe("Paginator component", () => {
   it("should render", () => {

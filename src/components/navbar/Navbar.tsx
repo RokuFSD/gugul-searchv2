@@ -5,7 +5,7 @@ const links = [
   { name: "Search", path: "/search/all" },
   { name: "News", path: "/search/news" },
   { name: "GIFs", path: "/search/gifs" },
-  { name: "Videos", path: "/search/videos" }
+  { name: "Videos", path: "/search/videos" },
 ];
 
 function Navbar() {
