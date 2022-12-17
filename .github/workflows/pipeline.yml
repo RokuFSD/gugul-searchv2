@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Setup Node environment
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.5.0
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Setup Node environment
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.5.0
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Setup Node environment
@@ -67,7 +67,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: dist
           path: dist
@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.5.0
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Setup Node environment
@@ -86,7 +86,7 @@ jobs:
           node-version: '19'
       - name: Install dependencies
         run: npm ci
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: dist
           path: dist
