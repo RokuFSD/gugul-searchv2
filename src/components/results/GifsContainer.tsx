@@ -1,6 +1,7 @@
 import React from "react";
 import useGifs from "../../hooks/useGifs";
 import { useSearchContext } from "../../context/SearchContext";
+import GifCard from "../cards/GifCard";
 
 function GifsContainer() {
   const {
@@ -10,9 +11,15 @@ function GifsContainer() {
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useGifs(query);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div>
-      <p>Estoy en el contenedor de gifs</p>
+    <div className="flex w-full flex-wrap gap-4 justify-start p-4 lg:px-12 xl:px-32">
+      {data?.pages.map((page) =>
+        page.data.map((gif) => <GifCard key={gif.id} gif={gif} />)
+      )}
     </div>
   );
 }

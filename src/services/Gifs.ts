@@ -7,7 +7,7 @@ type SearchGifsProps = {
   offset: number;
 };
 
-type GifSearch = {
+export type GifSearch = {
   type: string;
   id: string;
   url: string;
