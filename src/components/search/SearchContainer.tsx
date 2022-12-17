@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import { useSearchContextAction } from "../../context/SearchContext";
 
 function SearchContainer() {
+  // TODO: Cancel the search when the input is the same as the current result
   const location = useLocation();
   const [, setQueryParams] = useSearchParams();
   const { setQuery } = useSearchContextAction();

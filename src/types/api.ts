@@ -72,3 +72,15 @@ export type VideoResponseType = {
     videos_results: VideoResult[];
   };
 };
+
+export type AutoComplete = {
+  value: string;
+  relevance: number;
+  type: string;
+};
+
+export type AutoCompleteResult = {
+  data?: {
+    suggestions: AutoComplete[];
+  };
+};
