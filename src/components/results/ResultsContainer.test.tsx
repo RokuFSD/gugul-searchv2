@@ -5,6 +5,7 @@ import ResultsContainer from "./ResultsContainer";
 import useSearch from "../../hooks/useSearch";
 import { SearchContextProvider } from "../../context/SearchContext";
 import { main, news, video } from "../../mocks/responseMocks";
+import { matches } from "../../utils/testing/windowsProperties";
 
 const mockedUseSearch = useSearch as jest.Mock<any>;
 
@@ -36,12 +37,6 @@ const router = createMemoryRouter(
   }
 );
 
-// const wrapper = ({ children }: { children: ReactNode }) => (
-//   <QueryClientProvider client={queryClient}>
-//     {children}
-//   </QueryClientProvider>
-// );
-
 describe("Results container", () => {
   beforeEach(() => {
     mockedUseSearch.mockImplementation(() => ({ isLoading: true }));
@@ -57,6 +52,11 @@ describe("Results container", () => {
   it("Should render is loading", () => {
     render(<RouterProvider router={router} />);
     expect(screen.getByText("Loading...")).toBeInTheDocument();
+  });
+
+  it("Should render without crashing when there is no data", () => {
+    mockedUseSearch.mockImplementation(() => ({ isLoading: false, data: { data: [] } }));
+    render(<RouterProvider router={router} />);
   });
 
   it("Should render the 'all' data", () => {
@@ -75,21 +75,6 @@ describe("Results container", () => {
   });
 
   it("Should render the 'video' data", () => {
-    // TODO: Put this on an util
-    const matches = {
-      writable: true,
-      value: vitest.fn().mockImplementation((query) => (
-        {
-          matches: parseInt(query, 10) <= 768,
-          media: query,
-          onchange: null,
-          addEventListener: vitest.fn(),
-          removeEventListener: vitest.fn(),
-          dispatchEvent: vitest.fn(),
-          scrollTo: vitest.fn()
-        }
-      ))
-    };
     Object.defineProperty(window, "matchMedia", matches);
     mockedUseSearch.mockImplementation(() => ({ isLoading: false, data: { data: video } }));
     router.navigate("/search/videos");

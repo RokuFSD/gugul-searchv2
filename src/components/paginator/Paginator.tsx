@@ -15,13 +15,13 @@ function Paginator({ data }: PaginatorProps) {
   const totalPages = [...otherPages, `${data?.current}`].sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
 
   function handleClick(page: string) {
+    setPage(parseInt(page, 10));
     setSearchParams((prev) => (
       new URLSearchParams({
         ...Object.fromEntries(prev),
         page
       })
     ));
-    setPage(parseInt(page, 10));
   }
 
   return (

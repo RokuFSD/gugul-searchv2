@@ -11,7 +11,7 @@ function NavbarItem({ path, name }: NavbarItemProps) {
   const { context } = useSearchContext();
   let pathWithQuery = path;
   if (context.query) {
-    pathWithQuery = `${pathWithQuery}?q=${context.query}&page=${context.page}`;
+    pathWithQuery = `${pathWithQuery}?q=${context.query}&page=1`;
   }
   return (
     <li>

@@ -17,10 +17,12 @@ const router = createMemoryRouter(
     {
       path: "/search/:type",
       element: (
-        <div>
-          Successfull search
-          <SearchContainer />
-        </div>
+        <SearchContextProvider>
+          <div>
+            Successfull search
+            <SearchContainer />
+          </div>
+        </SearchContextProvider>
       )
     }
   ],
@@ -53,7 +55,17 @@ describe("Form submit", () => {
     render(<RouterProvider router={router} />);
     const input = screen.getByRole("searchbox");
     const text = screen.getByText(/successfull search/i);
+    fireEvent.submit(screen.getByRole("form"));
     expect(input).toHaveValue("other");
     expect(text).toBeInTheDocument();
+  });
+
+  it("should not submit if the input is empty", () => {
+    router.navigate("/");
+    render(<RouterProvider router={router} />);
+    const input = screen.getByRole("searchbox");
+    fireEvent.submit(screen.getByRole("form"));
+    expect(input).toHaveValue("");
+    expect(screen.queryByText(/successfull search/i)).toBeNull();
   });
 });

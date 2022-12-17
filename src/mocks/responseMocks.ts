@@ -41,6 +41,66 @@ export const aside = {
 };
 
 export const main = {
+  "knowledge_graph": {
+    "title": "Café",
+    "type": "Bebida",
+    "header_images": [{
+      "image": "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde6f2dd2f2d4d04b7e74d8a35bb7b63b22c12c8781de5ab00b.jpeg",
+      "source": "https://es.wikipedia.org/wiki/Caf%C3%A9"
+    }, {
+      "image": "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde6f2dd2f2d4d04b7eae4a808b754e1002f10f9f41a5aaf341.jpeg",
+      "source": "https://www.cronista.com/clase/gourmet/aumento-de-precios-cuanto-sale-tomar-un-cafe-en-buenos-aires/"
+    }, {
+      "image": "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde6f2dd2f2d4d04b7e95800245ec7da0e0a27a9f1a6a046c4b.jpeg",
+      "source": "https://www.infobae.com/tendencias/2022/06/07/festival-feca-una-semana-para-disfrutar-del-mejor-cafe-de-la-ciudad-de-buenos-aires/"
+    }, {
+      "image": "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde6f2dd2f2d4d04b7e54cc75babd2609abaede4d22a81f43f3.jpeg",
+      "source": "https://www.cronista.com/clase/gourmet/Cafe-de-especialidad-donde-comprar-el-mejor-cafe-en-Buenos-Aires-y-que-llegue-a-tu-casa-20200421-0002.html"
+    }],
+    "description": "El café es la bebida que se obtiene a partir de los granos tostados y molidos de los frutos de la planta del café; es altamente estimulante por su contenido de cafeína, ​ una sustancia psicoactiva.​",
+    "source": { "name": "Wikipedia", "link": "https://es.wikipedia.org/wiki/Caf%C3%A9" },
+    "list": {
+      "grasas_totales": ["0 g"],
+      "Ácidos_grasos_saturados": ["0 g"],
+      "Ácidos_grasos_trans": ["0 g"],
+      "colesterol": ["0 mg"],
+      "sodio": ["2 mg"],
+      "potasio": ["49 mg"],
+      "carbohidratos": ["0 g"],
+      "fibra_alimentaria": ["0 g"],
+      "azúcares": ["0 g"],
+      "proteínas": ["0.1 g"],
+      "cafeína": ["40 mg"],
+      "vitamina_c": ["0 mg"],
+      "calcio": ["2 mg"],
+      "hierro": ["0 mg"],
+      "vitamina_d": ["0 IU"],
+      "vitamina_b6": ["0 mg"],
+      "vitamina_b12": ["0 µg"],
+      "magnesio": ["3 mg"]
+    }
+  },
+  "serpapi_pagination": {
+    "current": 1,
+    "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=25",
+    "next": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=25",
+    "other_pages": {
+      "2": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=25",
+      "3": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=50",
+      "4": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=75",
+      "5": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=100",
+      "6": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=125",
+      "7": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=150",
+      "8": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=175",
+      "9": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=200",
+      "10": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=cafe&start=225"
+    }
+  },
+  "local_map": {
+    "link": "https://www.google.com/search?num=25&ucbcb=1&gl=ar&q=cafe&npsic=0&rflfq=1&rldoc=1&rllag=-34603055,-58381661,343&tbm=lcl&sa=X&ved=2ahUKEwj6lJP2kvj7AhU8NEQIHYK3DQkQtgN6BAg4EAE",
+    "image": "https://serpapi.com/searches/63994063aef264a7a3d81914/images/081cb31dd5a632ef0fd54c131e6fb12d.png",
+    "gps_coordinates": { "latitude": -34.603055, "longitude": -58.381661, "altitude": 343 }
+  },
   "organic_results": [
     {
       "position": 1,

@@ -1,10 +1,11 @@
 import React, { FormEvent } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { useSearchContextAction } from "../../context/SearchContext";
 
 function SearchContainer() {
   const location = useLocation();
+  const [, setQueryParams] = useSearchParams();
   const { setQuery } = useSearchContextAction();
   const navigate = useNavigate();
   const isRoot = location.pathname === "/";
@@ -16,11 +17,14 @@ function SearchContainer() {
     ) as { q: string };
     if (values.q === "") return;
     setQuery(values.q);
-    navigate(
-      isRoot
-        ? `/search/all?q=${values.q}&page=1`
-        : `${location.pathname}?q=${values.q}&page=1`
-    );
+    if (isRoot) {
+      navigate(`/search/all?q=${values.q}&page=1`);
+      return;
+    }
+    setQueryParams((prev) => ({
+      ...Object.fromEntries(prev.entries()),
+      q: values.q
+    }));
   }
 
   return (
