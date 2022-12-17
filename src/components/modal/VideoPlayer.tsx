@@ -1,6 +1,4 @@
 import React, { useCallback, useState } from "react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import Modal from "react-modal";
 import Spinner from "../svgs/Spinner";
 

@@ -8,8 +8,8 @@ type PaginatorProps = {
 }
 
 function Paginator({ data }: PaginatorProps) {
-  const { context } = useSearchContext();
   const otherPages = Object.keys(data?.other_pages);
+  const { context } = useSearchContext();
   const { setPage } = useSearchContextAction();
   const [, setSearchParams] = useSearchParams();
   const totalPages = [...otherPages, `${data?.current}`].sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
