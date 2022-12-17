@@ -7,7 +7,7 @@ import { SearchContextProvider } from "../../context/SearchContext";
 import { main, news, video } from "../../mocks/responseMocks";
 import { matches } from "../../utils/testing/windowsProperties";
 
-const mockedUseSearch = useSearch as jest.Mock<any>;
+const mockedUseSearch = useSearch as jest.Mock;
 
 vitest.mock("../../hooks/useSearch");
 
@@ -97,4 +97,3 @@ describe("Results container", () => {
     expect(screen.getByText(video.video_results[0].title)).toBeInTheDocument();
   });
 });
-

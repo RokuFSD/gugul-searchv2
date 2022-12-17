@@ -24,11 +24,11 @@
     ]
   },
   "include": [
-    "testSetup.ts",
+    "src",
+    "src/testSetup.ts",
     ".eslintrc.json",
     "vite.config.ts",
-    "cypress.config.ts",
-    "src"
+    "cypress.config.ts"
   ],
   "references": [
     {

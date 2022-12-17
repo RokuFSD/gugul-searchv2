@@ -3,7 +3,7 @@ import { cleanup } from "@testing-library/react";
 import matchers from "@testing-library/jest-dom/matchers";
 import "@testing-library/jest-dom";
 import { setupServer } from "msw/node";
-import { handlers } from "./src/utils/testing/restService";
+import { handlers } from "./utils/testing/restService";
 
 expect.extend(matchers);
 
