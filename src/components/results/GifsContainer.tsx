@@ -15,6 +15,7 @@ function GifsContainer() {
     return <div>Loading...</div>;
   }
 
+  // TODO: Add a loading spinner when fetching next page
   return (
     <div className="flex w-full flex-wrap gap-4 justify-start p-4 lg:px-12 xl:px-32">
       {data?.pages.map((page) =>

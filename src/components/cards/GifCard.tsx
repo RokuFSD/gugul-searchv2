@@ -7,7 +7,7 @@ type GifCardProps = {
 
 function GifCard({ gif }: GifCardProps) {
   return (
-    <div className="v">
+    <div>
       <img
         src={gif.images.fixed_height.url}
         alt={gif.title}
@@ -15,6 +15,7 @@ function GifCard({ gif }: GifCardProps) {
         width={gif.images.fixed_height.width}
         height={gif.images.fixed_height.height}
         title={gif.title}
+        data-testid="gif-card"
       />
     </div>
   );

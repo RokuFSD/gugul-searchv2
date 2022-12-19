@@ -61,6 +61,10 @@ export type ResponseType = {
       title: string;
       type: string;
       description: string;
+      source: {
+        link: string,
+        name: string
+      },
       header_images?: HeaderImage[];
       [key: string]: unknown;
     };

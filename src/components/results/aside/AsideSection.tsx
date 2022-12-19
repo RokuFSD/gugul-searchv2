@@ -30,10 +30,9 @@ function AsideSection({ data }: AsideSectionProps) {
     title,
     description,
     type,
-    source,
+    source: {link, name},
     ...rest
   } = data;
-  const { link, name } = source as { link: string; name: string };
   return (
     <aside className="relative overflow-hidden md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-auto">
       {headerImages && <HeaderImagesCard data={headerImages} />}
