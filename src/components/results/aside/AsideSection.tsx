@@ -30,8 +30,8 @@ function AsideSection({ data }: AsideSectionProps) {
     title,
     description,
     type,
-    source: {link, name},
-    ...rest
+    source: { link, name },
+    list,
   } = data;
   return (
     <aside className="relative overflow-hidden md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-auto">
@@ -59,7 +59,7 @@ function AsideSection({ data }: AsideSectionProps) {
             exit="hidden"
             transition={{ duration: 0.4 }}
           >
-            <AsideDetails data={rest} />
+            <AsideDetails data={list} />
           </motion.div>
         )}
       </AnimatePresence>

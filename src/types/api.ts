@@ -62,10 +62,11 @@ export type ResponseType = {
       type: string;
       description: string;
       source: {
-        link: string,
-        name: string
-      },
+        link: string;
+        name: string;
+      };
       header_images?: HeaderImage[];
+      list: { title: string; description: string | string[] }[];
       [key: string]: unknown;
     };
   };

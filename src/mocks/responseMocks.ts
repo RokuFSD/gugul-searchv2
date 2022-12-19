@@ -674,26 +674,118 @@ export const aside = {
       name: "Wikipedia",
       link: "https://es.wikipedia.org/wiki/Caf%C3%A9",
     },
-    list: {
-      grasas_totales: ["0 g"],
-      Ácidos_grasos_saturados: ["0 g"],
-      Ácidos_grasos_trans: ["0 g"],
-      colesterol: ["0 mg"],
-      sodio: ["2 mg"],
-      potasio: ["49 mg"],
-      carbohidratos: ["0 g"],
-      fibra_alimentaria: ["0 g"],
-      azúcares: ["0 g"],
-      proteínas: ["0.1 g"],
-      cafeína: ["40 mg"],
-      vitamina_c: ["0 mg"],
-      calcio: ["2 mg"],
-      hierro: ["0 mg"],
-      vitamina_d: ["0 IU"],
-      vitamina_b6: ["0 mg"],
-      vitamina_b12: ["0 µg"],
-      magnesio: ["3 mg"],
-    },
+    otras_personas_también_buscan: [
+      {
+        name: "Té",
+        link: "https://www.google.com/search?num=25&ucbcb=1&gl=ar&q=T%C3%A9&si=AC1wQDCwN61-ebmuwbQCO5QCrgOvEq5bkWeIzJ5JczItzAKNdRSFsXPfJu5WOXSQWByEtIwJXMN3d39KLNo2TzvmRqQ6yzxkCJsX32XsU2yeUOI3tteGn5yOzSs2jSLdCpmaS9THvLCSvPvyESiGk40uHPs3oiLNSWfaIuQfO-cSVqvwuSl0YfluBsxL-_3mzNeT8wHcPdsa9UWBeDqYrMswtlbo7IY7MnejQqat9hto0Er12oD8IJrqZDvlejaVj7qT8Y3Ugozh1NVQZsEzEkt1BQl8eAzJig%3D%3D&sa=X&ved=2ahUKEwj6lJP2kvj7AhU8NEQIHYK3DQkQxA16BAg1EAU",
+        serpapi_link:
+          "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=T%C3%A9&si=AC1wQDCwN61-ebmuwbQCO5QCrgOvEq5bkWeIzJ5JczItzAKNdRSFsXPfJu5WOXSQWByEtIwJXMN3d39KLNo2TzvmRqQ6yzxkCJsX32XsU2yeUOI3tteGn5yOzSs2jSLdCpmaS9THvLCSvPvyESiGk40uHPs3oiLNSWfaIuQfO-cSVqvwuSl0YfluBsxL-_3mzNeT8wHcPdsa9UWBeDqYrMswtlbo7IY7MnejQqat9hto0Er12oD8IJrqZDvlejaVj7qT8Y3Ugozh1NVQZsEzEkt1BQl8eAzJig%3D%3D",
+        image:
+          "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde656da01daed1c93a31841273b79f025011731627c5ad8bf3cb84674e1123f9b14ab1a9127e7b5ee7.jpeg",
+      },
+      {
+        name: "Café expreso",
+        link: "https://www.google.com/search?num=25&ucbcb=1&gl=ar&q=Caf%C3%A9+expreso&si=AC1wQDCwN61-ebmuwbQCO5QCrgOvEq5bkWeIzJ5JczItzAKNdc7y1htpUhjct94xXjDl6LMiW77cnoyZ-MeiiEeueR9M9i0XZAPhrebsTvcaF0Nq6PxPC6H0-3g5IHhh7h4syQx_drlazuwwaUYriJETOmdMM_51OK7HJcHvcp7zISY5lXy1te3yAgSRnZ8Za6mjEPMcbnzgYEaK0yk2GKtBuDcIEXSvfS5AeSd0Q_0zAzcIRxjoWYH6jPDG21CEKn20zeg3AP36sjQAvzYS_qGKIPhGXh2AOeYEvHH7pXmGhKOMkrreT-c%3D&sa=X&ved=2ahUKEwj6lJP2kvj7AhU8NEQIHYK3DQkQxA16BAg1EAc",
+        serpapi_link:
+          "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=Caf%C3%A9+expreso&si=AC1wQDCwN61-ebmuwbQCO5QCrgOvEq5bkWeIzJ5JczItzAKNdc7y1htpUhjct94xXjDl6LMiW77cnoyZ-MeiiEeueR9M9i0XZAPhrebsTvcaF0Nq6PxPC6H0-3g5IHhh7h4syQx_drlazuwwaUYriJETOmdMM_51OK7HJcHvcp7zISY5lXy1te3yAgSRnZ8Za6mjEPMcbnzgYEaK0yk2GKtBuDcIEXSvfS5AeSd0Q_0zAzcIRxjoWYH6jPDG21CEKn20zeg3AP36sjQAvzYS_qGKIPhGXh2AOeYEvHH7pXmGhKOMkrreT-c%3D",
+        image:
+          "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde656da01daed1c93a31841273b79f025011731627c5ad8bf31ae2cfd6bf73ce043d761ea91a2eb9d2.jpeg",
+      },
+      {
+        name: "Capuchino",
+        link: "https://www.google.com/search?num=25&ucbcb=1&gl=ar&q=Capuchino&si=AC1wQDCwN61-ebmuwbQCO5QCrgOvEq5bkWeIzJ5JczItzAKNdULkFzXknmQHAZwiDIWa2VTDxbhPrUjWbYBX9-qSl7hAnTSJrIHeDh1VaZKXfYn8mcswdkYyT-XfL2osZwFwxTOHPa_nnvQZmL1TgpTaU_lxg7WsOrQ76WH93icNBFJWrLSlPxavV41MozGl13SL-7vvfINgyGG9-RU13fbAtZrRhRNJdUfjARvMo4GoCWUaDG8iSrnRko2P8sDiG-mvnFtLQs_ovFEvgCdmFmp0uXoQ3ubdpDnjqOpG2-0O7inpbAqWYww%3D&sa=X&ved=2ahUKEwj6lJP2kvj7AhU8NEQIHYK3DQkQxA16BAg1EAk",
+        serpapi_link:
+          "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=Capuchino&si=AC1wQDCwN61-ebmuwbQCO5QCrgOvEq5bkWeIzJ5JczItzAKNdULkFzXknmQHAZwiDIWa2VTDxbhPrUjWbYBX9-qSl7hAnTSJrIHeDh1VaZKXfYn8mcswdkYyT-XfL2osZwFwxTOHPa_nnvQZmL1TgpTaU_lxg7WsOrQ76WH93icNBFJWrLSlPxavV41MozGl13SL-7vvfINgyGG9-RU13fbAtZrRhRNJdUfjARvMo4GoCWUaDG8iSrnRko2P8sDiG-mvnFtLQs_ovFEvgCdmFmp0uXoQ3ubdpDnjqOpG2-0O7inpbAqWYww%3D",
+        image:
+          "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde656da01daed1c93a31841273b79f025011731627c5ad8bf3b5a3f277d8f1ab85f660a39174ebb917.jpeg",
+      },
+      {
+        name: "café con leche",
+        link: "https://www.google.com/search?num=25&ucbcb=1&gl=ar&q=latte&si=AC1wQDDagiMg03ncxeOQZbwVe-CJxRCchC-jr2hCPTxjc9wbgJzsdviBlFp4lUatRHRmKwjpYS2jmC5AjWoSRJFtzJOnY1VGuobGpOymh6kBTHbMemHA5cepLGPmsUCUbMlAP7K08XGbPFZrCnbL8eVUxejjhnojpAevwxOMj8QeUz3iaisjmobNt89p5CMaVNPNzh1b90VhhULDDE1Zn1FsK8t6cPl9C-xIZaktylJqL61U8oRIM5s-iKlpEJfYtDAcEk84BHEbM8USjbHOdChXwWn9LF3_BOX9pujl7WJeZq2TnThiAtQ%3D&sa=X&ved=2ahUKEwj6lJP2kvj7AhU8NEQIHYK3DQkQxA16BAg1EAs",
+        serpapi_link:
+          "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com&location=Buenos+Aires%2C+Buenos+Aires%2C+Argentina&num=25&q=latte&si=AC1wQDDagiMg03ncxeOQZbwVe-CJxRCchC-jr2hCPTxjc9wbgJzsdviBlFp4lUatRHRmKwjpYS2jmC5AjWoSRJFtzJOnY1VGuobGpOymh6kBTHbMemHA5cepLGPmsUCUbMlAP7K08XGbPFZrCnbL8eVUxejjhnojpAevwxOMj8QeUz3iaisjmobNt89p5CMaVNPNzh1b90VhhULDDE1Zn1FsK8t6cPl9C-xIZaktylJqL61U8oRIM5s-iKlpEJfYtDAcEk84BHEbM8USjbHOdChXwWn9LF3_BOX9pujl7WJeZq2TnThiAtQ%3D",
+        image:
+          "https://serpapi.com/searches/63994063aef264a7a3d81914/images/28700ee96c586cbcde629a5676f3adde656da01daed1c93a31841273b79f025011731627c5ad8bf3035d1efc531b30e7322c130ad265ce28.jpeg",
+      },
+    ],
+    otras_personas_también_buscan_link:
+      "https://www.google.com/search?num=25&ucbcb=1&gl=ar&q=Caf%C3%A9&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtVQjC1BIMzU1LLEyuL_VIrSoJLUguKF7GyOiemHV65g5URACehra02AAAA&sa=X&ved=2ahUKEwj6lJP2kvj7AhU8NEQIHYK3DQkQMSgAegQINRAB",
+    otras_personas_también_buscan_stick:
+      "H4sIAAAAAAAAAONgFuLUz9U3MCorTMtVQjC1BIMzU1LLEyuL_VIrSoJLUguKF7GyOiemHV65g5URACehra02AAAA",
+    list: [
+      {
+        title: "grasas_totales",
+        description: ["0 g"],
+      },
+      {
+        title: "Ácidos_grasos_saturados",
+        description: ["0 g"],
+      },
+      {
+        title: "Ácidos_grasos_trans",
+        description: ["0 g"],
+      },
+      {
+        title: "colesterol",
+        description: ["0 mg"],
+      },
+      {
+        title: "sodio",
+        description: ["2 mg"],
+      },
+      {
+        title: "potasio",
+        description: ["49 mg"],
+      },
+      {
+        title: "carbohidratos",
+        description: ["0 g"],
+      },
+      {
+        title: "fibra_alimentaria",
+        description: ["0 g"],
+      },
+      {
+        title: "azúcares",
+        description: ["0 g"],
+      },
+      {
+        title: "proteínas",
+        description: ["0.1 g"],
+      },
+      {
+        title: "cafeína",
+        description: ["40 mg"],
+      },
+      {
+        title: "vitamina_c",
+        description: ["0 mg"],
+      },
+      {
+        title: "calcio",
+        description: ["2 mg"],
+      },
+      {
+        title: "hierro",
+        description: ["0 mg"],
+      },
+      {
+        title: "vitamina_d",
+        description: ["0 IU"],
+      },
+      {
+        title: "vitamina_b6",
+        description: ["0 mg"],
+      },
+      {
+        title: "vitamina_b12",
+        description: ["0 µg"],
+      },
+      {
+        title: "magnesio",
+        description: ["3 mg"],
+      },
+    ],
   },
 };
 

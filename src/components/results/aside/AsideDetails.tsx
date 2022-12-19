@@ -1,39 +1,22 @@
 import React from "react";
 
 type AsideDetailsProps = {
-  data: { [key: string]: unknown };
+  data: { title: string; description: string | string[] }[];
 };
 
 function AsideDetails({ data }: AsideDetailsProps) {
-  const { list } = data;
-
-  const toMap = (list || data) as { [key: string]: string };
-
-  // TODO: Move this logic to the backend
-  const details = Object.keys(toMap).filter((key) => {
-    if (Array.isArray(toMap[key])) {
-      return toMap[key].length < 2 && typeof toMap[key][0] === "string";
-    }
-    return (
-      !key.match(/link/gi) &&
-      !key.match(/links/gi) &&
-      !key.match(/stick/gi) &&
-      typeof toMap[key] === "string"
-    );
-  });
-
   return (
     <table className="table-auto max-w-md md:max-w-full w-full md:relative">
       <tbody>
-        {details.map((detail, index) => (
+        {data.map((detail, index) => (
           <tr
-            key={detail}
+            key={detail.title}
             className={`flex justify-start ${
               index % 2 === 0 ? "bg-gray-600" : ""
             } md:px-10 lg:px-4`}
           >
-            <th className="basis-7/12 text-start">{detail}</th>
-            <td className="basis-5/12 text-end">{toMap[detail]}</td>
+            <th className="basis-7/12 text-start">{detail.title}</th>
+            <td className="basis-5/12 text-end">{detail.description}</td>
           </tr>
         ))}
       </tbody>
@@ -42,4 +25,3 @@ function AsideDetails({ data }: AsideDetailsProps) {
 }
 
 export default AsideDetails;
-

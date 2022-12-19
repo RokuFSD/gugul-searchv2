@@ -5,7 +5,10 @@ import AsideSection from "../AsideSection";
 import { aside } from "../../../../mocks/responseMocks";
 
 beforeEach(() => {
-  Object.defineProperty(global, "scrollTo", { value: vitest.fn(), writable: true });
+  Object.defineProperty(global, "scrollTo", {
+    value: vitest.fn(),
+    writable: true,
+  });
 });
 
 describe("AsideSection", () => {
