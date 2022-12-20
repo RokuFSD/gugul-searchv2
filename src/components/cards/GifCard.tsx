@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { GifSearch } from "../../services/Gifs";
 
 type GifCardProps = {
@@ -21,4 +21,4 @@ function GifCard({ gif }: GifCardProps) {
   );
 }
 
-export default GifCard;
+export default memo(GifCard);
