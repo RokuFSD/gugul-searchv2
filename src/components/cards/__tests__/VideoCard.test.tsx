@@ -2,7 +2,10 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import VideoCard from "../VideoCard";
 import { video } from "../../../mocks/responseMocks";
-import { matches, matchesAlwaysTrue } from "../../../utils/testing/windowsProperties";
+import {
+  matches,
+  matchesAlwaysTrue,
+} from "../../../utils/testing/windowsProperties";
 
 beforeEach(() => {
   Object.defineProperty(window, "matchMedia", matches);
@@ -11,7 +14,9 @@ beforeEach(() => {
 describe("VideoCard component", () => {
   it("should render without errors", () => {
     render(<VideoCard item={video.video_results[0]} />);
-    expect(screen.getByText(video.video_results[0].snippet)).toBeInTheDocument();
+    expect(
+      screen.getByText(video.video_results[0].snippet)
+    ).toBeInTheDocument();
   });
 
   it("should render without thumbnail", () => {
@@ -39,9 +44,9 @@ describe("VideoCard component", () => {
   });
 
   it("should not render the VideoPlayer if is not youtube", () => {
-    render(<VideoCard item={video.video_results[video.video_results.length - 1]} />);
+    render(
+      <VideoCard item={video.video_results[video.video_results.length - 1]} />
+    );
     expect(screen.queryByTestId("player-button")).toBeNull();
   });
-
 });
-

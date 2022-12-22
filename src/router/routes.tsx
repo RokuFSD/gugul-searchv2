@@ -4,6 +4,7 @@ import App from "../App";
 import SearchPage from "./pages/SearchPage";
 import ResultsContainer from "../components/results/ResultsContainer";
 import GifsContainer from "../components/results/GifsContainer";
+import AuthPage from "./pages/AuthPage";
 
 const routes = [
   {
@@ -27,6 +28,10 @@ const routes = [
             element: <ResultsContainer />,
           },
         ],
+      },
+      {
+        path: "/auth",
+        element: <AuthPage />,
       },
     ],
   },

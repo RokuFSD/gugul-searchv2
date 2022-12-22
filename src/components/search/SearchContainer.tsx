@@ -28,7 +28,7 @@ function SearchContainer() {
   }
 
   return (
-    <form onSubmit={handleSubmit} name="search">
+    <form onSubmit={handleSubmit} name="search" className="basis-full order-2">
       <SearchBar />
     </form>
   );
