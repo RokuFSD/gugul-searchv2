@@ -1,8 +1,8 @@
 import React, { useMemo, useRef } from "react";
 import useGifs from "../../hooks/useGifs";
-import { useSearchContext } from "../../context/SearchContext";
 import GifCard from "../cards/GifCard";
 import useIntersectionObserver from "../../hooks/useInScreen";
+import { useSearchContext } from "../../context/SearchContext";
 
 function GifsContainer() {
   const ref = useRef(null);
@@ -12,7 +12,6 @@ function GifsContainer() {
 
   const {
     data,
-    isLoading,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
