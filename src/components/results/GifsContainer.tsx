@@ -36,7 +36,7 @@ function GifsContainer() {
         // TODO: Make this a skeleton
         <div>Cllado bvooboboooooo</div>
       ) : (
-        <div className="flex w-full flex-wrap gap-4 justify-start p-4 lg:px-12 xl:px-32">
+        <div className="flex w-full max-w-7xl mx-auto flex-wrap justify-center p-4 md:px-12 xl:px-32 gap-10">
           {pages?.map((page) =>
             page.data.map((gif) => <GifCard key={gif.id} gif={gif} />)
           )}

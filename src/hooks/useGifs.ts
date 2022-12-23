@@ -14,6 +14,7 @@ function useGifs(q: string) {
     ["gifs", q],
     ({ pageParam = 0 }) => Gifs.search({ offset: pageParam }),
     {
+      staleTime: Infinity,
       getNextPageParam: (lastPage, allPages) => {
         const { total_count: totalCount, count, offset } = lastPage.pagination;
         const totalPages = totalCount / count;
