@@ -11,7 +11,7 @@ function GifCard({ gif }: GifCardProps) {
 
   function handleKeyPress(e: KeyboardEvent | React.KeyboardEvent) {
     // Get focusable childs
-    if (e.key !== "Tab") return;
+    if (e.key !== "Tab" || !cardRef.current) return;
     const focusable = cardRef.current.querySelectorAll("a, button, input");
     // Get the first focusable child
     const firstFocusable = focusable[0] as HTMLElement;

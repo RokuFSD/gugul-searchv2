@@ -1,10 +1,12 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
 import SearchPage from "./pages/SearchPage";
 import ResultsContainer from "../components/results/ResultsContainer";
 import GifsContainer from "../components/results/GifsContainer";
 import AuthPage from "./pages/AuthPage";
+import { PublicRoutes, PrivateRoutes } from "../models/routes";
+import PrivateGuard from "./guards/PrivateGuard";
 
 const routes = [
   {
@@ -16,22 +18,40 @@ const routes = [
         element: <SearchPage />,
       },
       {
-        path: "/search",
+        path: PublicRoutes.SEARCH,
         element: <SearchPage />,
         children: [
           {
-            path: "/search/gifs",
+            path: `${PublicRoutes.SEARCH}/gifs`,
             element: <GifsContainer />,
           },
           {
-            path: "/search/:type",
+            path: `${PublicRoutes.SEARCH}/:type`,
             element: <ResultsContainer />,
           },
         ],
       },
       {
-        path: "/auth",
+        path: `${PublicRoutes.AUTH}`,
         element: <AuthPage />,
+      },
+      {
+        path: `${PrivateRoutes.PROFILE}`,
+        element: <Navigate to={PrivateRoutes.PRIVATE} />,
+      },
+      {
+        element: <PrivateGuard />,
+        path: PrivateRoutes.PRIVATE,
+        children: [
+          {
+            index: true,
+            element: <Navigate to={PrivateRoutes.PROFILE} />,
+          },
+          {
+            path: PrivateRoutes.PROFILE,
+            element: <div>En perfil</div>,
+          },
+        ],
       },
     ],
   },

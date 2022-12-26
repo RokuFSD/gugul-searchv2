@@ -3,9 +3,11 @@ import React, {
   ReactNode,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
+import Auth from "../services/Auth";
 
 type AuthContext = {
   isLoggedIn: boolean;
@@ -36,6 +38,22 @@ export default function AuthContextProvider({
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const action = useMemo(() => ({ setIsLoggedIn: setLogged }), []);
+
+  useEffect(() => {
+    async function authEndpoint() {
+      try {
+        const user = await Auth.me();
+        if (user) {
+          setIsLogged(true);
+        }
+        return;
+      } catch (e) {
+        setIsLogged(false);
+      }
+    }
+
+    authEndpoint();
+  }, []);
 
   return (
     <authContext.Provider value={loggedValue}>
