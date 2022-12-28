@@ -1,19 +1,14 @@
 import React from "react";
-import axios from "axios";
 import * as Form from "../../components/form";
-
-async function submit(data: { [p: string]: FormDataEntryValue }) {
-  const result = await axios.post("http://localhost:5005/auth/login", data, {
-    withCredentials: true,
-  });
-  return result?.data;
-}
+import { login, logout } from "../../redux/features/auth/thunkActions";
+import { useAppDispatch } from "../../redux/hooks/store";
 
 function AuthPage() {
+  const dispatch = useAppDispatch();
   return (
     <div>
       <Form.Form
-        onSubmit={(e) => submit(e)}
+        onSubmit={(e) => dispatch(login(e))}
         initialValues={{ username: "", password: "" }}
       >
         <Form.FormInput
@@ -30,6 +25,9 @@ function AuthPage() {
         />
         <Form.FormSubmit>Log-In</Form.FormSubmit>
       </Form.Form>
+      <button type="button" onClick={() => dispatch(logout())}>
+        Log out
+      </button>
     </div>
   );
 }

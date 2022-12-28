@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { selectUser } from "../../redux/features/auth/authSlice";
+import { useAppSelector } from "../../redux/hooks/store";
 
 function PrivateRoute() {
-  const { isLoggedIn } = useAuth();
-
-  if (isLoggedIn) return <Outlet />;
+  const user = useAppSelector(selectUser);
+  if (user.username) return <Outlet />;
 
   return <Navigate to="/auth" />;
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAppSelector } from "../../redux/hooks/store";
+import { selectUser } from "../../redux/features/auth/authSlice";
 
 function UserCard() {
-  const { isLoggedIn } = useAuth();
-  if (!isLoggedIn) {
+  const user = useAppSelector(selectUser);
+  if (!user.username) {
     return (
       <div className="flex block order-1 md:absolute right-8 lg:right-32 items-center md:h-14">
         <Link to="/auth" className="">

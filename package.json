@@ -13,6 +13,7 @@
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css,md}"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tanstack/react-query": "^4.19.1",
     "@tanstack/react-query-devtools": "^4.19.1",
@@ -21,6 +22,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.5"
   },
   "devDependencies": {
