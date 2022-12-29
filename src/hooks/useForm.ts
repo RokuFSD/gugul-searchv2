@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps,react-hooks/rules-of-hooks */
-import { AxiosError } from "axios";
 import { FormEvent, useCallback, useRef, useSyncExternalStore } from "react";
-import { ValidationArr, ErrorType, FormErrors } from "../types/form";
+import { ValidationArr, ErrorType } from "../types/form";
 
 function validate<T>(validationsArr: ValidationArr[], values: T) {
   const anyErrors = validationsArr.reduce(
@@ -51,6 +50,8 @@ function useForm<T>(
       });
       formErrors.current = arrErrors;
       isValid.current = valid;
+    } else {
+      formErrors.current = {};
     }
     subscribers.current.forEach((callback) => callback());
   }, []);
@@ -78,17 +79,17 @@ function useForm<T>(
     e.preventDefault();
     if (!isValid) return;
     const data = new FormData(e.currentTarget);
-    try {
-      const result = await onSubmit(Object.fromEntries(data.entries()));
-      console.log("Result", result);
-    } catch (err) {
-      const error = err as AxiosError<FormErrors>;
-      const errorResponse = error?.response;
-      if (errorResponse) {
-        formErrors.current[errorResponse.data.type] =
-          errorResponse.data.message;
-      }
+    // We are using redux here for the error handling because the logic is in thunk actions
+    const result = await onSubmit(Object.fromEntries(data.entries()));
+    // Check if result is an instance of Thunk
+    if (result && typeof result === "object" && "payload" in result) {
+      const payload = result.payload as {
+        message: string;
+        type: string;
+      };
+      formErrors.current[payload.type] = payload.message;
     }
+    subscribers.current.forEach((callback) => callback());
   }, []);
 
   return {

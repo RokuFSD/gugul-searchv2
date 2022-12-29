@@ -1,8 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import Auth from "../../../services/Auth";
+import { User } from "../../../models/user";
 
-export const login = createAsyncThunk(
+export const login = createAsyncThunk<
+  User,
+  { username: string; password: string },
+  { rejectValue: { message: string; type: string } }
+>(
   "auth/login",
   async (
     { username, password }: { username: string; password: string },
@@ -12,7 +17,7 @@ export const login = createAsyncThunk(
       const { data } = await Auth.login({ username, password });
       return data;
     } catch (e) {
-      const error = e as AxiosError;
+      const error = e as AxiosError<{ message: string; type: string }>;
       if (!error.response) {
         throw e;
       }
@@ -37,18 +42,19 @@ export const logout = createAsyncThunk(
   }
 );
 
-export const me = createAsyncThunk(
-  "auth/me",
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await Auth.me();
-      return data;
-    } catch (e) {
-      const error = e as AxiosError;
-      if (!error.response) {
-        throw e;
-      }
-      return rejectWithValue(error?.response?.data);
+export const me = createAsyncThunk<
+  User,
+  void,
+  { rejectValue: { message: string; type: string } }
+>("auth/me", async (_, { rejectWithValue }) => {
+  try {
+    const { data } = await Auth.me();
+    return data;
+  } catch (e) {
+    const error = e as AxiosError<{ message: string; type: string }>;
+    if (!error.response) {
+      throw e;
     }
+    return rejectWithValue(error?.response?.data);
   }
-);
+});

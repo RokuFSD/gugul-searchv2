@@ -41,7 +41,9 @@ function FormInput<T>({
         }
         data-state={error && touch ? "error" : "idle"}
         placeholder={placeholder}
-        className={className}
+        className={`${className} ${
+          touch && error ? "border-red-500 focus:border-red-500" : ""
+        }`}
         onBlur={() => setTouch(true)}
         required={required}
       />

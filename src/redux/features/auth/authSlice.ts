@@ -6,9 +6,17 @@ import type { RootState } from "../../app/store";
 const INITIAL_AUTH = {
   user: { username: "" },
   loading: false,
+  error: {
+    message: "",
+    type: "",
+  },
 } as {
   user: { username: string };
   loading: boolean;
+  error: {
+    message: string;
+    type: string;
+  };
 };
 
 const authSlice = createSlice({
@@ -29,6 +37,12 @@ const authSlice = createSlice({
 
     builder.addCase(logout.fulfilled, (state) => {
       state.user = INITIAL_AUTH.user;
+    });
+
+    builder.addCase(login.rejected, (state, action) => {
+      if (action.payload) {
+        state.error = { ...action.payload };
+      }
     });
     builder.addCase(me.pending, (state) => {
       state.loading = true;
