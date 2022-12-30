@@ -37,10 +37,9 @@ function useForm<T>(
 
   const values = useRef<T>(initialValues);
   const isValid = useRef(initialIsValid);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const isSubmitting = useRef(false);
   const formErrors = useRef<ErrorType>(initialErrors);
   const subscribers = useRef(new Set<() => void>());
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const get = useCallback(() => values.current, []);
 
@@ -93,7 +92,7 @@ function useForm<T>(
     const data = new FormData(e.currentTarget);
     // We are using redux here for the error handling because the logic is in thunk actions
     const result = await onSubmit(Object.fromEntries(data.entries()));
-    // Check if result is an instance of Thunk
+    // Check if result is an error result of the Thunk
     if (result && typeof result === "object" && "payload" in result) {
       const payload = result.payload as {
         message: string;

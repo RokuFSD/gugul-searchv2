@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SearchContextProvider } from "../../context/SearchContext";
 import GifsContainer from "./GifsContainer";
 import { gifs } from "../../mocks/responseMocks";
+import { IntersectionObserverMock } from "../../utils/testing/windowsProperties";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +29,9 @@ const router = createMemoryRouter([
     ),
   },
 ]);
+
+// Define Intersection Observer global
+Object.defineProperty(window, "IntersectionObserver", IntersectionObserverMock);
 
 describe("Results container", () => {
   it("Should render a state of loading", () => {

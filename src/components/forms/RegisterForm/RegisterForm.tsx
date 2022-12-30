@@ -8,6 +8,7 @@ function RegisterForm() {
   const dispatch = useAppDispatch();
   return (
     <div className="flex h-screen items-center justify-center">
+      {/* TODO: Add validations here */}
       <Form.Form
         className="max-w-xs flex items-center justify-center flex-wrap gap-4"
         onSubmit={(e) => dispatch(login(e))}

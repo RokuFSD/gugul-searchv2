@@ -22,19 +22,15 @@ function GifsContainer() {
 
   const pages = useMemo(() => data?.pages, [data]);
 
-  function fetchNext() {
-    fetchNextPage();
-  }
-
   if (inScreen && hasNextPage && !isFetchingNextPage) {
-    fetchNext();
+    fetchNextPage();
   }
 
   return (
     <section className="flex flex-col py-6">
       {isInitialLoading ? (
         // TODO: Make this a skeleton
-        <div>Cllado bvooboboooooo</div>
+        <div>Loading...</div>
       ) : (
         <div className="flex w-full max-w-7xl mx-auto flex-wrap justify-center p-4 md:px-12 xl:px-32 gap-10">
           {pages?.map((page) =>
@@ -47,7 +43,7 @@ function GifsContainer() {
         ref={ref}
         type="button"
         disabled={!hasNextPage || isFetchingNextPage}
-        onClick={() => fetchNext()}
+        onClick={() => fetchNextPage()}
         className="border-2 transition-colors rounded mx-auto w-40 h-14 hover:bg-gray-200 hover:text-neutral-700 active:bg-gray-300 active:text-neutral-700"
       >
         Load more
