@@ -1,4 +1,6 @@
-import React, { ReactNode, useMemo, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { ReactNode, useEffect, useMemo, useState } from "react";
+import selectView from "../../router/pages/services/selectView";
 
 type DualViewProps = {
   first: ReactNode;
@@ -43,22 +45,19 @@ function makeViews({
 function DualView({ first, second }: DualViewProps) {
   const views = useMemo(
     () => makeViews({ firstElement: first, secondElement: second }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
   const [currentView, setCurrentView] = useState(views.first);
-  return (
-    <>
-      {currentView.element}
-      <button
-        type="button"
-        onClick={() => setCurrentView((prev) => prev.next())}
-      >
-        Toggle View
-      </button>
-    </>
-  );
+  const subscription = selectView.getSubject();
+
+  subscription.subscribe((value) => {
+    if (value) {
+      setCurrentView((prev) => prev.next());
+    }
+  });
+
+  return currentView.element;
 }
 
 export default DualView;
