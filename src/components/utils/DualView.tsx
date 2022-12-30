@@ -3,17 +3,17 @@ import React, { ReactNode, useEffect, useMemo, useState } from "react";
 import selectView from "../../router/pages/services/selectView";
 
 type DualViewProps = {
-  first: ReactNode;
-  second: ReactNode;
+  first: JSX.Element;
+  second: JSX.Element;
 };
 
 type Views = {
   first: {
-    element: ReactNode;
+    element: JSX.Element;
     next: () => Views["second"];
   };
   second: {
-    element: ReactNode;
+    element: JSX.Element;
     next: () => Views["first"];
   };
 };
@@ -22,8 +22,8 @@ function makeViews({
   firstElement,
   secondElement,
 }: {
-  firstElement: ReactNode;
-  secondElement: ReactNode;
+  firstElement: JSX.Element;
+  secondElement: JSX.Element;
 }): Views {
   const resultViews: Views = {
     first: {

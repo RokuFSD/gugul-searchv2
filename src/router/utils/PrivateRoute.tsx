@@ -5,7 +5,7 @@ import { useAppSelector } from "../../redux/hooks/store";
 
 function PrivateRoute() {
   const user = useAppSelector(selectUser);
-  if (user.username) return <Outlet />;
+  if (user.email) return <Outlet />;
 
   return <Navigate to="/auth" />;
 }

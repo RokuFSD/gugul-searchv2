@@ -20,13 +20,13 @@ function PrivateGuard() {
         .finally(() => setIsLoading(false));
     }
 
-    if (!user.username) {
+    if (!user.email) {
       setIsLoading(true);
       fetchUser();
     }
   }, []);
 
-  if (!user.username) {
+  if (!user.email) {
     return isLoading ? (
       <div>Loading...</div>
     ) : (

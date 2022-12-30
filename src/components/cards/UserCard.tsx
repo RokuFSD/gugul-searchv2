@@ -5,7 +5,7 @@ import { selectUser } from "../../redux/features/auth/authSlice";
 
 function UserCard() {
   const user = useAppSelector(selectUser);
-  if (!user.username) {
+  if (!user.email) {
     return (
       <div className="flex block order-1 md:absolute right-8 lg:right-32 items-center md:h-14">
         <Link to="/auth" className="">
