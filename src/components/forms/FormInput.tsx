@@ -1,5 +1,10 @@
 /* eslint-disable react/require-default-props */
-import React, { ChangeEvent, HTMLInputTypeAttribute, useState } from "react";
+import React, {
+  ChangeEvent,
+  HTMLInputTypeAttribute,
+  useRef,
+  useState,
+} from "react";
 
 export type IFormInput<T> = {
   name: string; // Change this to accept only keys in the store context
@@ -25,12 +30,17 @@ function FormInput<T>({
   if (!valueSelector || !errorSelector) {
     throw new Error("FormInput must be used inside a Form component");
   }
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [value, setValue] = valueSelector((state: any) => state[name]);
   const [touch, setTouch] = useState(false);
   const error = errorSelector(name);
+  if (error && inputRef.current) {
+    inputRef.current.focus();
+  }
   return (
     <>
       <input
+        ref={inputRef}
         name={name}
         type={type}
         value={value}
@@ -42,7 +52,7 @@ function FormInput<T>({
         data-state={error && touch ? "error" : "idle"}
         placeholder={placeholder}
         className={`${className} ${
-          touch && error ? "border-red-500 focus:border-red-500" : ""
+          touch && error ? "!border-red-500 focus:!border-red-500" : ""
         }`}
         onBlur={() => setTouch(true)}
         required={required}

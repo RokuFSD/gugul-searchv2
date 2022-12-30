@@ -1,5 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps,react-hooks/rules-of-hooks */
-import { FormEvent, useCallback, useRef, useSyncExternalStore } from "react";
+import {
+  FormEvent,
+  useCallback,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { ValidationArr, ErrorType } from "../types/form";
 
 function validate<T>(validationsArr: ValidationArr[], values: T) {
@@ -31,6 +37,8 @@ function useForm<T>(
 
   const values = useRef<T>(initialValues);
   const isValid = useRef(initialIsValid);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const isSubmitting = useRef(false);
   const formErrors = useRef<ErrorType>(initialErrors);
   const subscribers = useRef(new Set<() => void>());
 
@@ -51,7 +59,10 @@ function useForm<T>(
       formErrors.current = arrErrors;
       isValid.current = valid;
     } else {
-      formErrors.current = {};
+      // if no validations, then clean errors at change
+      const keys = Object.keys(value);
+      const key: string = keys[0];
+      formErrors.current[key] = "";
     }
     subscribers.current.forEach((callback) => callback());
   }, []);
@@ -77,7 +88,8 @@ function useForm<T>(
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!isValid) return;
+    if (!isValid || isLoading) return;
+    setIsLoading(true);
     const data = new FormData(e.currentTarget);
     // We are using redux here for the error handling because the logic is in thunk actions
     const result = await onSubmit(Object.fromEntries(data.entries()));
@@ -89,6 +101,7 @@ function useForm<T>(
       };
       formErrors.current[payload.type] = payload.message;
     }
+    setIsLoading(false);
     subscribers.current.forEach((callback) => callback());
   }, []);
 
@@ -97,6 +110,7 @@ function useForm<T>(
     selectIsValid,
     selectError,
     handleSubmit,
+    isLoading,
   };
 }
 

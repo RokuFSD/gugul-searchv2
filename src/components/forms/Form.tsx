@@ -36,7 +36,7 @@ function Form<T>({
           if (child.type === FormSubmit) {
             return React.cloneElement(child, {
               disabled: !canSubmit,
-            } as { disabled: boolean });
+            } as { disabled: boolean; loading: boolean });
           }
           return React.cloneElement(child, {
             valueSelector: useValue,

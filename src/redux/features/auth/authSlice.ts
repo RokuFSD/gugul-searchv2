@@ -4,14 +4,14 @@ import { login, logout, me } from "./thunkActions";
 import type { RootState } from "../../app/store";
 
 const INITIAL_AUTH = {
-  user: { username: "" },
+  user: { _id: "", username: "" },
   loading: false,
   error: {
     message: "",
     type: "",
   },
 } as {
-  user: { username: string };
+  user: { _id: string; username: string };
   loading: boolean;
   error: {
     message: string;

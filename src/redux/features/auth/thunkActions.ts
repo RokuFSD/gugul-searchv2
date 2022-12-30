@@ -5,16 +5,16 @@ import { User } from "../../../models/user";
 
 export const login = createAsyncThunk<
   User,
-  { username: string; password: string },
+  { email: string; password: string },
   { rejectValue: { message: string; type: string } }
 >(
   "auth/login",
   async (
-    { username, password }: { username: string; password: string },
+    { email, password }: { email: string; password: string },
     { rejectWithValue }
   ) => {
     try {
-      const { data } = await Auth.login({ username, password });
+      const { data } = await Auth.login({ email, password });
       return data;
     } catch (e) {
       const error = e as AxiosError<{ message: string; type: string }>;
