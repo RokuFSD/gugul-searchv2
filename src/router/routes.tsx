@@ -1,10 +1,9 @@
 import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
-import SearchPage from "./pages/SearchPage";
+import { AuthPage, SearchPage, ProfilePage } from "./pages";
 import ResultsContainer from "../components/results/ResultsContainer";
 import GifsContainer from "../components/results/GifsContainer";
-import AuthPage from "./pages/AuthPage";
 import { PublicRoutes, PrivateRoutes } from "../models/routes";
 import PrivateGuard from "./guards/PrivateGuard";
 
@@ -49,7 +48,7 @@ const routes = [
           },
           {
             path: PrivateRoutes.PROFILE,
-            element: <div>En perfil</div>,
+            element: <ProfilePage />,
           },
         ],
       },

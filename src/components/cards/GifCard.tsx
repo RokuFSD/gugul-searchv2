@@ -42,6 +42,7 @@ function GifCard({ gif }: GifCardProps) {
     }
   }
 
+  // TODO: Make the buttons appear on pointer hover and disappear on pointer out
   return (
     <div
       className={`${
