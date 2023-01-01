@@ -37,7 +37,7 @@ const routes = [
       },
       {
         path: `${PrivateRoutes.PROFILE}`,
-        element: <Navigate to={PrivateRoutes.PRIVATE} />,
+        element: <Navigate to={PrivateRoutes.PRIVATE} replace />,
       },
       {
         element: <PrivateGuard />,
@@ -45,7 +45,7 @@ const routes = [
         children: [
           {
             index: true,
-            element: <Navigate to={PrivateRoutes.PROFILE} />,
+            element: <Navigate to={PrivateRoutes.PROFILE} replace />,
           },
           {
             path: PrivateRoutes.PROFILE,

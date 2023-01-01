@@ -5,9 +5,9 @@ import { selectUser } from "../../redux/features/auth/authSlice";
 
 function UserCard() {
   const user = useAppSelector(selectUser);
-  if (!user.email) {
-    return (
-      <div className="flex block order-1 md:absolute right-8 lg:right-32 items-center md:h-14">
+  return (
+    <div className="flex block order-1 md:absolute right-8 lg:right-32 items-center md:h-14">
+      {!user.email ? (
         <Link to="/auth" className="">
           {/* Person SVG  */}
           <svg
@@ -37,10 +37,13 @@ function UserCard() {
             />
           </svg>
         </Link>
-      </div>
-    );
-  }
-  return <div className="flex flex-col items-center">Go to favorites</div>;
+      ) : (
+        <Link to="/profile" className="" replace>
+          Profile
+        </Link>
+      )}
+    </div>
+  );
 }
 
 export default UserCard;
