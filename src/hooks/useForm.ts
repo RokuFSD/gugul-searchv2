@@ -6,6 +6,7 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import { ValidationArr, ErrorType } from "../types/form";
 
 function validate<T>(validationsArr: ValidationArr[], values: T) {
@@ -28,7 +29,8 @@ function validate<T>(validationsArr: ValidationArr[], values: T) {
 function useForm<T>(
   initialValues: T,
   onSubmit: (...args: any[]) => unknown,
-  validations?: ValidationArr[]
+  validations?: ValidationArr[],
+  path?: string
 ) {
   const { isValid: initialIsValid, errors: initialErrors } = validate(
     validations || [],
@@ -40,6 +42,7 @@ function useForm<T>(
   const formErrors = useRef<ErrorType>(initialErrors);
   const subscribers = useRef(new Set<() => void>());
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const get = useCallback(() => values.current, []);
 
@@ -62,6 +65,7 @@ function useForm<T>(
       const keys = Object.keys(value);
       const key: string = keys[0];
       formErrors.current[key] = "";
+      isValid.current = true;
     }
     subscribers.current.forEach((callback) => callback());
   }, []);
@@ -99,9 +103,13 @@ function useForm<T>(
         type: string;
       };
       formErrors.current[payload.type] = payload.message;
+      isValid.current = false;
     }
     setIsLoading(false);
     subscribers.current.forEach((callback) => callback());
+    if (path) {
+      navigate(path);
+    }
   }, []);
 
   return {

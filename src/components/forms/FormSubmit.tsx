@@ -14,8 +14,13 @@ function FormSubmit({ disabled, className, children }: SubmitProps) {
       layout
       type="submit"
       disabled={disabled}
-      className={className}
-      whileTap={{ scale: 0.98, transition: { duration: 0.02 } }}
+      className={`${className} ${
+        disabled &&
+        "opacity-50 cursor-not-allowed hover:bg-transparent hover:text-gray-100"
+      }`}
+      whileTap={
+        !disabled ? { scale: 0.98, transition: { duration: 0.02 } } : {}
+      }
     >
       {children}
     </motion.button>

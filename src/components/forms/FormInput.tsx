@@ -10,10 +10,10 @@ export type IFormInput<T> = {
   name: string; // Change this to accept only keys in the store context
   type: HTMLInputTypeAttribute;
   placeholder: string;
-  valueSelector?: <SelectorOutput>(
+  valueselector?: <SelectorOutput>(
     selector: (state: any) => SelectorOutput
   ) => (((value: Partial<T>) => void) | SelectorOutput)[];
-  errorSelector?: (key: string) => string;
+  errorselector?: (key: string) => string;
   className?: string;
   required?: boolean;
 };
@@ -22,21 +22,18 @@ function FormInput<T>({
   name,
   type,
   placeholder,
-  valueSelector,
-  errorSelector,
+  valueselector,
+  errorselector,
   className,
   required,
 }: IFormInput<T>) {
-  if (!valueSelector || !errorSelector) {
+  if (!valueselector || !errorselector) {
     throw new Error("FormInput must be used inside a Form component");
   }
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [value, setValue] = valueSelector((state: any) => state[name]);
+  const [value, setValue] = valueselector((state: any) => state[name]);
   const [touch, setTouch] = useState(false);
-  const error = errorSelector(name);
-  if (error && inputRef.current) {
-    inputRef.current.focus();
-  }
+  const error = errorselector(name);
   return (
     <>
       <input

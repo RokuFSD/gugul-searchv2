@@ -1,18 +1,19 @@
 import React from "react";
-import { useAppDispatch } from "../../../redux/hooks/store";
-import { login } from "../../../redux/features/auth/thunkActions";
 import * as Form from "../index";
+import validations from "../../../utils/validations";
 import selectView from "../../../router/pages/services/selectView";
+import UserService from "../../../services/User";
 
 function RegisterForm() {
-  const dispatch = useAppDispatch();
   return (
-    <div className="flex h-screen items-center justify-center">
-      {/* TODO: Add validations here */}
+    <div className="flex h-screen flex-wrap items-center justify-center">
       <Form.Form
-        className="max-w-xs flex items-center justify-center flex-wrap gap-4"
-        onSubmit={(e) => dispatch(login(e))}
+        className="max-w-xs flex items-center justify-center flex-wrap gap-4 basis-full"
+        onSubmit={(e) => {
+          UserService.create(e).then(() => selectView.setSubject(true));
+        }}
         initialValues={{ name: "", password: "", email: "" }}
+        validations={validations}
       >
         <Form.FormInput
           name="name"
@@ -37,12 +38,19 @@ function RegisterForm() {
         />
         {/* The ! tag is used because framer motion */}
         <Form.FormSubmit className="w-full border rounded h-10 my-6 transition-colors hover:bg-gray-300 hover:text-gray-600 focus:outline-blue-100">
-          Log-In
+          Sign Up
         </Form.FormSubmit>
+        <div className="w-full flex flex-col items-center gap-2">
+          <h2 className="text-gray-400">Already have an account?</h2>
+          <button
+            type="button"
+            onClick={() => selectView.setSubject(true)}
+            className="duration-200 bg-neutral-200 rounded px-2 py-1 text-black shadow-lg border border-neutral-500 transition-colors hover:border-blue-500 hover:text-blue-500"
+          >
+            Log in here!
+          </button>
+        </div>
       </Form.Form>
-      <button type="button" onClick={() => selectView.setSubject(true)}>
-        Go to login
-      </button>
     </div>
   );
 }

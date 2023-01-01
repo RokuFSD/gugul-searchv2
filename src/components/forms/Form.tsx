@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React, { ReactNode } from "react";
 import useForm from "../../hooks/useForm";
-import { IFormInput } from "./FormInput";
+import FormInput, { IFormInput } from "./FormInput";
 import { ValidationArr } from "../../types/form";
 import FormSubmit from "./FormSubmit";
 
@@ -13,6 +13,7 @@ type IForm = {
   onSubmit: (...args: any[]) => unknown;
   className?: string;
   validations?: ValidationArr[];
+  path?: string;
 };
 
 function Form<T>({
@@ -21,11 +22,13 @@ function Form<T>({
   children,
   className,
   onSubmit,
+  path,
 }: IForm) {
   const { selectIsValid, useValue, selectError, handleSubmit } = useForm<T>(
     initialValues as T,
     onSubmit,
-    validations
+    validations,
+    path
   );
   const canSubmit = selectIsValid();
 
@@ -38,10 +41,12 @@ function Form<T>({
               disabled: !canSubmit,
             } as { disabled: boolean; loading: boolean });
           }
-          return React.cloneElement(child, {
-            valueSelector: useValue,
-            errorSelector: selectError,
-          } as IFormInput<T>);
+          if (child.type === FormInput) {
+            return React.cloneElement(child, {
+              valueselector: useValue,
+              errorselector: selectError,
+            } as IFormInput<T>);
+          }
         }
         return child;
       })}

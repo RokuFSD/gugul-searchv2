@@ -12,6 +12,7 @@ function LoginForm() {
         className="max-w-xs flex items-center justify-center flex-wrap gap-4"
         onSubmit={(e) => dispatch(login(e))}
         initialValues={{ email: "", password: "" }}
+        path="/"
       >
         <Form.FormInput
           name="email"
@@ -29,12 +30,19 @@ function LoginForm() {
         />
         {/* The ! tag is used because framer motion */}
         <Form.FormSubmit className="w-full border rounded h-10 my-6 transition-colors hover:bg-gray-300 hover:text-gray-600 focus:outline-blue-100">
-          Log-In
+          Log In
         </Form.FormSubmit>
+        <div className="w-full flex flex-col items-center gap-2">
+          <h2 className="text-gray-400">Don&apos;t have an account?</h2>
+          <button
+            type="button"
+            onClick={() => selectView.setSubject(true)}
+            className="duration-200 bg-neutral-200 rounded px-2 py-1 text-black shadow-lg border border-neutral-500 transition-colors hover:border-blue-500 hover:text-blue-500"
+          >
+            Sign up for free!
+          </button>
+        </div>
       </Form.Form>
-      <button type="button" onClick={() => selectView.setSubject(true)}>
-        Go to register
-      </button>
     </div>
   );
 }

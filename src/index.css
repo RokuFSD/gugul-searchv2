@@ -13,14 +13,16 @@
     position: relative;
     display: block;
     width: 100%;
+    font-weight: 500;
   }
 
   [data-state="error"] + span::after {
-    position: absolute;
     content: attr(data-error);
-    color: red;
-    font-size: 14px;
+    position: absolute;
+    color: #ea0000;
+    font-size: 13px;
     bottom: 0;
+    height: 20px;
   }
 
   [data-state="error"] + span > span::after {
