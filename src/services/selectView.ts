@@ -1,4 +1,4 @@
-import SubjectManager from "../../../utils/subjectManager";
+import SubjectManager from "../utils/subjectManager";
 
 const selectView = new SubjectManager();
 

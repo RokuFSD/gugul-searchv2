@@ -2,7 +2,7 @@ import React from "react";
 import { useAppDispatch } from "../../../redux/hooks/store";
 import { login } from "../../../redux/features/auth/thunkActions";
 import * as Form from "../index";
-import selectView from "../../../router/pages/services/selectView";
+import selectView from "../../../services/selectView";
 
 function LoginForm() {
   const dispatch = useAppDispatch();

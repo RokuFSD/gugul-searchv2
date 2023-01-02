@@ -1,7 +1,7 @@
 import React from "react";
 import * as Form from "../index";
 import validations from "../../../utils/validations";
-import selectView from "../../../router/pages/services/selectView";
+import selectView from "../../../services/selectView";
 import UserService from "../../../services/User";
 
 function RegisterForm() {
