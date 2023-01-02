@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import toggleState from "../../services/toggleState";
 import MenuClose from "./MenuClose";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 function handleKey(e: React.KeyboardEvent) {
   if (e.key === "Escape") {
@@ -16,6 +17,7 @@ type MenuProps = {
 
 function Menu({ children }: MenuProps) {
   const subscription = toggleState.getSubject();
+  const matchMediaQuery = useMediaQuery("(min-width: 1024px)");
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -26,10 +28,13 @@ function Menu({ children }: MenuProps) {
   });
 
   useEffect(() => {
-    if (isOpen && menuRef.current) {
+    if (!matchMediaQuery && isOpen && menuRef.current) {
       menuRef.current.focus();
     }
-  }, [isOpen]);
+    if (matchMediaQuery) {
+      setIsOpen(true);
+    }
+  }, [isOpen, matchMediaQuery]);
 
   return (
     // Overlay
@@ -37,7 +42,7 @@ function Menu({ children }: MenuProps) {
       {isOpen ? (
         <motion.div
           ref={menuRef}
-          initial={{ opacity: 0 }}
+          initial={!matchMediaQuery ? { opacity: 0 } : { opacity: 1 }}
           animate={{
             opacity: 1,
             transition: { duration: 0.2 },
@@ -46,7 +51,7 @@ function Menu({ children }: MenuProps) {
             opacity: 0,
             transition: { duration: 0.2, delay: 0.5 },
           }}
-          className="w-full h-full absolute z-20 bg-black bg-opacity-60"
+          className="w-full h-full absolute z-20 bg-black bg-opacity-60 lg:w-auto lg:inset-y-0 lg:bg-gray-700 lg:bg-opacity-0"
           tabIndex={-1}
           onKeyDown={handleKey}
           onClick={() => toggleState.setSubject(true)}
@@ -55,7 +60,7 @@ function Menu({ children }: MenuProps) {
           {/* Menu */}
           <motion.section
             layout
-            initial={{ opacity: 0, x: -200 }}
+            initial={!matchMediaQuery ? { opacity: 0, x: -200 } : {}}
             animate={{
               opacity: 1,
               x: 0,
@@ -63,7 +68,7 @@ function Menu({ children }: MenuProps) {
             }}
             exit={{ opacity: 0, x: -200 }}
             transition={{ duration: 0.5 }}
-            className="relative h-full bg-gray-700 w-64 z-40 cursor-default flex justify-center py-40"
+            className="relative h-full bg-gray-700 w-64 z-40 cursor-default flex justify-center py-40 md:w-80 lg:w-64 lg:bg-gray-800"
             onClick={(e) => {
               e.stopPropagation();
             }}

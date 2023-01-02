@@ -29,7 +29,7 @@ function MenuList({ children }: MenuListProps) {
       variants={variants}
       initial="hide"
       animate="show"
-      className="flex flex-col gap-4 w-full px-6"
+      className="flex flex-col gap-4 w-64 px-6"
     >
       {children}
     </motion.ul>

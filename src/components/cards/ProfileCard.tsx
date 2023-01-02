@@ -8,7 +8,7 @@ type ProfileCardProps = {
 
 function ProfileCard({ email, name, pictureSrc }: ProfileCardProps) {
   return (
-    <div className="w-full flex shadow-md h-36 items-center justify-center">
+    <div className="w-full flex shadow-md h-36 items-center justify-center lg:pl-64">
       <div className="text-center">
         <picture>
           <source srcSet={pictureSrc} type="image/webp" />

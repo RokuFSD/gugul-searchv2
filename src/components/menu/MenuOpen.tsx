@@ -5,7 +5,7 @@ function MenuOpen() {
   return (
     <button
       type="button"
-      className="absolute m-4"
+      className="absolute m-4 lg:hidden"
       onClick={() => toggleState.setSubject(true)}
     >
       {/* Hamburger SVG */}

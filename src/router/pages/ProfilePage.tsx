@@ -15,7 +15,11 @@ function ProfilePage() {
         <Menu.MenuList>
           <Menu.MenuItem>Analytics</Menu.MenuItem>
           <Menu.MenuItem>
-            <button type="button" onClick={() => dispatch(logout())}>
+            <button
+              className="w-full text-start"
+              type="button"
+              onClick={() => dispatch(logout())}
+            >
               log out
             </button>
           </Menu.MenuItem>

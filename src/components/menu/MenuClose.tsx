@@ -5,7 +5,7 @@ import toggleState from "../../services/toggleState";
 function MenuClose() {
   return (
     <button
-      className="absolute right-2 top-2"
+      className="absolute right-2 top-2 lg:hidden"
       type="button"
       onClick={() => toggleState.setSubject(true)}
     >
