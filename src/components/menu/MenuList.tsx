@@ -9,7 +9,7 @@ const variants = {
   show: {
     opacity: 1,
     transition: {
-      delay: 1,
+      delay: 0.6,
       staggerChildren: 0.5,
       when: "beforeChildren",
     },

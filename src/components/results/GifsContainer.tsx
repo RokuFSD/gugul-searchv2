@@ -39,6 +39,7 @@ function GifsContainer() {
         </div>
       )}
 
+      {/* This is not going to show if there is no more results */}
       <button
         ref={ref}
         type="button"

@@ -11,6 +11,11 @@ function GifCard({ gif }: GifCardProps) {
 
   function handleKeyPress(e: KeyboardEvent | React.KeyboardEvent) {
     // Get focusable childs
+
+    if (e.key === "Space" || e.key === "Enter") {
+      setCurrent(!current);
+    }
+
     if (e.key !== "Tab" || !cardRef.current) return;
     const focusable = cardRef.current.querySelectorAll("a, button, input");
     // Get the first focusable child
@@ -18,6 +23,7 @@ function GifCard({ gif }: GifCardProps) {
     // Get the last focusable child
     const lastFocusable = focusable[focusable.length - 1] as HTMLElement;
     // Check if the current element is the last focusable element
+
     if (!e.shiftKey && document.activeElement === lastFocusable) {
       setCurrent(false);
     }
@@ -31,7 +37,6 @@ function GifCard({ gif }: GifCardProps) {
       }
       if (document.activeElement === firstFocusable) {
         setCurrent(false);
-        e.preventDefault();
         return;
       }
 
@@ -42,14 +47,14 @@ function GifCard({ gif }: GifCardProps) {
     }
   }
 
-  // TODO: Make the buttons appear on pointer hover and disappear on pointer out
   return (
     <div
       className={`${
-        current && "shadow-blue-200 shadow-md outline-none"
-      } w-full md:w-64 h-52 rounded-md overflow-hidden `}
+        current && "outline-none"
+      } w-full md:w-64 h-52 rounded-md overflow-hidden cursor-pointer`}
       tabIndex={0}
-      onFocus={() => setCurrent(true)}
+      onClick={() => setCurrent((prev) => !prev)}
+      onBlur={() => setCurrent(false)}
       role="tablist"
       ref={cardRef}
       onKeyDown={handleKeyPress}
@@ -70,17 +75,17 @@ function GifCard({ gif }: GifCardProps) {
             !current && "hidden"
           } absolute w-full h-full bg-neutral-900 bg-opacity-70 flex items-center justify-center`}
         >
-          <div className="flex gap-6">
+          <div className="flex gap-8">
             <button
               type="button"
-              className="overflow-hidden bg-blue-300 bg-opacity-80 rounded-full w-12 h-12"
+              className="overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
               onFocus={() => setCurrent(true)}
             >
               Share
             </button>
             <button
               type="button"
-              className="overflow-hidden bg-red-300 bg-opacity-80 rounded-full w-12 h-12"
+              className="overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
               onFocus={() => setCurrent(true)}
             >
               Favorite
