@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - development
-      - auth-form
+      - auth
     pull_request:
       branches:
         - development
