@@ -7,6 +7,8 @@ import Paginator from "../paginator/Paginator";
 import AsideSection from "./aside/AsideSection";
 import componentSelector from "../../utils/components";
 import useSearch from "../../hooks/useSearch";
+import SearchLoader from "../placeholders/SearchLoader";
+import NoResults from "../placeholders/NoResults";
 
 enum SearchKey {
   "all" = "organic_results",
@@ -25,7 +27,15 @@ function ResultsContainer() {
   const element = componentSelector(type || "all");
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <SearchLoader />
+      </div>
+    );
+  }
+
+  if (results && results.length === 0) {
+    return <NoResults />;
   }
 
   return (

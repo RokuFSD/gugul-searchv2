@@ -1,8 +1,10 @@
 import React, { useMemo, useRef } from "react";
-import useGifs from "../../hooks/useGifs";
-import GifCard from "../cards/GifCard";
-import useIntersectionObserver from "../../hooks/useInScreen";
 import { useSearchContext } from "../../context/SearchContext";
+import useGifs from "../../hooks/useGifs";
+import GifCard from "../cards/Gif/GifCard";
+import SearchLoader from "../placeholders/SearchLoader";
+import NoResults from "../placeholders/NoResults";
+import useIntersectionObserver from "../../hooks/useInScreen";
 
 function GifsContainer() {
   const ref = useRef(null);
@@ -26,11 +28,14 @@ function GifsContainer() {
     fetchNextPage();
   }
 
+  if (pages && pages[0]?.data?.length === 0) {
+    return <NoResults />;
+  }
+
   return (
     <section className="flex flex-col py-6">
       {isInitialLoading ? (
-        // TODO: Make this a skeleton
-        <div>Loading...</div>
+        <SearchLoader />
       ) : (
         <div className="flex w-full max-w-7xl mx-auto flex-wrap justify-center p-4 md:px-12 xl:px-32 gap-10">
           {pages?.map((page) =>
@@ -39,13 +44,14 @@ function GifsContainer() {
         </div>
       )}
 
-      {/* This is not going to show if there is no more results */}
       <button
         ref={ref}
         type="button"
         disabled={!hasNextPage || isFetchingNextPage}
         onClick={() => fetchNextPage()}
-        className="border-2 transition-colors rounded mx-auto w-40 h-14 hover:bg-gray-200 hover:text-neutral-700 active:bg-gray-300 active:text-neutral-700"
+        className={`${
+          (isInitialLoading || !hasNextPage) && "hidden"
+        } border-2 transition-colors rounded mx-auto w-40 h-14 hover:bg-gray-200 hover:text-neutral-700 active:bg-gray-300 active:text-neutral-700`}
       >
         Load more
       </button>

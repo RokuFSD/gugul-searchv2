@@ -12,7 +12,7 @@ function App() {
   return (
     <main className="w-full dark:bg-gray-700 text-white">
       <SearchContextProvider>
-        {isLoading ? <div>Loading...</div> : <Outlet />}
+        {isLoading ? null : <Outlet />}
       </SearchContextProvider>
     </main>
   );

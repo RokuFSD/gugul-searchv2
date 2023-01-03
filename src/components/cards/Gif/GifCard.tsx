@@ -1,5 +1,6 @@
 import React, { memo, useRef, useState } from "react";
-import { GifSearch } from "../../services/Gifs";
+import { GifSearch } from "../../../services/Gifs";
+import GifInner from "./GifInner";
 
 type GifCardProps = {
   gif: GifSearch;
@@ -10,21 +11,18 @@ function GifCard({ gif }: GifCardProps) {
   const cardRef = useRef<HTMLDivElement | null>(null);
 
   function handleKeyPress(e: KeyboardEvent | React.KeyboardEvent) {
-    if (e.key === "Space" || e.key === "Enter") {
-      setCurrent(!current);
-    }
+    if (e.key === "Enter") setCurrent(!current);
 
     if (e.key !== "Tab" || !cardRef.current) return;
+
     const focusable = cardRef.current.querySelectorAll("a, button, input");
     // Get the first focusable child
     const firstFocusable = focusable[0] as HTMLElement;
     // Get the last focusable child
     const lastFocusable = focusable[focusable.length - 1] as HTMLElement;
-    // Check if the current element is the last focusable element
 
     // Shift tab
     if (e.shiftKey) {
-      // If the current element is the first focusable element
       if (document.activeElement === lastFocusable) {
         firstFocusable.focus();
         e.preventDefault();
@@ -52,12 +50,12 @@ function GifCard({ gif }: GifCardProps) {
     <div
       className={`${
         current && "outline-none"
-      } w-full md:w-64 h-52 rounded-md overflow-hidden cursor-pointer`}
-      tabIndex={0}
-      onClick={() => setCurrent((prev) => !prev)}
+      } w-72 h-72 md:w-64 md:h-64 rounded-md overflow-hidden cursor-pointer`}
       role="tablist"
       ref={cardRef}
+      tabIndex={0}
       onKeyDown={handleKeyPress}
+      onClick={() => setCurrent((prev) => !prev)}
     >
       <div className="grid w-full h-full relative">
         <img
@@ -70,28 +68,7 @@ function GifCard({ gif }: GifCardProps) {
           title={gif.title}
           data-testid="gif-card"
         />
-        <div
-          className={`${
-            !current && "hidden"
-          } cursor-default absolute w-full h-full bg-gradient-to-t from-neutral-900  flex items-center justify-center`}
-        >
-          <div className="flex gap-8">
-            <button
-              type="button"
-              className="transition-colors overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
-              onFocus={() => setCurrent(true)}
-            >
-              Share
-            </button>
-            <button
-              type="button"
-              className="transition-colors overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
-              onFocus={() => setCurrent(true)}
-            >
-              Favorite
-            </button>
-          </div>
-        </div>
+        <GifInner show={current} setCurrent={setCurrent} />
       </div>
     </div>
   );
