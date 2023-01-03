@@ -6,7 +6,7 @@ type AsideDetailsProps = {
 
 function AsideDetails({ data }: AsideDetailsProps) {
   return (
-    <table className="table-auto max-w-md md:max-w-full w-full md:relative">
+    <table className="w-full table-auto max-w-md">
       <tbody>
         {data.map((detail, index) => (
           <tr
