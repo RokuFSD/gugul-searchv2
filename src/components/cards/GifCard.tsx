@@ -10,8 +10,6 @@ function GifCard({ gif }: GifCardProps) {
   const cardRef = useRef<HTMLDivElement | null>(null);
 
   function handleKeyPress(e: KeyboardEvent | React.KeyboardEvent) {
-    // Get focusable childs
-
     if (e.key === "Space" || e.key === "Enter") {
       setCurrent(!current);
     }
@@ -24,9 +22,6 @@ function GifCard({ gif }: GifCardProps) {
     const lastFocusable = focusable[focusable.length - 1] as HTMLElement;
     // Check if the current element is the last focusable element
 
-    if (!e.shiftKey && document.activeElement === lastFocusable) {
-      setCurrent(false);
-    }
     // Shift tab
     if (e.shiftKey) {
       // If the current element is the first focusable element
@@ -35,6 +30,7 @@ function GifCard({ gif }: GifCardProps) {
         e.preventDefault();
         return;
       }
+
       if (document.activeElement === firstFocusable) {
         setCurrent(false);
         return;
@@ -43,7 +39,12 @@ function GifCard({ gif }: GifCardProps) {
       if (document.activeElement === cardRef.current && current) {
         lastFocusable.focus();
         e.preventDefault();
+        return;
       }
+    }
+
+    if (document.activeElement === lastFocusable) {
+      setCurrent(false);
     }
   }
 
@@ -54,7 +55,6 @@ function GifCard({ gif }: GifCardProps) {
       } w-full md:w-64 h-52 rounded-md overflow-hidden cursor-pointer`}
       tabIndex={0}
       onClick={() => setCurrent((prev) => !prev)}
-      onBlur={() => setCurrent(false)}
       role="tablist"
       ref={cardRef}
       onKeyDown={handleKeyPress}
@@ -73,19 +73,19 @@ function GifCard({ gif }: GifCardProps) {
         <div
           className={`${
             !current && "hidden"
-          } absolute w-full h-full bg-neutral-900 bg-opacity-70 flex items-center justify-center`}
+          } cursor-default absolute w-full h-full bg-gradient-to-t from-neutral-900  flex items-center justify-center`}
         >
           <div className="flex gap-8">
             <button
               type="button"
-              className="overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
+              className="transition-colors overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
               onFocus={() => setCurrent(true)}
             >
               Share
             </button>
             <button
               type="button"
-              className="overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
+              className="transition-colors overflow-hidden bg-green-300  rounded-full w-12 h-12 hover:bg-green-400"
               onFocus={() => setCurrent(true)}
             >
               Favorite
