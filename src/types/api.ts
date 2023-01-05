@@ -1,3 +1,5 @@
+import { GifSearch } from "../services/Gifs";
+
 export type StoriesType = {
   title: string;
   link: string;
@@ -72,8 +74,8 @@ export type ResponseType = {
   };
 };
 
-export type VideoResponseType = {
-  data: {
-    videos_results: VideoResult[];
-  };
+export type Favorite = {
+  id: string;
+  type: "video" | "new" | "gif" | "normal";
+  data: Results | VideoResult | NewResult | GifSearch;
 };

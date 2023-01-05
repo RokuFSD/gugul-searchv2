@@ -16,4 +16,18 @@ export default class UserService {
       };
     }
   }
+
+  static async update(data: Partial<User>) {
+    // TODO: Test this
+    try {
+      return await axios.put(`${USER_URL}/update`, data, {
+        withCredentials: true,
+      });
+    } catch (error) {
+      const err = error as AxiosError;
+      return {
+        payload: err.response?.data,
+      };
+    }
+  }
 }

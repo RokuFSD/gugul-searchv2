@@ -1,22 +1,25 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { login, logout, me } from "./thunkActions";
+import { User, EmptyUser } from "../../../models/user";
 import type { RootState } from "../../app/store";
 
-const INITIAL_AUTH = {
-  user: { _id: "", name: "", email: "", picture: "" },
-  loading: false,
-  error: {
-    message: "",
-    type: "",
-  },
-} as {
-  user: { _id: string; name: string; email: string; picture: string };
+interface State {
+  user: User["user"];
   loading: boolean;
   error: {
     message: string;
     type: string;
   };
+}
+
+const INITIAL_AUTH: State = {
+  user: EmptyUser,
+  loading: false,
+  error: {
+    message: "",
+    type: "",
+  },
 };
 
 const authSlice = createSlice({

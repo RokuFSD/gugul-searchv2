@@ -12,6 +12,7 @@ function GifCard({ gif }: GifCardProps) {
 
   function handleKeyPress(e: KeyboardEvent | React.KeyboardEvent) {
     if (e.key === "Enter") setCurrent(!current);
+    if (e.key === "Escape") setCurrent(false);
 
     if (e.key !== "Tab" || !cardRef.current) return;
 

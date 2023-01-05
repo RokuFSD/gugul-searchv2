@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { ReactNode, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import selectView from "../../services/selectView";
 
 type DualViewProps = {
