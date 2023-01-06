@@ -1,17 +1,38 @@
-/* eslint-disable no-param-reassign */
-import { createSlice, createSelector } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign,no-underscore-dangle */
+import {
+  createSlice,
+  createSelector,
+  createEntityAdapter,
+  EntityState,
+} from "@reduxjs/toolkit";
+import { User } from "../../../models/user";
+import { Favorite } from "../../../types/api";
 import { login, logout, me } from "./thunkActions";
-import { User, EmptyUser } from "../../../models/user";
 import type { RootState } from "../../app/store";
 
+type UserState = Omit<User["user"], "favorites">;
+
 interface State {
-  user: User["user"];
+  user: UserState & { favorites: EntityState<Favorite> };
   loading: boolean;
   error: {
     message: string;
     type: string;
   };
 }
+
+const favoritesAdapter = createEntityAdapter<Favorite>({
+  selectId: (favorite) => favorite._id,
+});
+
+export const EmptyUser = {
+  _id: "",
+  name: "",
+  password: "",
+  email: "",
+  picture: "",
+  favorites: favoritesAdapter.getInitialState(),
+};
 
 const INITIAL_AUTH: State = {
   user: EmptyUser,
@@ -35,7 +56,9 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      state.user = { ...action.payload.user };
+      const { favorites } = action.payload.user;
+      favoritesAdapter.setAll(state.user.favorites, favorites);
+      state.user = { ...action.payload.user, favorites: state.user.favorites };
     });
 
     builder.addCase(logout.fulfilled, (state) => {
@@ -51,7 +74,9 @@ const authSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(me.fulfilled, (state, action) => {
-      state.user = { ...action.payload.user };
+      const { favorites } = action.payload.user;
+      favoritesAdapter.setAll(state.user.favorites, favorites);
+      state.user = { ...action.payload.user, favorites: state.user.favorites };
       state.loading = false;
     });
     builder.addCase(me.rejected, (state) => {

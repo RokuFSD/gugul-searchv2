@@ -10,12 +10,3 @@ export interface User {
     favorites: Favorite[];
   };
 }
-
-export const EmptyUser: User["user"] = {
-  _id: "",
-  name: "",
-  password: "",
-  email: "",
-  picture: "",
-  favorites: [],
-};
