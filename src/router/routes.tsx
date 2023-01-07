@@ -1,12 +1,13 @@
 import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import App from "../App";
-import { AuthPage, ProfilePage, SearchPage } from "./pages";
-import ResultsContainer from "../components/results/ResultsContainer";
-import GifsContainer from "../components/results/GifsContainer";
 import { PrivateRoutes, PublicRoutes } from "../models/routes";
+import { AuthPage, ProfilePage, SearchPage } from "./pages";
+
+import App from "../App";
 import PrivateGuard from "./guards/PrivateGuard";
+import GifsContainer from "../components/results/GifsContainer";
 import FavoriteResults from "../components/favorites/FavoriteResults";
+import ResultsContainer from "../components/results/ResultsContainer";
 
 const routes = [
   {

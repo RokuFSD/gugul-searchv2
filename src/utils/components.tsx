@@ -1,8 +1,8 @@
 import React from "react";
-import ResultCard from "../components/cards/ResultCard";
+import GifCard from "../components/cards/Gif/GifCard";
 import NewsCard from "../components/cards/NewsCard";
 import VideoCard from "../components/cards/VideoCard";
-import GifCard from "../components/cards/Gif/GifCard";
+import ResultCard from "../components/cards/ResultCard";
 
 export const WidgetComponents = {
   all: <ResultCard />,

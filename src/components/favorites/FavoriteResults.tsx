@@ -9,8 +9,9 @@ import componentSelector, { FavoriteComponents } from "../../utils/components";
 function FavoriteResults() {
   const { type } = useParams();
   const selector = getSelector(type || "results", selectors);
-  const component = componentSelector(type || "results", FavoriteComponents);
   const results = useAppSelector(selector);
+  const component = componentSelector(type || "results", FavoriteComponents);
+
   if (results.length < 1) {
     return <NoResults from="favorites" />;
   }
