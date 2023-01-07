@@ -1,10 +1,10 @@
 import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
-import { AuthPage, SearchPage, ProfilePage } from "./pages";
+import { AuthPage, ProfilePage, SearchPage } from "./pages";
 import ResultsContainer from "../components/results/ResultsContainer";
 import GifsContainer from "../components/results/GifsContainer";
-import { PublicRoutes, PrivateRoutes } from "../models/routes";
+import { PrivateRoutes, PublicRoutes } from "../models/routes";
 import PrivateGuard from "./guards/PrivateGuard";
 import FavoriteResults from "../components/favorites/FavoriteResults";
 
@@ -53,7 +53,7 @@ const routes = [
             children: [
               {
                 index: true,
-                element: <FavoriteResults />,
+                element: <Navigate to={PrivateRoutes.HOME} />,
               },
             ],
           },

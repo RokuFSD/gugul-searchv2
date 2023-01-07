@@ -11,7 +11,7 @@ export const WidgetComponents = {
 };
 
 export const FavoriteComponents = {
-  standard: <ResultCard />,
+  results: <ResultCard />,
   news: <NewsCard />,
   videos: <VideoCard />,
   gifs: <GifCard />,

@@ -114,7 +114,7 @@ const selectFavoriteNews = createSelector(selectAll, (favorites) =>
 );
 
 export const selectors = {
-  standard: selectFavoriteStandard,
+  results: selectFavoriteStandard,
   news: selectFavoriteNews,
   videos: selectFavoriteVideos,
   gifs: selectFavoriteGifs,

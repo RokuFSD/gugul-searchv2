@@ -1,7 +1,7 @@
 export enum PrivateRoutes {
   PROFILE = "profile",
   PRIVATE = "/private",
-  HOME = "/private/profile/",
+  HOME = "/private/profile/results",
   GIFS = "/private/profile/gifs",
   NEWS = "/private/profile/news",
   VIDEOS = "/private/profile/videos",

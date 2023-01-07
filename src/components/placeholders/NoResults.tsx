@@ -11,7 +11,7 @@ function NoResults({ from = "search" }: NoResultsProps) {
     context: { query },
   } = useSearchContext();
   return (
-    <div className="flex flex-col items-center justify-center h-full">
+    <div className="flex flex-col items-center justify-center h-full justify-center w-full py-32 lg:pl-64">
       <h1 className="text-2xl font-bold text-gray-500">
         {from === "search"
           ? `There is no results for ${query}`
