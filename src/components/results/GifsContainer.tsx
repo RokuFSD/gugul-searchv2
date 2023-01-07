@@ -39,7 +39,7 @@ function GifsContainer() {
       ) : (
         <div className="flex w-full max-w-7xl mx-auto flex-wrap justify-center p-4 md:px-12 xl:px-32 gap-10">
           {pages?.map((page) =>
-            page.data.map((gif) => <GifCard key={gif.id} gif={gif} />)
+            page.data.map((gif) => <GifCard key={gif.id} item={gif} />)
           )}
         </div>
       )}

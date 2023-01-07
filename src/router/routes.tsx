@@ -53,7 +53,7 @@ const routes = [
             children: [
               {
                 index: true,
-                element: <Navigate to={PrivateRoutes.HOME} />,
+                element: <Navigate to={PrivateRoutes.HOME} replace />,
               },
             ],
           },

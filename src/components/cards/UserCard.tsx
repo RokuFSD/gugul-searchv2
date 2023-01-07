@@ -38,7 +38,7 @@ function UserCard() {
           </svg>
         </Link>
       ) : (
-        <Link to="/profile" className="" replace>
+        <Link to="/profile" className="">
           Profile
         </Link>
       )}
