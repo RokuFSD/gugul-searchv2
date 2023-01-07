@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { NavLink } from "react-router-dom";
 import * as Menu from "../../menu";
 import { PrivateRoutes } from "../../../models/routes";
@@ -42,4 +42,4 @@ function ProfileMenuList() {
   );
 }
 
-export default ProfileMenuList;
+export default memo(ProfileMenuList);

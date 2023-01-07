@@ -11,15 +11,14 @@ export const WidgetComponents = {
 };
 
 export const FavoriteComponents = {
-  results: <ResultCard />,
+  gifs: <GifCard />,
   news: <NewsCard />,
   videos: <VideoCard />,
-  gifs: <GifCard />,
+  results: <ResultCard />,
 };
 
-export default function componentSelector(
-  type: string,
-  source: typeof WidgetComponents | typeof FavoriteComponents
-) {
+type Source = typeof WidgetComponents | typeof FavoriteComponents;
+
+export default function componentSelector(type: string, source: Source) {
   return source[type as keyof typeof source];
 }
