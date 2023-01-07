@@ -6,6 +6,7 @@ import ResultsContainer from "../components/results/ResultsContainer";
 import GifsContainer from "../components/results/GifsContainer";
 import { PublicRoutes, PrivateRoutes } from "../models/routes";
 import PrivateGuard from "./guards/PrivateGuard";
+import FavoriteResults from "../components/favorites/FavoriteResults";
 
 const routes = [
   {
@@ -49,6 +50,17 @@ const routes = [
           {
             path: PrivateRoutes.PROFILE,
             element: <ProfilePage />,
+            children: [
+              {
+                index: true,
+                element: <FavoriteResults />,
+              },
+            ],
+          },
+          {
+            path: `${PrivateRoutes.PROFILE}/:type`,
+            element: <ProfilePage />,
+            children: [{ index: true, element: <FavoriteResults /> }],
           },
         ],
       },

@@ -7,8 +7,8 @@ import {
 } from "@reduxjs/toolkit";
 import { User } from "../../../models/user";
 import { Favorite } from "../../../types/api";
-import { login, logout, me } from "./thunkActions";
 import type { RootState } from "../../app/store";
+import { login, logout, me } from "./thunkActions";
 
 type UserState = Omit<User["user"], "favorites">;
 
@@ -55,43 +55,76 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {
-      const { favorites } = action.payload.user;
-      favoritesAdapter.setAll(state.user.favorites, favorites);
-      state.user = { ...action.payload.user, favorites: state.user.favorites };
-    });
+    builder
+      .addCase(login.fulfilled, (state, action) => {
+        const { favorites } = action.payload.user;
+        favoritesAdapter.setAll(state.user.favorites, favorites);
+        state.user = {
+          ...action.payload.user,
+          favorites: state.user.favorites,
+        };
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = INITIAL_AUTH.user;
+      })
 
-    builder.addCase(logout.fulfilled, (state) => {
-      state.user = INITIAL_AUTH.user;
-    });
-
-    builder.addCase(login.rejected, (state, action) => {
-      if (action.payload) {
-        state.error = { ...action.payload };
-      }
-    });
-    builder.addCase(me.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(me.fulfilled, (state, action) => {
-      const { favorites } = action.payload.user;
-      favoritesAdapter.setAll(state.user.favorites, favorites);
-      state.user = { ...action.payload.user, favorites: state.user.favorites };
-      state.loading = false;
-    });
-    builder.addCase(me.rejected, (state) => {
-      state.loading = false;
-    });
+      .addCase(login.rejected, (state, action) => {
+        if (action.payload) {
+          state.error = { ...action.payload };
+        }
+      })
+      .addCase(me.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(me.fulfilled, (state, action) => {
+        const { favorites } = action.payload.user;
+        favoritesAdapter.setAll(state.user.favorites, favorites);
+        state.user = {
+          ...action.payload.user,
+          favorites: state.user.favorites,
+        };
+        state.loading = false;
+      })
+      .addCase(me.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
 
-export const selectUser = createSelector(
-  (state: RootState) => state.auth.user,
-  (user) => user
+export const selectUser = (state: RootState) => state.auth.user;
+
+const { selectAll } = favoritesAdapter.getSelectors(
+  (state: RootState) => state.auth.user.favorites
 );
 
-export const selectLoading = (state: RootState) => state.auth.loading;
+const selectFavoriteGifs = createSelector(selectAll, (favorites) =>
+  favorites.filter((favorite) => favorite.type === "gif")
+);
 
-export const { setUser, removeUser } = authSlice.actions;
+const selectFavoriteStandard = createSelector(selectAll, (favorites) =>
+  favorites.filter((favorite) => favorite.type === "normal")
+);
+
+const selectFavoriteVideos = createSelector(selectAll, (favorites) =>
+  favorites.filter((favorite) => favorite.type === "video")
+);
+
+const selectFavoriteNews = createSelector(selectAll, (favorites) =>
+  favorites.filter((favorite) => favorite.type === "new")
+);
+
+export const selectors = {
+  standard: selectFavoriteStandard,
+  news: selectFavoriteNews,
+  videos: selectFavoriteVideos,
+  gifs: selectFavoriteGifs,
+};
+
+export const getSelector = (type: string, source: typeof selectors) =>
+  source[type as keyof typeof selectors];
+
+// export const selectLoading = (state: RootState) => state.auth.loading;
+//
+// export const { setUser, removeUser } = authSlice.actions;
 
 export default authSlice.reducer;

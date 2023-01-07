@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import Auth from "../../../services/Auth";
 import { User } from "../../../models/user";
+import Auth from "../../../services/Auth";
 
 export const login = createAsyncThunk<
   User,

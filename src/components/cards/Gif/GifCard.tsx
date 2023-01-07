@@ -3,12 +3,15 @@ import { GifSearch } from "../../../services/Gifs";
 import GifInner from "./GifInner";
 
 type GifCardProps = {
-  gif: GifSearch;
+  // eslint-disable-next-line react/require-default-props
+  item?: GifSearch;
 };
 
-function GifCard({ gif }: GifCardProps) {
+function GifCard({ item }: GifCardProps) {
   const [current, setCurrent] = useState(false);
   const cardRef = useRef<HTMLDivElement | null>(null);
+
+  if (!item) return null;
 
   function handleKeyPress(e: KeyboardEvent | React.KeyboardEvent) {
     if (e.key === "Enter") setCurrent(!current);
@@ -61,12 +64,12 @@ function GifCard({ gif }: GifCardProps) {
       <div className="grid w-full h-full relative">
         <img
           className="w-full object-fill h-full"
-          src={gif.images.fixed_height.url}
-          alt={gif.title}
+          src={item.images.fixed_height.url}
+          alt={item.title}
           loading="lazy"
-          width={gif.images.fixed_height.width}
-          height={gif.images.fixed_height.height}
-          title={gif.title}
+          width={item.images.fixed_height.width}
+          height={item.images.fixed_height.height}
+          title={item.title}
           data-testid="gif-card"
         />
         <GifInner show={current} setCurrent={setCurrent} />

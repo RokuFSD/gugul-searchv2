@@ -1,14 +1,21 @@
 import React from "react";
 import { useSearchContext } from "../../context/SearchContext";
 
-function NoResults() {
+type NoResultsProps = {
+  // eslint-disable-next-line react/require-default-props
+  from?: "search" | "favorites";
+};
+
+function NoResults({ from = "search" }: NoResultsProps) {
   const {
     context: { query },
   } = useSearchContext();
   return (
     <div className="flex flex-col items-center justify-center h-full">
       <h1 className="text-2xl font-bold text-gray-500">
-        No se encontraron resultados para {query}
+        {from === "search"
+          ? `There is no results for ${query}`
+          : "Oops! nothing here!"}
       </h1>
       <svg
         xmlns="http://www.w3.org/2000/svg"

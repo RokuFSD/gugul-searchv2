@@ -5,7 +5,7 @@ import MainSection from "./sections/MainSection";
 import LocalMap from "./sections/LocalMap";
 import Paginator from "../paginator/Paginator";
 import AsideSection from "./aside/AsideSection";
-import componentSelector from "../../utils/components";
+import componentSelector, { WidgetComponents } from "../../utils/components";
 import useSearch from "../../hooks/useSearch";
 import SearchLoader from "../placeholders/SearchLoader";
 import NoResults from "../placeholders/NoResults";
@@ -24,7 +24,7 @@ function ResultsContainer() {
 
   const results =
     data?.data[SearchKey[type as keyof typeof SearchKey] || "organic_results"];
-  const element = componentSelector(type || "all");
+  const element = componentSelector(type || "all", WidgetComponents);
 
   if (isLoading) {
     return (

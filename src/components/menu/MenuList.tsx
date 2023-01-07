@@ -25,14 +25,16 @@ const variants = {
 
 function MenuList({ children }: MenuListProps) {
   return (
-    <motion.ul
-      variants={variants}
-      initial="hide"
-      animate="show"
-      className="flex flex-col gap-4 w-64 px-6"
-    >
-      {children}
-    </motion.ul>
+    <nav>
+      <motion.ul
+        variants={variants}
+        initial="hide"
+        animate="show"
+        className="flex flex-col gap-4 w-64 px-6"
+      >
+        {children}
+      </motion.ul>
+    </nav>
   );
 }
 

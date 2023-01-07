@@ -1,9 +1,13 @@
 import React from "react";
-import { useAppSelector, useAppDispatch } from "../../redux/hooks/store";
-import { selectUser } from "../../redux/features/auth/authSlice";
+import { Outlet } from "react-router-dom";
 import { logout } from "../../redux/features/auth/thunkActions";
-import ProfileCard from "../../components/cards/ProfileCard";
+import { selectUser } from "../../redux/features/auth/authSlice";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks/store";
+
 import * as Menu from "../../components/menu";
+import ProfileCard from "../../components/cards/ProfileCard";
+import FavoriteContainer from "../../components/favorites/FavoriteContainer";
+import ProfileMenuList from "../../components/navbar/ProfileNav/ProfileMenuList";
 
 function ProfilePage() {
   const user = useAppSelector(selectUser);
@@ -13,10 +17,10 @@ function ProfilePage() {
       <Menu.MenuOpen />
       <Menu.Menu>
         <Menu.MenuList>
-          <Menu.MenuItem>Analytics</Menu.MenuItem>
+          <ProfileMenuList />
           <Menu.MenuItem>
             <button
-              className="w-full text-start"
+              className="w-full text-start h-full"
               type="button"
               onClick={() => dispatch(logout())}
             >
@@ -31,6 +35,9 @@ function ProfilePage() {
         name={user.name}
         pictureSrc={user.picture}
       />
+      <FavoriteContainer>
+        <Outlet />
+      </FavoriteContainer>
     </div>
   );
 }

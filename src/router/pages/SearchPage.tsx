@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/header/Header";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar/SearchNav/Navbar";
 import SearchContainer from "../../components/search/SearchContainer";
 import { useSearchContext } from "../../context/SearchContext";
 

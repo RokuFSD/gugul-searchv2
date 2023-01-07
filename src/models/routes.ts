@@ -1,6 +1,10 @@
 export enum PrivateRoutes {
-  PRIVATE = "/private",
   PROFILE = "profile",
+  PRIVATE = "/private",
+  HOME = "/private/profile/",
+  GIFS = "/private/profile/gifs",
+  NEWS = "/private/profile/news",
+  VIDEOS = "/private/profile/videos",
 }
 
 export enum PublicRoutes {
