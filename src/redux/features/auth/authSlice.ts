@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign,no-underscore-dangle */
 import {
+  EntityState,
   createSlice,
   createSelector,
   createEntityAdapter,
-  EntityState,
+  PayloadAction,
 } from "@reduxjs/toolkit";
 import { User } from "../../../models/user";
 import { Favorite } from "../../../types/api";
@@ -53,6 +54,12 @@ const authSlice = createSlice({
     removeUser: (state) => {
       state.user = INITIAL_AUTH.user;
     },
+    addFavorite: (state, action) => {
+      favoritesAdapter.addOne(state.user.favorites, action.payload);
+    },
+    removeFavorite: (state, action: PayloadAction<string>) => {
+      favoritesAdapter.removeOne(state.user.favorites, action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -93,38 +100,36 @@ const authSlice = createSlice({
 
 export const selectUser = (state: RootState) => state.auth.user;
 
-const { selectAll } = favoritesAdapter.getSelectors(
+export const { selectAll, selectById } = favoritesAdapter.getSelectors(
   (state: RootState) => state.auth.user.favorites
 );
 
 const selectFavoriteGifs = createSelector(selectAll, (favorites) =>
-  favorites.filter((favorite) => favorite.type === "gif")
+  favorites.filter((favorite) => favorite.card_type === "gif")
 );
 
 const selectFavoriteStandard = createSelector(selectAll, (favorites) =>
-  favorites.filter((favorite) => favorite.type === "normal")
+  favorites.filter((favorite) => favorite.card_type === "results")
 );
 
 const selectFavoriteVideos = createSelector(selectAll, (favorites) =>
-  favorites.filter((favorite) => favorite.type === "video")
+  favorites.filter((favorite) => favorite.card_type === "video")
 );
 
 const selectFavoriteNews = createSelector(selectAll, (favorites) =>
-  favorites.filter((favorite) => favorite.type === "new")
+  favorites.filter((favorite) => favorite.card_type === "new")
 );
 
 export const selectors = {
-  results: selectFavoriteStandard,
   news: selectFavoriteNews,
-  videos: selectFavoriteVideos,
   gifs: selectFavoriteGifs,
+  videos: selectFavoriteVideos,
+  results: selectFavoriteStandard,
 };
 
 export const getSelector = (type: string, source: typeof selectors) =>
   source[type as keyof typeof selectors];
 
-// export const selectLoading = (state: RootState) => state.auth.loading;
-//
-// export const { setUser, removeUser } = authSlice.actions;
+export const { addFavorite, removeFavorite } = authSlice.actions;
 
 export default authSlice.reducer;

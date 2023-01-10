@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Results } from "../../types/api";
 
 type ResultCardProps = {
@@ -31,4 +31,4 @@ function ResultCard({ item }: ResultCardProps) {
   );
 }
 
-export default ResultCard;
+export default memo(ResultCard);

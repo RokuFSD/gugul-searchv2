@@ -19,7 +19,6 @@ function validate<T>(validationsArr: ValidationArr[], values: T) {
     },
     [] as ErrorType[]
   );
-
   return {
     isValid: anyErrors.length === 0,
     errors: anyErrors.reduce((acc, curr) => ({ ...acc, ...curr }), {}),
@@ -39,10 +38,10 @@ function useForm<T>(
 
   const values = useRef<T>(initialValues);
   const isValid = useRef(initialIsValid);
+  const navigate = useNavigate();
   const formErrors = useRef<ErrorType>(initialErrors);
   const subscribers = useRef(new Set<() => void>());
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   const get = useCallback(() => values.current, []);
 
@@ -96,6 +95,12 @@ function useForm<T>(
     const data = new FormData(e.currentTarget);
     // We are using redux here for the error handling because the logic is in thunk actions
     const result = await onSubmit(Object.fromEntries(data.entries()));
+    // TODO: Type this
+    // if (!result.response) {
+    //   formErrors.current.form = "Server Error";
+    //   subscribers.current.forEach((callback) => callback());
+    //   return;
+    // }
     // Check if result is an error result of the Thunk
     if (result && typeof result === "object" && "payload" in result) {
       const payload = result.payload as {

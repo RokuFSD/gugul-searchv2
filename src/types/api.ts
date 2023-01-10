@@ -76,6 +76,6 @@ export type ResponseType = {
 
 export type Favorite = {
   _id: string;
-  type: "video" | "new" | "gif" | "normal";
+  card_type: "video" | "new" | "gif" | "results";
   data: Results | VideoResult | NewResult | GifSearch;
 };

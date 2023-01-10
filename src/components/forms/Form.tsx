@@ -31,7 +31,7 @@ function Form<T>({
     path
   );
   const canSubmit = selectIsValid();
-
+  const formError = selectError("form");
   return (
     <form className={className} name="form" onSubmit={handleSubmit}>
       {React.Children.map(children, (child) => {
@@ -50,6 +50,7 @@ function Form<T>({
         }
         return child;
       })}
+      {formError && <span>formError</span>}
     </form>
   );
 }
