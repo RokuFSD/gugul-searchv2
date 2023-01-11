@@ -6,8 +6,8 @@ import { useAppSelector, useAppDispatch } from "../../redux/hooks/store";
 
 import * as Menu from "../../components/menu";
 import ProfileCard from "../../components/cards/ProfileCard";
-import FavoriteContainer from "../../components/favorites/FavoriteContainer";
 import ProfileMenuList from "../../components/navbar/ProfileNav/ProfileMenuList";
+import FavoriteContainer from "../../components/favorites/FavoriteContainer";
 
 function ProfilePage() {
   const user = useAppSelector(selectUser);

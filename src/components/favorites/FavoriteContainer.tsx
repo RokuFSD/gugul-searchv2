@@ -5,7 +5,7 @@ type FavoriteContainerProps = {
 };
 
 function FavoriteContainer({ children }: FavoriteContainerProps) {
-  return <section>{children}</section>;
+  return <section className="lg:pl-64">{children}</section>;
 }
 
 export default FavoriteContainer;

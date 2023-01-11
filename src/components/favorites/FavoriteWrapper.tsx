@@ -17,6 +17,8 @@ type FavoriteWrapperProps = {
   type: Favorite["card_type"];
 };
 
+// TODO: Make the wrapper does not appear when there is no user logged-in
+
 function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
   const dispatch = useAppDispatch();
   const isFavorite = useAppSelector((state: RootState) =>
