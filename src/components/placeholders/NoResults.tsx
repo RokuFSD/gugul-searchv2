@@ -15,22 +15,8 @@ function NoResults({ from = "search" }: NoResultsProps) {
       <h1 className="text-2xl font-bold text-gray-500">
         {from === "search"
           ? `There is no results for ${query}`
-          : "Oops! nothing here!"}
+          : "Oops! nothing here..."}
       </h1>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-24 w-24 text-gray-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 10l7-7m0 0l-7 7m7-7v18m-4-4h10"
-        />
-      </svg>
     </div>
   );
 }

@@ -35,9 +35,11 @@ function ProfilePage() {
         name={user.name}
         pictureSrc={user.picture}
       />
-      <FavoriteContainer>
-        <Outlet />
-      </FavoriteContainer>
+      <div className="p-4">
+        <FavoriteContainer>
+          <Outlet />
+        </FavoriteContainer>
+      </div>
     </div>
   );
 }
