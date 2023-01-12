@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React, { cloneElement, ReactElement, ReactNode } from "react";
+import React, { cloneElement, memo, ReactElement, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Favorite, Results } from "../../types/api";
 import {
@@ -98,4 +98,4 @@ function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
   );
 }
 
-export default FavoriteWrapper;
+export default memo(FavoriteWrapper);
