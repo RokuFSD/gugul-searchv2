@@ -45,7 +45,7 @@ function ProfileWrapper({ item, children }: ProfileWrapperProps) {
     <motion.div
       initial="hidden"
       whileHover="show"
-      className="flex group gap-4 items-start group relative z-0 md:w-max"
+      className="flex group gap-4 items-start relative z-0 md:w-max"
     >
       {cloneElement(children as ReactElement, { item })}
       <motion.button

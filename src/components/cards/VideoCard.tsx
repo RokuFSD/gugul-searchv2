@@ -31,7 +31,7 @@ function VideoCard({ item }: VideoCardProps) {
           {item?.thumbnail ? (
             <ThumbnailCard isYoutube={isYoutube} item={item} />
           ) : null}
-          <div className="max-w-md h-full flex flex-col gap-3">
+          <div className="max-w-sm h-full flex flex-col gap-3">
             <p className="text-sm line-clamp-2">{item?.snippet}</p>
             <p className="text-sm text-gray-300">
               {extensions.map((extension) => `${extension} `)}

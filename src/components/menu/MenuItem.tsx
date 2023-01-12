@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { cloneElement, ReactElement, ReactNode } from "react";
 import { motion } from "framer-motion";
 
 type MenuItemProps = {
@@ -21,16 +21,19 @@ function MenuItem({ children }: MenuItemProps) {
     <motion.li
       layout
       variants={item}
-      transition={{
-        duration: 0.2,
-      }}
       className="z-50 overflow-hidden relative h-10 flex rounded-lg items-center px-2 bg-gray-900 cursor-pointer bg-opacity-50"
       whileHover={{
         y: -4,
         boxShadow: "0 2px 0 rgba(52, 129, 209, 0.8)",
       }}
+      transition={{
+        duration: 0.1,
+      }}
     >
-      {children}
+      {/* Inject className on children */}
+      {cloneElement(children as ReactElement, {
+        className: "focus:text-blue-400 focus:outline-none",
+      })}
     </motion.li>
   );
 }

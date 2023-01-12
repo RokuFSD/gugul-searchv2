@@ -15,7 +15,9 @@ function ProfileMenuLink({ inner, to }: ProfileMenuProps) {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        isActive ? `${styles} text-blue-400 font-semibold` : `${styles}`
+        isActive
+          ? `${styles} text-blue-400 font-semibold focus:outline-none`
+          : `${styles} focus:text-blue-400 focus:outline-none`
       }
     >
       {inner}

@@ -6,6 +6,7 @@ import {
   addFavorite,
   removeFavorite,
   selectById,
+  selectUser,
 } from "../../redux/features/auth/authSlice";
 import UserService from "../../services/User";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/store";
@@ -19,14 +20,14 @@ type FavoriteWrapperProps = {
   type: Favorite["card_type"];
 };
 
-// TODO: Make the wrapper does not appear when there is no user logged-in
-
 function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
   const dispatch = useAppDispatch();
   const id = type === "gif" ? (item as GifSearch).id : (item?.title as string);
   const isFavorite = useAppSelector((state: RootState) =>
     selectById(state, id as string)
   );
+
+  const user = useAppSelector(selectUser);
 
   async function handleClick() {
     if (!item) return;
@@ -60,7 +61,11 @@ function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
       }`}
     >
       {cloneElement(children as ReactElement, { item })}
-      <button type="button" onClick={handleClick} className="left-full">
+      <button
+        type="button"
+        onClick={handleClick}
+        className={`${!user._id && "hidden"} left-full`}
+      >
         {/* Shake effect */}
         <motion.svg
           whileHover={

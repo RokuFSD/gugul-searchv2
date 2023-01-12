@@ -6,7 +6,7 @@ type FavoriteContainerProps = {
 
 function FavoriteContainer({ children }: FavoriteContainerProps) {
   return (
-    <section className="w-full flex flex-wrap gap-x-12 gap-y-4 lg:pl-64">
+    <section className="w-full flex flex-wrap justify-center gap-y-4 gap-x-12 xl:px-12 2xl:px-20 xl:justify-start">
       {children}
     </section>
   );

@@ -27,7 +27,6 @@ function ProfilePage() {
               log out
             </button>
           </Menu.MenuItem>
-          <Menu.MenuItem>Delete Account</Menu.MenuItem>
         </Menu.MenuList>
       </Menu.Menu>
       <ProfileCard
@@ -35,7 +34,7 @@ function ProfilePage() {
         name={user.name}
         pictureSrc={user.picture}
       />
-      <div className="p-4">
+      <div className="lg:pl-64 py-4">
         <FavoriteContainer>
           <Outlet />
         </FavoriteContainer>
