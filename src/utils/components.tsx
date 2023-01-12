@@ -4,6 +4,7 @@ import NewsCard from "../components/cards/NewsCard";
 import VideoCard from "../components/cards/VideoCard";
 import ResultCard from "../components/cards/ResultCard";
 import FavoriteWrapper from "../components/favorites/FavoriteWrapper";
+import ProfileWrapper from "../components/favorites/ProfileWrapper";
 
 export const WidgetComponents = {
   all: (
@@ -24,10 +25,26 @@ export const WidgetComponents = {
 };
 
 export const FavoriteComponents = {
-  gifs: <GifCard />,
-  news: <NewsCard />,
-  videos: <VideoCard />,
-  results: <ResultCard />,
+  gifs: (
+    <ProfileWrapper>
+      <GifCard />
+    </ProfileWrapper>
+  ),
+  news: (
+    <ProfileWrapper>
+      <NewsCard />
+    </ProfileWrapper>
+  ),
+  videos: (
+    <ProfileWrapper>
+      <VideoCard />
+    </ProfileWrapper>
+  ),
+  results: (
+    <ProfileWrapper>
+      <ResultCard />
+    </ProfileWrapper>
+  ),
 };
 
 type Source = typeof WidgetComponents | typeof FavoriteComponents;

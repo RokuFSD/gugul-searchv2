@@ -8,7 +8,7 @@ type NewsCardProps = {
 
 function NewsCard({ item }: NewsCardProps) {
   return (
-    <div className="flex flex w-full items-center gap-4">
+    <div className="flex flex w-full items-center gap-4 z-20 bg-gray-700 max-w-2xl">
       <div className="w-full">
         <span className="text-xs text-gray-400">{item?.source}</span>
         <h2 className="text-lg text-blue-300 hover:text-blue-400 transition-all">

@@ -10,10 +10,11 @@ import {
 import UserService from "../../services/User";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/store";
 import { RootState } from "../../redux/app/store";
+import { GifSearch } from "../../services/Gifs";
 
 type FavoriteWrapperProps = {
   // eslint-disable-next-line react/require-default-props
-  item?: Results;
+  item?: Results | GifSearch;
   children: ReactNode;
   type: Favorite["card_type"];
 };
@@ -22,14 +23,15 @@ type FavoriteWrapperProps = {
 
 function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
   const dispatch = useAppDispatch();
+  const id = type === "gif" ? (item as GifSearch).id : (item?.title as string);
   const isFavorite = useAppSelector((state: RootState) =>
-    selectById(state, item?.title as string)
+    selectById(state, id as string)
   );
 
   async function handleClick() {
     if (!item) return;
     const itemWithId = {
-      _id: item?.title,
+      _id: id,
       card_type: type,
       data: { ...item },
     };
@@ -52,13 +54,13 @@ function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
   }
 
   return (
-    <div className="flex group relative items-center">
+    <div
+      className={`flex group items-center ${
+        type === "gif" ? "gap-2" : "gap-8"
+      }`}
+    >
       {cloneElement(children as ReactElement, { item })}
-      <button
-        type="button"
-        onClick={handleClick}
-        className="absolute left-full"
-      >
+      <button type="button" onClick={handleClick} className="left-full">
         {/* Shake effect */}
         <motion.svg
           whileHover={

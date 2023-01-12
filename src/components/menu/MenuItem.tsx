@@ -21,6 +21,9 @@ function MenuItem({ children }: MenuItemProps) {
     <motion.li
       layout
       variants={item}
+      transition={{
+        duration: 0.2,
+      }}
       className="z-50 overflow-hidden relative h-10 flex rounded-lg items-center px-2 bg-gray-900 cursor-pointer bg-opacity-50"
       whileHover={{
         y: -4,

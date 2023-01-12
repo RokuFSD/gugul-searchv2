@@ -5,6 +5,7 @@ import GifCard from "../cards/Gif/GifCard";
 import SearchLoader from "../placeholders/SearchLoader";
 import NoResults from "../placeholders/NoResults";
 import useIntersectionObserver from "../../hooks/useInScreen";
+import FavoriteWrapper from "../favorites/FavoriteWrapper";
 
 function GifsContainer() {
   const ref = useRef(null);
@@ -37,9 +38,13 @@ function GifsContainer() {
       {isInitialLoading ? (
         <SearchLoader />
       ) : (
-        <div className="flex w-full max-w-7xl mx-auto flex-wrap justify-center p-4 md:px-12 xl:px-32 gap-10">
+        <div className="flex w-full mx-auto flex-wrap justify-center p-4 md:px-12 xl:px-96 gap-10">
           {pages?.map((page) =>
-            page.data.map((gif) => <GifCard key={gif.id} item={gif} />)
+            page.data.map((gif) => (
+              <FavoriteWrapper key={gif.id} type="gif" item={gif}>
+                <GifCard />
+              </FavoriteWrapper>
+            ))
           )}
         </div>
       )}

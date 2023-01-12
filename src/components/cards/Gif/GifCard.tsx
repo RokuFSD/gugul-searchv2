@@ -1,4 +1,5 @@
-import React, { memo, useRef, useState } from "react";
+/* eslint-disable */
+import React, { memo, useCallback, useMemo, useRef, useState } from "react";
 import { GifSearch } from "../../../services/Gifs";
 import GifInner from "./GifInner";
 
@@ -10,6 +11,7 @@ type GifCardProps = {
 function GifCard({ item }: GifCardProps) {
   const [current, setCurrent] = useState(false);
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const memoSetCurrent = useMemo(() => setCurrent, []);
 
   if (!item) return null;
 
@@ -61,7 +63,7 @@ function GifCard({ item }: GifCardProps) {
       onKeyDown={handleKeyPress}
       onClick={() => setCurrent((prev) => !prev)}
     >
-      <div className="grid w-full h-full relative">
+      <div className="grid w-full h-full relative z-20">
         <img
           className="w-full object-fill h-full"
           src={item.images.fixed_height.url}
@@ -72,7 +74,7 @@ function GifCard({ item }: GifCardProps) {
           title={item.title}
           data-testid="gif-card"
         />
-        <GifInner show={current} setCurrent={setCurrent} />
+        <GifInner show={current} setCurrent={memoSetCurrent} />
       </div>
     </div>
   );

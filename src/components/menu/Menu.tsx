@@ -68,7 +68,7 @@ function Menu({ children }: MenuProps) {
             }}
             exit={{ opacity: 0, x: -200 }}
             transition={{ duration: 0.5 }}
-            className="relative h-full bg-gray-700 w-64 z-40 cursor-default flex justify-center py-40 md:w-80 lg:w-64 lg:bg-gray-800"
+            className="inset-y-0 fixed h-full bg-gray-700 w-64 z-40 cursor-default flex justify-center py-40 md:w-80 lg:w-64 lg:bg-gray-800"
             onClick={(e) => {
               e.stopPropagation();
             }}

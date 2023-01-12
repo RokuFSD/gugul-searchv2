@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, memo, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 type GifInnerProps = {
@@ -48,7 +48,7 @@ function GifInner({ show, setCurrent }: GifInnerProps) {
               className="overflow-hidden bg-green-300 rounded-full w-12 h-12 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
               onFocus={() => setCurrent(true)}
             >
-              Favorite
+              Go To
             </motion.button>
           </div>
         </motion.div>
@@ -57,4 +57,4 @@ function GifInner({ show, setCurrent }: GifInnerProps) {
   );
 }
 
-export default GifInner;
+export default memo(GifInner);
