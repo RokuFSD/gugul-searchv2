@@ -9,7 +9,7 @@ function PrivateGuard() {
   const user = useAppSelector(selectUser);
 
   if (!user.email) {
-    return <Navigate to={PublicRoutes.AUTH} replace />;
+    return <Navigate to={PublicRoutes.LOGIN} replace />;
   }
   return <Outlet />;
 }

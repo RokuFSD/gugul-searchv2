@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { logout } from "../../redux/features/auth/thunkActions";
 import { selectUser } from "../../redux/features/auth/authSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks/store";
@@ -10,6 +10,7 @@ import ProfileMenuList from "../../components/navbar/ProfileNav/ProfileMenuList"
 import FavoriteContainer from "../../components/favorites/FavoriteContainer";
 
 function ProfilePage() {
+  const navigate = useNavigate();
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   return (
@@ -22,7 +23,10 @@ function ProfilePage() {
             <button
               className="w-full text-start h-full"
               type="button"
-              onClick={() => dispatch(logout())}
+              onClick={() => {
+                navigate("/");
+                dispatch(logout());
+              }}
             >
               log out
             </button>

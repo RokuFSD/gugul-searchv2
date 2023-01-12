@@ -1,18 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../redux/hooks/store";
 import { login } from "../../../redux/features/auth/thunkActions";
 import * as Form from "../index";
-import selectView from "../../../services/selectView";
+import { PublicRoutes } from "../../../models/routes";
 
 function LoginForm() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   return (
     <div className="flex h-screen items-center justify-center">
       <Form.Form
         className="max-w-xs flex items-center justify-center flex-wrap gap-4"
         onSubmit={(e) => dispatch(login(e))}
         initialValues={{ email: "", password: "" }}
-        path="/"
+        path="/profile"
       >
         <Form.FormInput
           name="email"
@@ -36,7 +38,7 @@ function LoginForm() {
           <h2 className="text-gray-400">Don&apos;t have an account?</h2>
           <button
             type="button"
-            onClick={() => selectView.setSubject(true)}
+            onClick={() => navigate(PublicRoutes.REGISTER)}
             className="duration-200 bg-neutral-200 rounded px-2 py-1 text-black shadow-lg border border-neutral-500 transition-colors hover:border-blue-500 hover:text-blue-500"
           >
             Sign up for free!

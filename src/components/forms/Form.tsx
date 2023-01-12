@@ -50,7 +50,7 @@ function Form<T>({
         }
         return child;
       })}
-      {formError && <span>formError</span>}
+      {formError && <span>{formError}</span>}
     </form>
   );
 }

@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/store";
 import { selectUser } from "../../redux/features/auth/authSlice";
+import { PublicRoutes } from "../../models/routes";
 
 function UserCard() {
   const user = useAppSelector(selectUser);
   return (
     <div className="flex block order-1 md:absolute right-8 lg:right-32 items-center md:h-14">
       {!user.email ? (
-        <Link to="/auth" className="">
+        <Link to={PublicRoutes.LOGIN} className="">
           {/* Person SVG  */}
           <svg
             xmlns="http://www.w3.org/2000/svg"

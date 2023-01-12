@@ -1,13 +1,14 @@
 import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { PrivateRoutes, PublicRoutes } from "../models/routes";
-import { AuthPage, ProfilePage, SearchPage } from "./pages";
+import { ProfilePage, SearchPage, LoginPage, RegisterPage } from "./pages";
 
 import App from "../App";
 import PrivateGuard from "./guards/PrivateGuard";
 import GifsContainer from "../components/results/GifsContainer";
 import FavoriteResults from "../components/favorites/FavoriteResults";
 import ResultsContainer from "../components/results/ResultsContainer";
+import AuthGuard from "./guards/AuthGuard";
 
 const routes = [
   {
@@ -33,8 +34,17 @@ const routes = [
         ],
       },
       {
-        path: `${PublicRoutes.AUTH}`,
-        element: <AuthPage />,
+        element: <AuthGuard />,
+        children: [
+          {
+            path: PublicRoutes.LOGIN,
+            element: <LoginPage />,
+          },
+          {
+            path: PublicRoutes.REGISTER,
+            element: <RegisterPage />,
+          },
+        ],
       },
       {
         path: `${PrivateRoutes.PROFILE}`,

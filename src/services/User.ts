@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import axios, { AxiosError } from "axios";
 import { User } from "../models/user";
-import { Favorite, Results } from "../types/api";
+import { Favorite } from "../types/api";
 
 const BASE_URL = "http://localhost:5005";
 const USER_URL = `${BASE_URL}/users`;
@@ -14,6 +14,14 @@ export default class UserService {
       return await axios.post(`${USER_URL}/register`, data);
     } catch (error) {
       const err = error as AxiosError;
+      if (!err.response) {
+        return {
+          payload: {
+            message: "Server Error; Please try again later",
+            type: "form",
+          },
+        };
+      }
       return { payload: err.response?.data };
     }
   }

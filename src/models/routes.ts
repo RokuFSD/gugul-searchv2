@@ -9,5 +9,6 @@ export enum PrivateRoutes {
 
 export enum PublicRoutes {
   SEARCH = "/search",
-  AUTH = "/auth",
+  REGISTER = "/register",
+  LOGIN = "/login",
 }

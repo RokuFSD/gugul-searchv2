@@ -95,13 +95,6 @@ function useForm<T>(
     const data = new FormData(e.currentTarget);
     // We are using redux here for the error handling because the logic is in thunk actions
     const result = await onSubmit(Object.fromEntries(data.entries()));
-    // TODO: Type this
-    // if (!result.response) {
-    //   formErrors.current.form = "Server Error";
-    //   subscribers.current.forEach((callback) => callback());
-    //   return;
-    // }
-    // Check if result is an error result of the Thunk
     if (result && typeof result === "object" && "payload" in result) {
       const payload = result.payload as {
         message: string;
@@ -109,6 +102,8 @@ function useForm<T>(
       };
       formErrors.current[payload.type] = payload.message;
       isValid.current = false;
+      subscribers.current.forEach((callback) => callback());
+      return;
     }
     setIsLoading(false);
     subscribers.current.forEach((callback) => callback());
