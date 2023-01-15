@@ -1,46 +1,32 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/store";
-import { isAnyUser } from "../../redux/features/auth/authSlice";
+import { isAnyUser, userImage } from "../../redux/features/auth/authSlice";
 import { PublicRoutes } from "../../models/routes";
 
 function UserCard() {
   const user = useAppSelector(isAnyUser);
+  const image = useAppSelector(userImage);
   return (
-    <div className="flex block order-1 md:absolute right-8 lg:right-32 items-center md:h-14">
+    <div className="flex block order-1 md:absolute right-8 lg:right-20 items-center md:h-14">
       {!user ? (
-        <Link to={PublicRoutes.LOGIN} className="">
+        <Link
+          to={PublicRoutes.LOGIN}
+          className="transition-colors block w-20 h-10 bg-blue-300 rounded-lg flex items-center justify-center hover:bg-blue-400 hover:shadow-lg"
+        >
+          Sign In
           {/* Person SVG  */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
         </Link>
       ) : (
         <Link to="/profile" className="">
-          Profile
+          <picture>
+            <source srcSet={image} type="image/webp" />
+            <img
+              src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+              alt="user placeholder"
+              className="w-12 h-12 rounded-full mx-auto"
+            />
+          </picture>
         </Link>
       )}
     </div>

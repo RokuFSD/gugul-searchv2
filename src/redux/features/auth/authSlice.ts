@@ -121,6 +121,7 @@ const selectFavoriteNews = createSelector(selectAll, (favorites) =>
 );
 
 export const isAnyUser = createSelector(selectUser, (user) => !!user._id);
+export const userImage = createSelector(selectUser, (user) => user.picture);
 
 export const selectors = {
   news: selectFavoriteNews,
