@@ -42,7 +42,7 @@ function Paginator({ data }: PaginatorProps) {
           onClick={() => handleClick(page)}
           className={`${
             parseInt(page, 10) === context.page ? "text-blue-300" : ""
-          }text-lg font-medium rounded-md focus:outline-none focus-visible:ring-2 hover:text-blue-200 transition-colors`}
+          } text-lg font-medium rounded-md focus:outline-none focus-visible:ring-2 hover:text-blue-200 transition-colors`}
         >
           {page}
         </button>

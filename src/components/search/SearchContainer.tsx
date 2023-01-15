@@ -37,8 +37,8 @@ function SearchContainer({ triggeredSearch }: SearchContainerProps) {
       name="search"
       className={`${
         !triggeredSearch &&
-        "absolute w-full top-1/2 -translate-y-1/2 justify-center"
-      } basis-full order-2 flex px-4`}
+        "absolute w-full top-1/2 -translate-y-1/2 justify-center px-4"
+      } basis-full order-2 flex`}
     >
       <SearchBar />
     </form>
