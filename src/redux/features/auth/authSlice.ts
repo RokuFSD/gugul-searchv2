@@ -120,6 +120,8 @@ const selectFavoriteNews = createSelector(selectAll, (favorites) =>
   favorites.filter((favorite) => favorite.card_type === "new")
 );
 
+export const isAnyUser = createSelector(selectUser, (user) => !!user._id);
+
 export const selectors = {
   news: selectFavoriteNews,
   gifs: selectFavoriteGifs,

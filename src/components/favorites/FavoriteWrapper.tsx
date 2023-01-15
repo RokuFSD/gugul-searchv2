@@ -6,7 +6,7 @@ import {
   addFavorite,
   removeFavorite,
   selectById,
-  selectUser,
+  isAnyUser,
 } from "../../redux/features/auth/authSlice";
 import UserService from "../../services/User";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/store";
@@ -27,7 +27,7 @@ function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
     selectById(state, id as string)
   );
 
-  const user = useAppSelector(selectUser);
+  const user = useAppSelector(isAnyUser);
 
   async function handleClick() {
     if (!item) return;
@@ -64,7 +64,7 @@ function FavoriteWrapper({ item, children, type }: FavoriteWrapperProps) {
       <button
         type="button"
         onClick={handleClick}
-        className={`${!user._id && "hidden"} left-full`}
+        className={`${!user && "hidden"} left-full`}
       >
         {/* Shake effect */}
         <motion.svg

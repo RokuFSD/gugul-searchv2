@@ -1,14 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/store";
-import { selectUser } from "../../redux/features/auth/authSlice";
+import { isAnyUser } from "../../redux/features/auth/authSlice";
 import { PublicRoutes } from "../../models/routes";
 
 function UserCard() {
-  const user = useAppSelector(selectUser);
+  const user = useAppSelector(isAnyUser);
   return (
     <div className="flex block order-1 md:absolute right-8 lg:right-32 items-center md:h-14">
-      {!user.email ? (
+      {!user ? (
         <Link to={PublicRoutes.LOGIN} className="">
           {/* Person SVG  */}
           <svg
@@ -47,4 +47,4 @@ function UserCard() {
   );
 }
 
-export default UserCard;
+export default memo(UserCard);

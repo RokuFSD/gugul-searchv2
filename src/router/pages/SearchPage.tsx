@@ -11,15 +11,19 @@ function SearchPage() {
 
   if (!searchTriggered) {
     return (
-      <Header triggeredSearch={searchTriggered}>
-        <SearchContainer />
-      </Header>
+      <>
+        <Header triggeredSearch={searchTriggered}>
+          {/* Refactor this div: Is used to fill the children prop requirement */}
+          <div />
+        </Header>
+        <SearchContainer triggeredSearch={searchTriggered} />
+      </>
     );
   }
   return (
     <>
       <Header triggeredSearch={searchTriggered}>
-        <SearchContainer />
+        <SearchContainer triggeredSearch={searchTriggered} />
         <Navbar />
       </Header>
       <Outlet />

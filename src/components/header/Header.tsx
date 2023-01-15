@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { memo, ReactNode } from "react";
 import UserCard from "../cards/UserCard";
 
 type HeaderProps = {
@@ -12,7 +12,7 @@ function Header({ children, triggeredSearch }: HeaderProps) {
       className={`w-full flex flex-wrap px-4 h-40 overflow-hidden md:gap-4 xl:px-52 relative ${
         triggeredSearch
           ? "mx-auto lg:m-0 lg:pl-10 border-b border-b-blue-300 shadow-md justify-end md:justify-start pt-2 md:pt-10"
-          : "place-self-center row-span-full"
+          : "h-14"
       }`}
     >
       {children}
@@ -21,4 +21,4 @@ function Header({ children, triggeredSearch }: HeaderProps) {
   );
 }
 
-export default Header;
+export default memo(Header);

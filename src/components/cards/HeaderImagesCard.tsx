@@ -8,7 +8,7 @@ type HeaderImagesCardProps = {
 function HeaderImagesCard({ data }: HeaderImagesCardProps) {
   return (
     <div className="flex flex-wrap rounded overflow-hidden border border-gray-400 max-w-xs xl:max-w-sm xl:mb-5">
-      {data.map((image, index) => (
+      {data.slice(0, 4).map((image, index) => (
         <div
           key={image.source}
           className={`${index % 2 !== 0 ? "w-5/12" : "w-7/12"}`}

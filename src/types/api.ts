@@ -68,7 +68,7 @@ export type ResponseType = {
         name: string;
       };
       header_images?: HeaderImage[];
-      list: { title: string; description: string | string[] }[];
+      list: {[key:string]: string | string[]};
       [key: string]: unknown;
     };
   };
