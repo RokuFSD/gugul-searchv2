@@ -21,7 +21,7 @@ specifiers:
   autoprefixer: ^10.4.13
   axios: ^1.2.1
   cypress: ^12.0.2
-  eslint: 8.22.0
+  eslint: ^8.22.0
   eslint-config-airbnb: ^19.0.4
   eslint-config-airbnb-typescript: ^17.0.0
   eslint-config-prettier: ^8.5.0
@@ -3173,7 +3173,7 @@ packages:
     engines: {node: '>=12.0.0'}
     dependencies:
       ansi-escapes: 4.3.2
-      chalk: 4.1.1
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-width: 3.0.0
       external-editor: 3.1.0
@@ -4001,7 +4001,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.1
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.7.0
       is-interactive: 1.0.0

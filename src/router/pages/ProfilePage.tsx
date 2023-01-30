@@ -24,8 +24,7 @@ function ProfilePage() {
               className="w-full text-start h-full"
               type="button"
               onClick={() => {
-                navigate("/");
-                dispatch(logout());
+                dispatch(logout()).unwrap().then(() => navigate("/"));
               }}
             >
               log out
