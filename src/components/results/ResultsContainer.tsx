@@ -20,13 +20,13 @@ function ResultsContainer() {
   const { context } = useSearchContext();
   const { type } = useParams();
   const { query, page } = context;
-  const { data, isLoading } = useSearch({ type, query, page });
+  const { data, isLoading, isFetching } = useSearch({ type, query, page });
 
   const results =
     data?.data[SearchKey[type as keyof typeof SearchKey] || "organic_results"];
   const element = componentSelector(type || "all", WidgetComponents);
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return (
       <div>
         <SearchLoader />
