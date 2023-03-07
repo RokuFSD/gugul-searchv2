@@ -74,7 +74,7 @@ function GifCard({ item }: GifCardProps) {
           title={item.title}
           data-testid="gif-card"
         />
-        <GifInner show={current} setCurrent={memoSetCurrent} />
+        <GifInner show={current} setCurrent={memoSetCurrent} original={item.images.original} />
       </div>
     </div>
   );
