@@ -5,12 +5,18 @@ import { useAppSelector } from "../../redux/hooks/store";
 import { getSelector, selectors } from "../../redux/features/auth/authSlice";
 import NoResults from "../placeholders/NoResults";
 import componentSelector, { FavoriteComponents } from "../../utils/components";
+import ProfileWrapper from "./ProfileWrapper";
 
 function FavoriteResults() {
   const { type } = useParams();
   const selector = getSelector(type || "results", selectors);
   const results = useAppSelector(selector);
-  const component = componentSelector(type || "results", FavoriteComponents);
+  const cardType = componentSelector(type || "results", FavoriteComponents);
+  const component = (
+    <ProfileWrapper>
+      {cardType}
+    </ProfileWrapper>
+  );
 
   if (results.length < 1) {
     return <NoResults from="favorites" />;
