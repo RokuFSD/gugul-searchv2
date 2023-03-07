@@ -10,7 +10,7 @@ const links = [
 
 function Navbar() {
   return (
-    <nav className="w-full max-w-xl">
+    <nav className="w-full max-w-xl basis-full order-2">
       <ul className="flex w-full justify-between">
         {links.map((link) => (
           <NavbarItem key={link.name} name={link.name} path={link.path} />

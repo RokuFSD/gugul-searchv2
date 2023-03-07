@@ -9,7 +9,7 @@ type VideoCardProps = {
 function VideoMobileCard({ item }: VideoCardProps) {
   const { extensions } = item.rich_snippet.top;
   return (
-    <div className="flex relative gap-4">
+    <div className="flex relative gap-4 max-w-lg">
       {item?.thumbnail ? (
         <a href={item?.link} target="_blank" rel="noreferrer">
           <div className="relative">

@@ -21,3 +21,13 @@ export const matchesAlwaysTrue = {
     dispatchEvent: vitest.fn(),
   })),
 };
+
+// IntersectionObserver Mock
+export const IntersectionObserverMock = {
+  writable: true,
+  value: vitest.fn().mockImplementation((callback) => ({
+    observe: vitest.fn(),
+    unobserve: vitest.fn(),
+    disconnect: vitest.fn(),
+  })),
+};

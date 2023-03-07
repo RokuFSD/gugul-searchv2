@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ResponseType } from "../../../types/api";
-import HeaderImagesCard from "../../cards/HeaderImagesCard";
-import AsideDetails from "./AsideDetails";
+
 import ArrowSvg from "../../svgs/ArrowSvg";
+import AsideDetails from "./AsideDetails";
+import HeaderImagesCard from "../../cards/HeaderImagesCard";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
 type AsideSectionProps = {
   data: ResponseType["data"]["knowledge_graph"];
@@ -24,6 +26,7 @@ const variants = {
 };
 
 function AsideSection({ data }: AsideSectionProps) {
+  console.log(data);
   const [dataState, setDataState] = useState<"closed" | "open">("closed");
   const {
     header_images: headerImages,
@@ -33,8 +36,10 @@ function AsideSection({ data }: AsideSectionProps) {
     source: { link, name },
     list,
   } = data;
+  const match = useMediaQuery("(min-width: 1024px)");
+
   return (
-    <aside className="relative overflow-hidden md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-auto">
+    <aside className="relative overflow-hidden md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-3/4">
       {headerImages && <HeaderImagesCard data={headerImages} />}
       <div
         data-state={dataState}
@@ -50,8 +55,9 @@ function AsideSection({ data }: AsideSectionProps) {
         <p className="italic text-gray-300">Source: {name}</p>
       </div>
       <AnimatePresence>
-        {dataState !== "closed" && (
+        {(dataState !== "closed" || match) && (
           <motion.div
+            className="w-full py-4"
             layout
             variants={variants}
             initial="hidden"

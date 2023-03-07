@@ -10,7 +10,8 @@ type UseSearchProps = {
 
 function useSearch({ type, query, page }: UseSearchProps) {
   const queryClient = useQueryClient();
-  const { data, isLoading, isSuccess } = useQuery({
+  // TODO: Export loading state on page change to better user experience
+  const { data, isLoading, isSuccess, isFetching } = useQuery({
     queryKey: ["search", type, query, page],
     queryFn: () => Search.search(query, type || "", page),
     keepPreviousData: true,
@@ -25,7 +26,7 @@ function useSearch({ type, query, page }: UseSearchProps) {
     });
   }, [queryClient, type, query, page]);
 
-  return { data, isLoading, isSuccess };
+  return { data, isLoading, isSuccess, isFetching };
 }
 
 export default useSearch;

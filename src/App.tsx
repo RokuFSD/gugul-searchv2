@@ -1,15 +1,18 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import Modal from "react-modal";
+import { Outlet } from "react-router-dom";
 import { SearchContextProvider } from "./context/SearchContext";
+import useMeAuth from "./hooks/useMeAuth";
 
 Modal.setAppElement("#modal-root");
 
 function App() {
+  // First check if there is a user session
+  const { isLoading } = useMeAuth();
   return (
     <main className="w-full dark:bg-gray-700 text-white">
       <SearchContextProvider>
-        <Outlet />
+        {isLoading ? null : <Outlet />}
       </SearchContextProvider>
     </main>
   );

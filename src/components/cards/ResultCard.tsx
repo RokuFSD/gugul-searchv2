@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Results } from "../../types/api";
 
 type ResultCardProps = {
@@ -8,7 +8,7 @@ type ResultCardProps = {
 
 function ResultCard({ item }: ResultCardProps) {
   return (
-    <div className="flex flex w-full items-center gap-4 max-w-xl">
+    <div className="flex flex w-full items-center gap-4 max-w-xl z-20 bg-gray-700">
       <div className="w-full">
         <span className="text-xs text-gray-400">{item?.displayed_link}</span>
         <h2 className="text-lg text-blue-300 hover:text-blue-400 transition-all">
@@ -31,4 +31,4 @@ function ResultCard({ item }: ResultCardProps) {
   );
 }
 
-export default ResultCard;
+export default memo(ResultCard);

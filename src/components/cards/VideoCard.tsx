@@ -19,7 +19,7 @@ function VideoCard({ item }: VideoCardProps) {
   const { extensions } = item.rich_snippet.top;
   const isYoutube = extensions[0].toLowerCase().includes("youtube");
   return (
-    <div className="flex flex w-full items-center gap-4">
+    <div className="flex flex w-full items-center gap-4 z-20 bg-gray-700">
       <div className="w-full">
         <span className="text-xs text-gray-400">{item?.displayed_link}</span>
         <h2 className="text-lg text-blue-300 hover:text-blue-400 transition-all">
@@ -31,7 +31,7 @@ function VideoCard({ item }: VideoCardProps) {
           {item?.thumbnail ? (
             <ThumbnailCard isYoutube={isYoutube} item={item} />
           ) : null}
-          <div className="max-w-md h-full flex flex-col gap-3">
+          <div className="max-w-sm h-full flex flex-col gap-3">
             <p className="text-sm line-clamp-2">{item?.snippet}</p>
             <p className="text-sm text-gray-300">
               {extensions.map((extension) => `${extension} `)}

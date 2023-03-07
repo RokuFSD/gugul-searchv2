@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSearchContext } from "../../context/SearchContext";
+import { useSearchContext } from "../../../context/SearchContext";
 
 type NavbarItemProps = {
   name: string;
@@ -25,7 +25,8 @@ function NavbarItem({ path, name }: NavbarItemProps) {
       >
         {({ isActive }) =>
           isActive ? (
-            <span className="after:block after:px-8 after:w-4 after:h-full after:bg-blue-400 after:rounded-t-full after:left-1/2 after:absolute after:-translate-x-1/2">
+            <span
+              className="after:block after:px-8 after:w-4 after:h-full after:bg-blue-400 after:rounded-t-full after:left-1/2 after:absolute after:-translate-x-1/2">
               {name}
             </span>
           ) : (

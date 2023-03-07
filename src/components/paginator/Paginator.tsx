@@ -31,8 +31,8 @@ function Paginator({ data }: PaginatorProps) {
   }
 
   return (
-    <div className="flex flex-wrap gap-2 justify-center lg:max-w-lg">
-      <span className="block basis-full text-center text-lg md:text-2xl lg:text-3xl">
+    <div className="flex flex-wrap gap-2 justify-center max-w-lg">
+      <span className="block basis-full text-center text-3xl">
         G<span className="text-blue-300">uuuuuuuuuu</span>gul
       </span>
       {totalPages.map((page) => (
@@ -42,7 +42,7 @@ function Paginator({ data }: PaginatorProps) {
           onClick={() => handleClick(page)}
           className={`${
             parseInt(page, 10) === context.page ? "text-blue-300" : ""
-          } text-md md:text-lg font-medium rounded-md hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500`}
+          } text-lg font-medium rounded-md focus:outline-none focus-visible:ring-2 hover:text-blue-200 transition-colors`}
         >
           {page}
         </button>
