@@ -9,6 +9,7 @@ type VideoCardProps = {
   item?: VideoResult;
 };
 
+
 function VideoCard({ item }: VideoCardProps) {
   const isMobile = useMediaQuery("(max-width: 768px)");
   if (!item) return null;
@@ -37,7 +38,8 @@ function VideoCard({ item }: VideoCardProps) {
               {extensions.map((extension) => `${extension} `)}
             </p>
           </div>
-          <p className="text-xs text-white bg-neutral-800 bg-opacity-70 absolute bottom-0 rounded-full m-1 w-8 text-center">
+          <p
+            className="text-xs text-white bg-neutral-800 bg-opacity-70 absolute bottom-0 rounded-full m-1 w-8 text-center">
             {item?.duration}
           </p>
         </div>
