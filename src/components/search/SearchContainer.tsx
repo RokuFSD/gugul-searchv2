@@ -2,6 +2,7 @@ import React, { FormEvent, memo } from "react";
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { useSearchContextAction } from "../../context/SearchContext";
+import Logo from "../header/Logo";
 
 type SearchContainerProps = {
   triggeredSearch: boolean;
@@ -27,21 +28,25 @@ function SearchContainer({ triggeredSearch }: SearchContainerProps) {
     }
     setQueryParams((prev) => ({
       ...Object.fromEntries(prev.entries()),
-      q: values.q,
+      q: values.q
     }));
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      name="search"
-      className={`${
-        !triggeredSearch &&
-        "absolute w-full top-1/2 -translate-y-1/2 justify-center px-4"
-      } basis-full order-2 flex`}
-    >
-      <SearchBar />
-    </form>
+    <div
+      className="order-2 flex w-full basis-full items-center flex-col md:pt-12 md:items-start">
+      <Logo />
+      <form
+        onSubmit={handleSubmit}
+        name="search"
+        className={`${
+          !triggeredSearch &&
+          "w-full justify-center px-4"
+        } basis-full order-2 flex w-full items-center`}
+      >
+        <SearchBar />
+      </form>
+    </div>
   );
 }
 

@@ -83,3 +83,24 @@
   }
 
 }
+
+@layer base {
+  .logo {
+    font-size: xxx-large;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+
+  @media screen and (min-width: 762px) and (max-width: 1200px) {
+    .logo {
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .logo {
+      position: absolute;
+      left: 0;
+    }
+  }
+}

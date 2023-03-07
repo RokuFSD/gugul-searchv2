@@ -8,7 +8,8 @@ function UserCard() {
   const user = useAppSelector(isAnyUser);
   const image = useAppSelector(userImage);
   return (
-    <div className="flex block order-1 md:absolute right-8 lg:right-20 items-center md:h-14">
+    <div
+      className="flex justify-end basis-full order-1 block order-1 md:absolute right-8 lg:right-20 items-center md:h-14">
       {!user ? (
         <Link
           to={PublicRoutes.LOGIN}
