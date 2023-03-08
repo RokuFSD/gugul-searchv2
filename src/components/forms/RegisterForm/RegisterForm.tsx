@@ -4,17 +4,23 @@ import * as Form from "../index";
 import validations from "../../../utils/validations";
 import UserService from "../../../services/User";
 import { PublicRoutes } from "../../../models/routes";
+import ArrowSvg from "../../svgs/ArrowSvg";
 
 function RegisterForm() {
   const navigate = useNavigate();
   return (
     <Form.Form
-      className="max-w-xs flex items-center justify-center flex-wrap gap-4 basis-full"
+      className="max-w-xs flex items-center justify-center flex-wrap gap-4 basis-full relative"
       onSubmit={(e) => UserService.create(e)}
       initialValues={{ name: "", password: "", email: "" }}
       validations={validations}
       path="/login"
     >
+      <div className="absolute bottom-full -left-5 md:left-[unset] md:right-full">
+        <button type="button" onClick={() => navigate(-1)} title="Go back">
+          <ArrowSvg rotate={90} size="large" />
+        </button>
+      </div>
       <Form.FormInput
         name="name"
         type="text"
@@ -37,7 +43,8 @@ function RegisterForm() {
         required
       />
       {/* The ! tag is used because framer motion */}
-      <Form.FormSubmit className="w-full border rounded h-10 my-6 transition-colors hover:bg-gray-300 hover:text-gray-600 focus:outline-blue-100">
+      <Form.FormSubmit
+        className="w-full border rounded h-10 my-6 transition-colors hover:bg-gray-300 hover:text-gray-600 focus:outline-blue-100">
         Sign Up
       </Form.FormSubmit>
       <div className="w-full flex flex-col items-center gap-2">

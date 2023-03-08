@@ -1,9 +1,30 @@
 import React from "react";
+import classSelector from "../../utils/classSelector";
 
-function ArrowSvg({ rotate }: { rotate: number }) {
+type ArrowSvgProps = {
+  rotate: number,
+  // eslint-disable-next-line react/require-default-props
+  size?: "small" | "large"
+}
+
+const baseClass = [] as string [];
+
+const variants = {
+  small: [
+    "w-6",
+    "h-6"
+  ],
+  large: [
+    "w-14",
+    "h-14",
+  ]
+};
+
+function ArrowSvg({ rotate, size = "small" }: ArrowSvgProps) {
+  const classes = classSelector(baseClass, variants);
   return (
     <svg
-      className="w-6 h-6"
+      className={classes(size)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
