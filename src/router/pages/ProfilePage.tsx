@@ -8,6 +8,7 @@ import * as Menu from "../../components/menu";
 import ProfileCard from "../../components/cards/ProfileCard";
 import ProfileMenuList from "../../components/navbar/ProfileNav/ProfileMenuList";
 import FavoriteContainer from "../../components/favorites/FavoriteContainer";
+import Logo from "../../components/header/Logo";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function ProfilePage() {
       <Menu.MenuOpen />
       <Menu.Menu>
         <Menu.MenuList>
+          <Logo onNav/>
           <ProfileMenuList />
           <Menu.MenuItem>
             <button

@@ -86,7 +86,7 @@
 
 @layer base {
   .logo {
-    font-size: xxx-large;
+    font-size: 3rem;
     font-family: 'Julius Sans One', sans-serif;
   }
 }
