@@ -1,8 +1,27 @@
 import React from "react";
+import classSelector from "../../utils/classSelector";
 
-function Logo() {
+type LogoProps = {
+  triggeredSearch: boolean;
+}
+
+const baseLogoStyles = [
+  "logo"
+];
+
+const variants = {
+  searched: [
+    "top-0",
+    "md:absolute",
+    "xl:top-[unset]",
+    "xl:left-0"
+  ]
+};
+
+function Logo({ triggeredSearch }: LogoProps) {
+  const classes = classSelector(baseLogoStyles, variants);
   return (
-    <h2 className="logo">Gugul</h2>
+    <h2 className={classes(triggeredSearch ? "searched" : "")}>Gugul</h2>
   );
 }
 

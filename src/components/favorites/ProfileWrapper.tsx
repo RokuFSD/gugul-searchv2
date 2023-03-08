@@ -1,45 +1,42 @@
-/* eslint-disable */
 import React, { cloneElement, ReactElement, ReactNode } from "react";
+import { motion } from "framer-motion";
 import { useAppDispatch } from "../../redux/hooks/store";
 import {
   addFavorite,
   removeFavorite
 } from "../../redux/features/auth/authSlice";
-import { motion } from "framer-motion";
 import { GifSearch } from "../../services/Gifs";
 import UserService from "../../services/User";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import classSelector from "../../utils/classSelector";
 
 type ProfileWrapperProps = {
   item?: GifSearch;
   children: ReactNode;
 };
 
-function wrapperClass(type: "desktop" | "mobile") {
-  const baseClass = [
-    "justify-end",
-    "flex",
-    "absolute",
-    "bg-zinc-800",
-    "bg-opacity-80"
-  ];
+const baseClass = [
+  "justify-end",
+  "flex",
+  "absolute",
+  "bg-zinc-800",
+  "bg-opacity-80"
+];
 
-  const variants = {
-    desktop: [
-      "left-full",
-      "rounded-r-full",
-      "mt-4",
-      "w-10",
-      "z-10"
-    ],
-    mobile: [
-      "right-0",
-      "z-40",
-      "rounded-full"
-    ]
-  };
-  return baseClass.concat(variants[type]).join(" ");
-}
+const classVariants = {
+  desktop: [
+    "left-full",
+    "rounded-r-full",
+    "mt-4",
+    "w-10",
+    "z-10"
+  ],
+  mobile: [
+    "right-0",
+    "z-40",
+    "rounded-full"
+  ]
+};
 
 function ProfileWrapper({ item, children }: ProfileWrapperProps) {
   const dispatch = useAppDispatch();
@@ -52,6 +49,8 @@ function ProfileWrapper({ item, children }: ProfileWrapperProps) {
       x: -100
     }
   } : undefined;
+
+  const classes = classSelector(baseClass, classVariants);
 
   async function handleClick() {
     const id = item?.id || item?.title;
@@ -78,7 +77,7 @@ function ProfileWrapper({ item, children }: ProfileWrapperProps) {
       <motion.button
         type="button"
         onClick={handleClick}
-        className={wrapperClass(isMobile ? "mobile" : "desktop")}
+        className={classes(isMobile ? "mobile" : "desktop")}
         title="Remove from favorites"
         variants={variants}
         whileFocus={{
@@ -106,6 +105,6 @@ function ProfileWrapper({ item, children }: ProfileWrapperProps) {
       </motion.button>
     </motion.div>
   );
-};
+}
 
 export default ProfileWrapper;

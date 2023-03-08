@@ -26,7 +26,6 @@ const variants = {
 };
 
 function AsideSection({ data }: AsideSectionProps) {
-  console.log(data);
   const [dataState, setDataState] = useState<"closed" | "open">("closed");
   const {
     header_images: headerImages,
