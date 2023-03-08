@@ -12,7 +12,7 @@ const baseLogoStyles = [
 const variants = {
   searched: [
     "top-0",
-    "md:absolute",
+    "xl:absolute",
     "xl:top-[unset]",
     "xl:left-0"
   ]

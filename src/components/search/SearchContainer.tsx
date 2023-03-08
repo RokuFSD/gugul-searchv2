@@ -34,7 +34,7 @@ function SearchContainer({ triggeredSearch }: SearchContainerProps) {
 
   return (
     <div
-      className={`order-2 flex w-full basis-full items-center flex-col md:pt-12 md:items-start ${!triggeredSearch && "absolute top-1/2 -translate-y-1/2 md:items-center"}`}>
+      className={`order-2 flex w-full basis-full items-center flex-col md:items-start ${!triggeredSearch && "absolute top-1/2 -translate-y-1/2 md:items-center"}`}>
       <Logo triggeredSearch={triggeredSearch} />
       <form
         onSubmit={handleSubmit}
