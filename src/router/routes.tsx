@@ -1,14 +1,18 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { PrivateRoutes, PublicRoutes } from "../models/routes";
-import { ProfilePage, SearchPage, LoginPage, RegisterPage } from "./pages";
 
 import App from "../App";
 import PrivateGuard from "./guards/PrivateGuard";
-import GifsContainer from "../components/results/GifsContainer";
-import FavoriteResults from "../components/favorites/FavoriteResults";
-import ResultsContainer from "../components/results/ResultsContainer";
 import AuthGuard from "./guards/AuthGuard";
+import SearchPage from "./pages/SearchPage";
+
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const GifsContainer = lazy(() => import ("../components/results/GifsContainer"));
+const ResultsContainer = lazy(() => import ("../components/results/ResultsContainer"));
+const FavoriteResults = lazy(() => import("../components/favorites/FavoriteResults"));
 
 const routes = [
   {
@@ -17,7 +21,7 @@ const routes = [
     children: [
       {
         index: true,
-        element: <SearchPage />,
+        element: <SearchPage />
       },
       {
         path: PublicRoutes.SEARCH,
@@ -25,30 +29,34 @@ const routes = [
         children: [
           {
             path: `${PublicRoutes.SEARCH}/gifs`,
-            element: <GifsContainer />,
+            element: <Suspense>
+              <GifsContainer />
+            </Suspense>
           },
           {
             path: `${PublicRoutes.SEARCH}/:type`,
-            element: <ResultsContainer />,
-          },
-        ],
+            element: <Suspense>
+              <ResultsContainer />
+            </Suspense>
+          }
+        ]
       },
       {
         element: <AuthGuard />,
         children: [
           {
             path: PublicRoutes.LOGIN,
-            element: <LoginPage />,
+            element: <Suspense><LoginPage /></Suspense>
           },
           {
             path: PublicRoutes.REGISTER,
-            element: <RegisterPage />,
-          },
-        ],
+            element: <Suspense><RegisterPage /></Suspense>
+          }
+        ]
       },
       {
         path: `${PrivateRoutes.PROFILE}`,
-        element: <Navigate to={PrivateRoutes.PRIVATE} replace />,
+        element: <Navigate to={PrivateRoutes.PRIVATE} replace />
       },
       {
         element: <PrivateGuard />,
@@ -56,27 +64,31 @@ const routes = [
         children: [
           {
             index: true,
-            element: <Navigate to={PrivateRoutes.PROFILE} replace />,
+            element: <Navigate to={PrivateRoutes.PROFILE} replace />
           },
           {
             path: PrivateRoutes.PROFILE,
-            element: <ProfilePage />,
+            element: <Suspense><ProfilePage /></Suspense>,
             children: [
               {
                 index: true,
-                element: <Navigate to={PrivateRoutes.HOME} replace />,
-              },
-            ],
+                element: <Navigate to={PrivateRoutes.HOME} replace />
+              }
+            ]
           },
           {
             path: `${PrivateRoutes.PROFILE}/:type`,
-            element: <ProfilePage />,
-            children: [{ index: true, element: <FavoriteResults /> }],
-          },
-        ],
-      },
-    ],
-  },
+            element: <Suspense><ProfilePage /></Suspense>,
+            children: [{
+              index: true, element: <Suspense>
+                <FavoriteResults />
+              </Suspense>
+            }]
+          }
+        ]
+      }
+    ]
+  }
 ];
 
 export default createBrowserRouter(routes);
