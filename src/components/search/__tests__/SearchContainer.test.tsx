@@ -10,7 +10,7 @@ const router = createMemoryRouter(
       path: "/",
       element: (
         <SearchContextProvider>
-          <SearchContainer />
+          <SearchContainer triggeredSearch />
         </SearchContextProvider>
       ),
     },
@@ -20,7 +20,7 @@ const router = createMemoryRouter(
         <SearchContextProvider>
           <div>
             Successfull search
-            <SearchContainer />
+            <SearchContainer triggeredSearch/>
           </div>
         </SearchContextProvider>
       ),
