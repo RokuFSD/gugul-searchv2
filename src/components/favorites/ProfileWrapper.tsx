@@ -11,6 +11,7 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import classSelector from "../../utils/classSelector";
 
 type ProfileWrapperProps = {
+  // eslint-disable-next-line react/require-default-props
   item?: GifSearch;
   children: ReactNode;
 };
@@ -54,14 +55,17 @@ function ProfileWrapper({ item, children }: ProfileWrapperProps) {
 
   async function handleClick() {
     const id = item?.id || item?.title;
+    if (!id) {
+      throw new Error("There must be an id!");
+    }
     const itemWithData = {
-      _id: id,
+      id,
       card_type: "gif" as const,
       data: { ...item }
     };
     try {
-      dispatch(removeFavorite(itemWithData._id!));
-      await UserService.removeFavorite(itemWithData._id!);
+      dispatch(removeFavorite(itemWithData.id));
+      await UserService.removeFavorite(itemWithData.id);
     } catch (e) {
       dispatch(addFavorite(itemWithData));
     }
