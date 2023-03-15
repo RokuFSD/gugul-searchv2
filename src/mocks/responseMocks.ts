@@ -712,80 +712,26 @@ export const aside = {
       "https://www.google.com/search?num=25&ucbcb=1&gl=ar&q=Caf%C3%A9&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtVQjC1BIMzU1LLEyuL_VIrSoJLUguKF7GyOiemHV65g5URACehra02AAAA&sa=X&ved=2ahUKEwj6lJP2kvj7AhU8NEQIHYK3DQkQMSgAegQINRAB",
     otras_personas_también_buscan_stick:
       "H4sIAAAAAAAAAONgFuLUz9U3MCorTMtVQjC1BIMzU1LLEyuL_VIrSoJLUguKF7GyOiemHV65g5URACehra02AAAA",
-    list: [
-      {
-        title: "grasas_totales",
-        description: ["0 g"],
-      },
-      {
-        title: "Ácidos_grasos_saturados",
-        description: ["0 g"],
-      },
-      {
-        title: "Ácidos_grasos_trans",
-        description: ["0 g"],
-      },
-      {
-        title: "colesterol",
-        description: ["0 mg"],
-      },
-      {
-        title: "sodio",
-        description: ["2 mg"],
-      },
-      {
-        title: "potasio",
-        description: ["49 mg"],
-      },
-      {
-        title: "carbohidratos",
-        description: ["0 g"],
-      },
-      {
-        title: "fibra_alimentaria",
-        description: ["0 g"],
-      },
-      {
-        title: "azúcares",
-        description: ["0 g"],
-      },
-      {
-        title: "proteínas",
-        description: ["0.1 g"],
-      },
-      {
-        title: "cafeína",
-        description: ["40 mg"],
-      },
-      {
-        title: "vitamina_c",
-        description: ["0 mg"],
-      },
-      {
-        title: "calcio",
-        description: ["2 mg"],
-      },
-      {
-        title: "hierro",
-        description: ["0 mg"],
-      },
-      {
-        title: "vitamina_d",
-        description: ["0 IU"],
-      },
-      {
-        title: "vitamina_b6",
-        description: ["0 mg"],
-      },
-      {
-        title: "vitamina_b12",
-        description: ["0 µg"],
-      },
-      {
-        title: "magnesio",
-        description: ["3 mg"],
-      },
-    ],
+    list: {
+      grasas_totales: ["0 g"],
+      Ácidos_grasos_saturados: ["0 g"],
+      Ácidos_grasos_trans: ["0 g"],
+      colesterol: ["0 mg"],
+      sodio: ["2 mg"],
+      potasio: ["49 mg"],
+      carbohidratos: ["0 g"],
+      fibra_alimentaria: ["0 g"],
+      azúcares: ["0 g"],
+      proteínas: ["0.1 g"],
+      cafeína: ["40 mg"],
+      vitamina_c: ["0 mg"],
+      calcio: ["2 mg"],
+      hierro: ["0 mg"],
+      vitamina_d: ["0 IU"],
+      vitamina_b6: ["0 mg"],
+      vitamina_b12: ["0 µg"],
+      magnesio: ["3 mg"],
+    },
   },
 };
 

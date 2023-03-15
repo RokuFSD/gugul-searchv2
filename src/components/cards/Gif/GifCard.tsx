@@ -63,7 +63,7 @@ function GifCard({ item }: GifCardProps) {
       onKeyDown={handleKeyPress}
       onClick={() => setCurrent((prev) => !prev)}
     >
-      <div className="grid w-full h-full relative z-20">
+      <div className="grid w-full h-full relative z-20" data-testid="gif-card">
         <img
           className="w-full object-fill h-full"
           src={item.images.fixed_height.url}
@@ -72,7 +72,6 @@ function GifCard({ item }: GifCardProps) {
           width={item.images.fixed_height.width}
           height={item.images.fixed_height.height}
           title={item.title}
-          data-testid="gif-card"
         />
         <GifInner show={current} setCurrent={memoSetCurrent} original={item.images.original} />
       </div>

@@ -1,11 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
 import ResultsContainer from "./ResultsContainer";
 import useSearch from "../../hooks/useSearch";
 import { SearchContextProvider } from "../../context/SearchContext";
 import { main, news, video } from "../../mocks/responseMocks";
 import { matches } from "../../utils/testing/windowsProperties";
+import store from "../../redux/app/store";
 
 const mockedUseSearch = useSearch as jest.Mock;
 
@@ -16,23 +18,27 @@ const router = createMemoryRouter(
     {
       path: "/",
       element: (
-        <SearchContextProvider>
-          <ResultsContainer />
-        </SearchContextProvider>
-      ),
+        <Provider store={store}>
+          <SearchContextProvider>
+            <ResultsContainer />
+          </SearchContextProvider>
+        </Provider>
+      )
     },
     {
       path: "/search/:type",
       element: (
-        <div>
-          Successfull search
-          <ResultsContainer />
-        </div>
-      ),
-    },
+        <Provider store={store}>
+          <div>
+            Successfull search
+            <ResultsContainer />
+          </div>
+        </Provider>
+      )
+    }
   ],
   {
-    initialEntries: ["/"],
+    initialEntries: ["/"]
   }
 );
 
@@ -50,21 +56,22 @@ describe("Results container", () => {
 
   it("Should render is loading", () => {
     render(<RouterProvider router={router} />);
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    expect(screen.getByLabelText("loader")).toBeInTheDocument();
   });
 
   it("Should render without crashing when there is no data", () => {
     mockedUseSearch.mockImplementation(() => ({
       isLoading: false,
-      data: { data: [] },
+      data: { data: [] }
     }));
     render(<RouterProvider router={router} />);
   });
 
   it("Should render the 'all' data", () => {
+    Object.defineProperty(window, "matchMedia", matches);
     mockedUseSearch.mockImplementation(() => ({
       isLoading: false,
-      data: { data: main },
+      data: { data: main }
     }));
     render(<RouterProvider router={router} />);
     expect(screen.queryByText("Loading...")).toBeFalsy();
@@ -74,7 +81,7 @@ describe("Results container", () => {
   it("Should render the 'news' data", () => {
     mockedUseSearch.mockImplementation(() => ({
       isLoading: false,
-      data: { data: news },
+      data: { data: news }
     }));
     router.navigate("/search/news");
     render(<RouterProvider router={router} />);
@@ -90,7 +97,7 @@ describe("Results container", () => {
     Object.defineProperty(window, "matchMedia", matches);
     mockedUseSearch.mockImplementation(() => ({
       isLoading: false,
-      data: { data: video },
+      data: { data: video }
     }));
     router.navigate("/search/videos");
     render(<RouterProvider router={router} />);

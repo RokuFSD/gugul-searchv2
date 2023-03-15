@@ -1,3 +1,5 @@
+import { vitest } from "vitest";
+
 export const matches = {
   writable: true,
   value: vitest.fn().mockImplementation((query) => ({
@@ -5,10 +7,12 @@ export const matches = {
     media: query,
     onchange: null,
     addEventListener: vitest.fn(),
+    addListener: vitest.fn(),
     removeEventListener: vitest.fn(),
+    removeListener: vitest.fn(),
     dispatchEvent: vitest.fn(),
-    scrollTo: vitest.fn(),
-  })),
+    scrollTo: vitest.fn()
+  }))
 };
 
 export const matchesAlwaysTrue = {
@@ -18,8 +22,8 @@ export const matchesAlwaysTrue = {
     media: query,
     addEventListener: vitest.fn(),
     removeEventListener: vitest.fn(),
-    dispatchEvent: vitest.fn(),
-  })),
+    dispatchEvent: vitest.fn()
+  }))
 };
 
 // IntersectionObserver Mock
@@ -28,6 +32,6 @@ export const IntersectionObserverMock = {
   value: vitest.fn().mockImplementation((callback) => ({
     observe: vitest.fn(),
     unobserve: vitest.fn(),
-    disconnect: vitest.fn(),
-  })),
+    disconnect: vitest.fn()
+  }))
 };
