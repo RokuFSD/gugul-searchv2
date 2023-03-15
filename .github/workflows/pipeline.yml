@@ -1,0 +1,115 @@
+name: Development
+
+on:
+  push:
+    branches:
+      - development
+      - auth
+    pull_request:
+      branches:
+        - development
+      types:
+        - opened
+        - synchronize
+jobs:
+  avoid_redundancy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Redundant Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+      - name: Setup Node environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: '19'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run prettier
+        run: pnpm  run format
+
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+      - name: Setup Node environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: '19'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Lint
+        run: pnpm run lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+      - name: Setup Node environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: '19'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm run build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
+
+  test:
+    needs: [ lint, build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+      - name: Setup Node environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: '19'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+      - name: Test
+        run: npm run test --watch false
