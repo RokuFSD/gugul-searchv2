@@ -7,19 +7,19 @@ const AUTH_URL = `${BASE_URL}/auth`;
 export default class Auth {
   static me() {
     return axios.get<User>(`${AUTH_URL}/me`, {
-      withCredentials: true,
+      withCredentials: true
     });
   }
 
   static login(data: { [p: string]: FormDataEntryValue }) {
     return axios.post<User>(`${AUTH_URL}/login`, data, {
-      withCredentials: true,
+      withCredentials: true
     });
   }
 
   static logout() {
     return axios.post(`${AUTH_URL}/logout`, "", {
-      withCredentials: true,
+      withCredentials: true
     });
   }
 }

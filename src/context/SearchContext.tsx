@@ -7,7 +7,7 @@ import React, {
   useState,
   useCallback,
   useEffect,
-  MutableRefObject,
+  MutableRefObject
 } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -73,7 +73,7 @@ export const useSearchContext = (ref?: MutableRefObject<HTMLInputElement>) => {
   }, [searchParams]);
 
   return {
-    context,
+    context
   };
 };
 export const useSearchContextAction = () => useContext(searchContextAction);

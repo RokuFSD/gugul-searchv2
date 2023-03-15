@@ -3,10 +3,10 @@ import Modal from "react-modal";
 import Spinner from "../svgs/Spinner";
 
 function VideoPlayer({
-  src,
-  thumbnail,
-  title,
-}: {
+                       src,
+                       thumbnail,
+                       title
+                     }: {
   src: string;
   // eslint-disable-next-line react/require-default-props
   thumbnail?: string;
@@ -23,12 +23,12 @@ function VideoPlayer({
 
   const overlay = {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
-    zIndex: 1000,
+    zIndex: 1000
   };
 
   const content = {
     backgroundColor: "transparent",
-    border: "none",
+    border: "none"
   };
   return (
     <>

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { ResponseType } from "../../types/api";
 import {
   useSearchContext,
-  useSearchContextAction,
+  useSearchContextAction
 } from "../../context/SearchContext";
 
 type PaginatorProps = {
@@ -25,7 +25,7 @@ function Paginator({ data }: PaginatorProps) {
       (prev) =>
         new URLSearchParams({
           ...Object.fromEntries(prev),
-          page,
+          page
         })
     );
   }

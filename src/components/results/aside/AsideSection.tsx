@@ -13,16 +13,16 @@ type AsideSectionProps = {
 
 const stateMachine = {
   open: {
-    next: "closed",
+    next: "closed"
   },
   closed: {
-    next: "open",
-  },
+    next: "open"
+  }
 } as const;
 
 const variants = {
   visible: { height: "auto", opacity: 1 },
-  hidden: { height: "0", opacity: 0 },
+  hidden: { height: "0", opacity: 0 }
 };
 
 function AsideSection({ data }: AsideSectionProps) {
@@ -32,13 +32,16 @@ function AsideSection({ data }: AsideSectionProps) {
     title,
     description,
     type,
-    source: { link, name },
-    list,
+    source,
+    list
   } = data;
+  const link = source?.link;
+  const name = source?.name;
   const match = useMediaQuery("(min-width: 1024px)");
 
   return (
-    <aside className="relative overflow-hidden md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-3/4">
+    <aside
+      className="relative overflow-hidden md:flex md:flex-wrap lg:block order-1 lg:order-2 shadow-xl lg:shadow-none rounded-lg p-2 md:w-full lg:w-3/4">
       {headerImages && <HeaderImagesCard data={headerImages} />}
       <div
         data-state={dataState}

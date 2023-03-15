@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as Form from "../index";
+import ArrowSvg from "../../svgs/ArrowSvg";
 import validations from "../../../utils/validations";
 import UserService from "../../../services/User";
 import { PublicRoutes } from "../../../models/routes";
-import ArrowSvg from "../../svgs/ArrowSvg";
 
 function RegisterForm() {
   const navigate = useNavigate();

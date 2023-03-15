@@ -26,6 +26,8 @@ function ResultsContainer() {
     data?.data[SearchKey[type as keyof typeof SearchKey] || "organic_results"];
   const element = componentSelector(type || "all", WidgetComponents);
 
+  const aside = data?.data?.knowledge_graph;
+
   if (isLoading || isFetching) {
     return (
       <div>
@@ -43,8 +45,8 @@ function ResultsContainer() {
       {data?.data?.local_map && <LocalMap data={data.data.local_map} />}
       <div className="flex flex-col w-full gap-10 lg:flex-row xl:gap-52">
         <MainSection data={results || []} element={element} />
-        {data?.data?.knowledge_graph && (
-          <AsideSection data={data?.data?.knowledge_graph} />
+        {(aside && "type" in aside) && (
+          <AsideSection data={aside} />
         )}
       </div>
       {data?.data?.serpapi_pagination && (

@@ -8,6 +8,7 @@ Modal.setAppElement("#modal-root");
 
 function App() {
   // First check if there is a user session
+  // TODO: The tests are not working on the new version
   const { isLoading } = useMeAuth();
   return (
     <main className="w-full dark:bg-gray-700 text-white">
