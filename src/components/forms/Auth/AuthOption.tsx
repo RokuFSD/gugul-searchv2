@@ -6,7 +6,7 @@ type AuthOptionProps = {
   signInCb: () => void
   // eslint-disable-next-line react/require-default-props
   icon?: IconAuth
-  // eslint-disable-next-line react/no-unused-prop-types
+  // eslint-disable-next-line react/no-unused-prop-types,react/require-default-props
   disabled?: boolean
   type: "register" | "login"
 
