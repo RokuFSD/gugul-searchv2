@@ -3,14 +3,14 @@ import AuthIcon, { IconAuth } from "./AuthIcon";
 import classSelector from "../../../utils/classSelector";
 
 type AuthOptionProps = {
-  signInCb: () => void
+  // eslint-disable-next-line react/require-default-props
+  disabled?: boolean
   // eslint-disable-next-line react/require-default-props
   icon?: IconAuth
-  // eslint-disable-next-line react/no-unused-prop-types
-  disabled?: boolean
-  type: "register" | "login"
-
   name: string
+  signInCb: () => void
+
+  type: "register" | "login"
 }
 
 const message = {
