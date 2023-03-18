@@ -45,11 +45,11 @@ function Menu({ children }: MenuProps) {
           initial={!matchMediaQuery ? { opacity: 0 } : { opacity: 1 }}
           animate={{
             opacity: 1,
-            transition: { duration: 0.2 },
+            transition: { duration: 0.2 }
           }}
           exit={{
             opacity: 0,
-            transition: { duration: 0.2, delay: 0.5 },
+            transition: { duration: 0.2, delay: 0.5 }
           }}
           className="w-full h-full absolute z-20 bg-black bg-opacity-60 lg:w-auto lg:inset-y-0 lg:bg-gray-700 lg:bg-opacity-0"
           tabIndex={-1}
@@ -64,7 +64,7 @@ function Menu({ children }: MenuProps) {
             animate={{
               opacity: 1,
               x: 0,
-              transition: { duration: 0.5, delay: 0.2 },
+              transition: { duration: 0.5, delay: 0.2 }
             }}
             exit={{ opacity: 0, x: -200 }}
             transition={{ duration: 0.5 }}

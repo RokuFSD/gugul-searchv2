@@ -5,10 +5,10 @@ import { selectUser } from "../../redux/features/auth/authSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks/store";
 
 import * as Menu from "../../components/menu";
+import Logo from "../../components/header/Logo";
 import ProfileCard from "../../components/cards/ProfileCard";
 import ProfileMenuList from "../../components/navbar/ProfileNav/ProfileMenuList";
 import FavoriteContainer from "../../components/favorites/FavoriteContainer";
-import Logo from "../../components/header/Logo";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function ProfilePage() {
                 dispatch(logout()).unwrap().then(() => navigate("/"));
               }}
             >
-              log out
+              Log out
             </button>
           </Menu.MenuItem>
         </Menu.MenuList>
