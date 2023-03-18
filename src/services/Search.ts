@@ -1,11 +1,11 @@
 import axios from "axios";
-import { BASE_URL } from "./Auth";
-
 import { ResponseType } from "../types/api";
+
+const BASE_URL = "https://gugul-srv.onrender.com";
+
 
 enum SearchType {
   news = "nws",
-  images = "isch",
   videos = "vid",
   all = "",
 }

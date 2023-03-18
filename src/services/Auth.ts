@@ -1,7 +1,8 @@
 import axios from "axios";
 import { User } from "../models/user";
 
-export const BASE_URL = "http://localhost:5005";
+export const BASE_URL = "https://gugul-srv.onrender.com";
+
 const AUTH_URL = `${BASE_URL}/auth`;
 export const GOOGLE_URL = `${AUTH_URL}/google`;
 

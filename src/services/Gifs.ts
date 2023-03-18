@@ -1,8 +1,7 @@
 import axios from "axios";
 
 // TODO: Remove the key from here
-const BASE_URL =
-  "https://api.giphy.com/v1/gifs/search?api_key=jImDJkvHoy8exC7OHLW0zzYy0fZpENTG";
+const BASE_URL = "https://api.giphy.com/v1/gifs/search?api_key=jImDJkvHoy8exC7OHLW0zzYy0fZpENTG";
 
 type SearchGifsProps = {
   offset: number;
