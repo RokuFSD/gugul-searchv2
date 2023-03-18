@@ -2,8 +2,8 @@
 import axios, { AxiosError } from "axios";
 import { User } from "../models/user";
 import { Favorite } from "../types/api";
+import { BASE_URL } from "./Auth";
 
-const BASE_URL = "http://localhost:5005";
 const USER_URL = `${BASE_URL}/users`;
 const FAVORITES_URL = `${BASE_URL}/favorites`;
 
@@ -18,8 +18,8 @@ export default class UserService {
         return {
           payload: {
             message: "Server Error; Please try again later",
-            type: "form",
-          },
+            type: "form"
+          }
         };
       }
       return { payload: err.response?.data };
@@ -29,12 +29,12 @@ export default class UserService {
   static async update(data: Partial<User>) {
     try {
       return await axios.put(`${USER_URL}/update`, data, {
-        withCredentials: true,
+        withCredentials: true
       });
     } catch (error) {
       const err = error as AxiosError;
       return {
-        payload: err.response?.data,
+        payload: err.response?.data
       };
     }
   }
@@ -42,7 +42,7 @@ export default class UserService {
   static async addFavorite(data: Favorite) {
     try {
       return await axios.post(FAVORITES_URL, data, {
-        withCredentials: true,
+        withCredentials: true
       });
     } catch (err) {
       throw err as AxiosError;
@@ -52,7 +52,7 @@ export default class UserService {
   static async removeFavorite(idFavorite: string) {
     try {
       return await axios.delete(`${FAVORITES_URL}/${idFavorite}`, {
-        withCredentials: true,
+        withCredentials: true
       });
     } catch (err) {
       throw err as AxiosError;

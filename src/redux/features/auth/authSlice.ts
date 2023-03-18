@@ -4,7 +4,7 @@ import {
   createSlice,
   createSelector,
   createEntityAdapter,
-  PayloadAction,
+  PayloadAction
 } from "@reduxjs/toolkit";
 import { User } from "../../../models/user";
 import { Favorite } from "../../../types/api";
@@ -23,7 +23,7 @@ interface State {
 }
 
 const favoritesAdapter = createEntityAdapter<Favorite>({
-  selectId: (favorite) => favorite._id,
+  selectId: (favorite) => favorite._id
 });
 
 export const EmptyUser = {
@@ -31,8 +31,8 @@ export const EmptyUser = {
   name: "",
   password: "",
   email: "",
-  picture: "",
-  favorites: favoritesAdapter.getInitialState(),
+  image: "",
+  favorites: favoritesAdapter.getInitialState()
 };
 
 const INITIAL_AUTH: State = {
@@ -40,8 +40,8 @@ const INITIAL_AUTH: State = {
   loading: false,
   error: {
     message: "",
-    type: "",
-  },
+    type: ""
+  }
 };
 
 const authSlice = createSlice({
@@ -59,43 +59,43 @@ const authSlice = createSlice({
     },
     removeFavorite: (state, action: PayloadAction<string>) => {
       favoritesAdapter.removeOne(state.user.favorites, action.payload);
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(login.fulfilled, (state, action) => {
-        const { favorites } = action.payload.user;
-        favoritesAdapter.setAll(state.user.favorites, favorites);
-        state.user = {
-          ...action.payload.user,
-          favorites: state.user.favorites,
-        };
-      })
-      .addCase(logout.fulfilled, (state) => {
-        state.user = INITIAL_AUTH.user;
-      })
+    .addCase(login.fulfilled, (state, action) => {
+      const { favorites } = action.payload.user;
+      favoritesAdapter.setAll(state.user.favorites, favorites);
+      state.user = {
+        ...action.payload.user,
+        favorites: state.user.favorites
+      };
+    })
+    .addCase(logout.fulfilled, (state) => {
+      state.user = INITIAL_AUTH.user;
+    })
 
-      .addCase(login.rejected, (state, action) => {
-        if (action.payload) {
-          state.error = { ...action.payload };
-        }
-      })
-      .addCase(me.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(me.fulfilled, (state, action) => {
-        const { favorites } = action.payload.user;
-        favoritesAdapter.setAll(state.user.favorites, favorites);
-        state.user = {
-          ...action.payload.user,
-          favorites: state.user.favorites,
-        };
-        state.loading = false;
-      })
-      .addCase(me.rejected, (state) => {
-        state.loading = false;
-      });
-  },
+    .addCase(login.rejected, (state, action) => {
+      if (action.payload) {
+        state.error = { ...action.payload };
+      }
+    })
+    .addCase(me.pending, (state) => {
+      state.loading = true;
+    })
+    .addCase(me.fulfilled, (state, action) => {
+      const { favorites } = action.payload.user;
+      favoritesAdapter.setAll(state.user.favorites, favorites);
+      state.user = {
+        ...action.payload.user,
+        favorites: state.user.favorites
+      };
+      state.loading = false;
+    })
+    .addCase(me.rejected, (state) => {
+      state.loading = false;
+    });
+  }
 });
 
 export const selectUser = (state: RootState) => state.auth.user;
@@ -121,13 +121,13 @@ const selectFavoriteNews = createSelector(selectAll, (favorites) =>
 );
 
 export const isAnyUser = createSelector(selectUser, (user) => !!user._id);
-export const userImage = createSelector(selectUser, (user) => user.picture);
+export const userImage = createSelector(selectUser, (user) => user.image);
 
 export const selectors = {
   news: selectFavoriteNews,
   gifs: selectFavoriteGifs,
   videos: selectFavoriteVideos,
-  results: selectFavoriteStandard,
+  results: selectFavoriteStandard
 };
 
 export const getSelector = (type: string, source: typeof selectors) =>

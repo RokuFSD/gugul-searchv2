@@ -1,4 +1,4 @@
-import React, { cloneElement, ReactElement, ReactNode } from "react";
+import React, { cloneElement, memo, ReactElement, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useAppDispatch } from "../../redux/hooks/store";
 import {
@@ -111,4 +111,4 @@ function ProfileWrapper({ item, children }: ProfileWrapperProps) {
   );
 }
 
-export default ProfileWrapper;
+export default memo(ProfileWrapper);

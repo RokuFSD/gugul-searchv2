@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 type MenuListProps = {
@@ -11,24 +11,30 @@ const variants = {
     transition: {
       delay: 0.6,
       staggerChildren: 0.5,
-      when: "beforeChildren",
-    },
+      when: "beforeChildren"
+    }
   },
   hide: {
     opacity: 0,
     transition: {
       staggerChildren: 0.5,
-      when: "afterChildren",
-    },
-  },
+      when: "afterChildren"
+    }
+  }
 };
 
 function MenuList({ children }: MenuListProps) {
+  const openOnce = () => localStorage.getItem("menu");
+
+  useEffect(() => {
+    localStorage.setItem("menu", "true");
+  }, []);
+
   return (
     <nav>
       <motion.ul
         variants={variants}
-        initial="hide"
+        initial={openOnce() ? false : "hide"}
         animate="show"
         className="flex flex-col gap-4 w-64 px-6"
       >
