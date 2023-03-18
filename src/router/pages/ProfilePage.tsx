@@ -19,7 +19,7 @@ function ProfilePage() {
       <Menu.MenuOpen />
       <Menu.Menu>
         <Menu.MenuList>
-          <Logo onNav/>
+          <Logo onNav />
           <ProfileMenuList />
           <Menu.MenuItem>
             <button
@@ -37,7 +37,7 @@ function ProfilePage() {
       <ProfileCard
         email={user.email}
         name={user.name}
-        pictureSrc={user.picture}
+        pictureSrc={user.image}
       />
       <div className="lg:pl-64 py-4">
         <FavoriteContainer>

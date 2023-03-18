@@ -5,6 +5,8 @@ import ArrowSvg from "../../svgs/ArrowSvg";
 import validations from "../../../utils/validations";
 import UserService from "../../../services/User";
 import { PublicRoutes } from "../../../models/routes";
+import { AuthContainer, AuthOption } from "../Auth";
+import Auth from "../../../services/Auth";
 
 function RegisterForm() {
   const navigate = useNavigate();
@@ -47,6 +49,10 @@ function RegisterForm() {
         className="w-full border rounded h-10 my-6 transition-colors hover:bg-gray-300 hover:text-gray-600 focus:outline-blue-100">
         Sign Up
       </Form.FormSubmit>
+      <AuthContainer>
+        <AuthOption signInCb={Auth.loginGoogle} icon="google" type="register" name="Google" />
+        <AuthOption signInCb={Auth.loginGithub} icon="github" type="register" name="GitHub" disabled />
+      </AuthContainer>
       <div className="w-full flex flex-col items-center gap-2">
         <h2 className="text-gray-400">Already have an account?</h2>
         <button

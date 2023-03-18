@@ -5,6 +5,8 @@ import { login } from "../../../redux/features/auth/thunkActions";
 import * as Form from "../index";
 import { PublicRoutes } from "../../../models/routes";
 import ArrowSvg from "../../svgs/ArrowSvg";
+import { AuthContainer, AuthOption } from "../Auth";
+import Auth from "../../../services/Auth";
 
 function LoginForm() {
   const dispatch = useAppDispatch();
@@ -40,6 +42,10 @@ function LoginForm() {
         className="w-full border rounded h-10 my-6 transition-colors hover:bg-gray-300 hover:text-gray-600 focus:outline-blue-100">
         Log In
       </Form.FormSubmit>
+      <AuthContainer>
+        <AuthOption signInCb={Auth.loginGoogle} icon="google" type="login" name="Google" />
+        <AuthOption signInCb={Auth.loginGithub} icon="github" type="login" name="GitHub" disabled/>
+      </AuthContainer>
       <div className="w-full flex flex-col items-center gap-2">
         <h2 className="text-gray-400">Don&apos;t have an account?</h2>
         <button
@@ -50,6 +56,7 @@ function LoginForm() {
           Sign up for free!
         </button>
       </div>
+
     </Form.Form>
   );
 }

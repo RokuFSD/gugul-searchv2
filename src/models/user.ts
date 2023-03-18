@@ -6,7 +6,7 @@ export interface User {
     name: string;
     password: string;
     email: string;
-    picture: string;
+    image: string;
     favorites: Favorite[];
   };
 }

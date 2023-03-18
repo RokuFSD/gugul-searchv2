@@ -3,6 +3,7 @@ import { User } from "../models/user";
 
 const BASE_URL = "http://localhost:5005";
 const AUTH_URL = `${BASE_URL}/auth`;
+export const GOOGLE_URL = `${AUTH_URL}/google`;
 
 export default class Auth {
   static me() {
@@ -15,6 +16,14 @@ export default class Auth {
     return axios.post<User>(`${AUTH_URL}/login`, data, {
       withCredentials: true
     });
+  }
+
+  static loginGoogle() {
+    window.open(GOOGLE_URL, "_self");
+  }
+
+  static loginGithub() {
+    // Todo
   }
 
   static logout() {
