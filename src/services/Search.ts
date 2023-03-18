@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BASE_URL } from "./Auth";
 
 import { ResponseType } from "../types/api";
 
@@ -16,7 +17,7 @@ export default class Search {
     page: number
   ): Promise<ResponseType> {
     const { data } = await axios.get(
-      `http://localhost:5005/?q=${query}&page=${
+      `${BASE_URL}/?q=${query}&page=${
         page === 1 ? "0" : (page - 1) * 10
       }&type=${SearchType[type as keyof typeof SearchType]}`
     );

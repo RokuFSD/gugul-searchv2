@@ -8,7 +8,6 @@ Modal.setAppElement("#modal-root");
 
 function App() {
   // First check if there is a user session
-  // TODO: Make the buttons for the google login and register
   const { isLoading } = useMeAuth();
   return (
     <main className="w-full dark:bg-gray-700 text-white">
